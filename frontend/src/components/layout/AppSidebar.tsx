@@ -43,31 +43,31 @@ import {
 
 const navigation = [
   {
-    title: 'Collect',
+    title: 'Recopilar',
     items: [
-      { name: 'Sources', href: '/sources', icon: FileText },
+      { name: 'Fuentes', href: '/sources', icon: FileText },
     ],
   },
   {
-    title: 'Process',
+    title: 'Procesar',
     items: [
-      { name: 'Notebooks', href: '/notebooks', icon: Book },
-      { name: 'Ask and Search', href: '/search', icon: Search },
+      { name: 'Cuadernos', href: '/notebooks', icon: Book },
+      { name: 'Consultar y Buscar', href: '/search', icon: Search },
     ],
   },
   {
-    title: 'Create',
+    title: 'Crear',
     items: [
       { name: 'Podcasts', href: '/podcasts', icon: Mic },
     ],
   },
   {
-    title: 'Manage',
+    title: 'Gestionar',
     items: [
-      { name: 'Models', href: '/models', icon: Bot },
-      { name: 'Transformations', href: '/transformations', icon: Shuffle },
-      { name: 'Settings', href: '/settings', icon: Settings },
-      { name: 'Advanced', href: '/advanced', icon: Wrench },
+      { name: 'Modelos', href: '/models', icon: Bot },
+      { name: 'Transformaciones', href: '/transformations', icon: Shuffle },
+      { name: 'Configuración', href: '/settings', icon: Settings },
+      { name: 'Avanzado', href: '/advanced', icon: Wrench },
     ],
   },
 ] as const
@@ -170,13 +170,13 @@ export function AppSidebar() {
                         variant="default"
                         size="sm"
                         className="w-full justify-center px-2 bg-primary hover:bg-primary/90 text-primary-foreground border-0"
-                        aria-label="Create"
+                        aria-label="Crear"
                       >
                         <Plus className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                   </TooltipTrigger>
-                  <TooltipContent side="right">Create</TooltipContent>
+                  <TooltipContent side="right">Crear</TooltipContent>
                 </Tooltip>
               ) : (
                 <DropdownMenuTrigger asChild>
@@ -187,7 +187,7 @@ export function AppSidebar() {
                     className="w-full justify-start bg-primary hover:bg-primary/90 text-primary-foreground border-0"
                   >
                     <Plus className="h-4 w-4 mr-2" />
-                    Create
+                    Crear
                   </Button>
                 </DropdownMenuTrigger>
               )}
@@ -205,7 +205,7 @@ export function AppSidebar() {
                   className="gap-2"
                 >
                   <FileText className="h-4 w-4" />
-                  Source
+                  Fuente
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onSelect={(event) => {
@@ -215,7 +215,7 @@ export function AppSidebar() {
                   className="gap-2"
                 >
                   <Book className="h-4 w-4" />
-                  Notebook
+                  Cuaderno
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onSelect={(event) => {
@@ -302,7 +302,7 @@ export function AppSidebar() {
                     <ThemeToggle iconOnly />
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="right">Theme</TooltipContent>
+                <TooltipContent side="right">Tema</TooltipContent>
               </Tooltip>
             ) : (
               <ThemeToggle />
@@ -320,7 +320,7 @@ export function AppSidebar() {
                   <LogOut className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="right">Sign Out</TooltipContent>
+              <TooltipContent side="right">Cerrar Sesión</TooltipContent>
             </Tooltip>
           ) : (
             <Button
@@ -329,7 +329,7 @@ export function AppSidebar() {
               onClick={logout}
             >
               <LogOut className="h-4 w-4" />
-              Sign Out
+              Cerrar Sesión
             </Button>
           )}
         </div>

@@ -32,8 +32,8 @@ export function SystemInfo() {
     return (
       <Card className="p-6">
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">System Information</h2>
-          <div className="text-sm text-muted-foreground">Loading...</div>
+          <h2 className="text-xl font-semibold">Información del Sistema</h2>
+          <div className="text-sm text-muted-foreground">Cargando...</div>
         </div>
       </Card>
     )
@@ -42,37 +42,37 @@ export function SystemInfo() {
   return (
     <Card className="p-6">
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">System Information</h2>
+        <h2 className="text-xl font-semibold">Información del Sistema</h2>
 
         <div className="space-y-3">
           {/* Current Version */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Current Version</span>
-            <Badge variant="outline">{config?.version || 'Unknown'}</Badge>
+            <span className="text-sm font-medium">Versión Actual</span>
+            <Badge variant="outline">{config?.version || 'Desconocido'}</Badge>
           </div>
 
           {/* Latest Version */}
           {config?.latestVersion && (
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Latest Version</span>
+              <span className="text-sm font-medium">Última Versión</span>
               <Badge variant="outline">{config.latestVersion}</Badge>
             </div>
           )}
 
           {/* Update Status */}
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Status</span>
+            <span className="text-sm font-medium">Estado</span>
             {config?.hasUpdate ? (
               <Badge variant="destructive">
-                Update Available
+                Actualización Disponible
               </Badge>
             ) : config?.latestVersion ? (
               <Badge variant="outline" className="text-green-600 border-green-600">
-                Up to Date
+                Actualizado
               </Badge>
             ) : (
               <Badge variant="outline" className="text-muted-foreground">
-                Unknown
+                Desconocido
               </Badge>
             )}
           </div>
@@ -86,7 +86,7 @@ export function SystemInfo() {
                 rel="noopener noreferrer"
                 className="text-sm text-primary hover:underline inline-flex items-center gap-1"
               >
-                View on GitHub
+                Ver en GitHub
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -107,7 +107,7 @@ export function SystemInfo() {
           {/* Version Check Failed Message */}
           {!config?.latestVersion && config?.version && (
             <div className="pt-2 text-xs text-muted-foreground">
-              Unable to check for updates. GitHub may be unreachable.
+              No se pudo verificar actualizaciones. GitHub podría no estar disponible.
             </div>
           )}
         </div>

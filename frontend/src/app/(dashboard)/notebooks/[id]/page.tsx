@@ -91,8 +91,8 @@ export default function NotebookPage() {
     return (
       <AppShell>
         <div className="p-6">
-          <h1 className="text-2xl font-bold mb-4">Notebook Not Found</h1>
-          <p className="text-muted-foreground">The requested notebook could not be found.</p>
+          <h1 className="text-2xl font-bold mb-4">Cuaderno No Encontrado</h1>
+          <p className="text-muted-foreground">El cuaderno solicitado no pudo ser encontrado.</p>
         </div>
       </AppShell>
     )

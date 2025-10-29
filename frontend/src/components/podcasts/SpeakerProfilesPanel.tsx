@@ -64,17 +64,17 @@ export function SpeakerProfilesPanel({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-semibold">Speaker profiles</h2>
+          <h2 className="text-lg font-semibold">Perfiles de locutor</h2>
           <p className="text-sm text-muted-foreground">
-            Configure voices and personalities for generated episodes.
+            Configura voces y personalidades para episodios generados.
           </p>
         </div>
-        <Button onClick={() => setCreateOpen(true)}>Create speaker</Button>
+        <Button onClick={() => setCreateOpen(true)}>Crear locutor</Button>
       </div>
 
       {sortedProfiles.length === 0 ? (
         <div className="rounded-lg border border-dashed bg-muted/30 p-8 text-center text-sm text-muted-foreground">
-          No speaker profiles yet. Create one to make episode templates available.
+          Aún no hay perfiles de locutor. Crea uno para hacer disponibles las plantillas de episodio.
         </div>
       ) : (
         <div className="space-y-4">
@@ -91,7 +91,7 @@ export function SpeakerProfilesPanel({
                         {profile.name}
                       </CardTitle>
                       <CardDescription className="text-sm text-muted-foreground">
-                        {profile.description || 'No description provided.'}
+                        {profile.description || 'No se proporcionó descripción.'}
                       </CardDescription>
                     </div>
                     <Badge variant="outline" className="text-xs">
@@ -104,8 +104,8 @@ export function SpeakerProfilesPanel({
                       className="text-xs"
                     >
                       {usageCount > 0
-                        ? `Used by ${usageCount} episode${usageCount === 1 ? '' : 's'}`
-                        : 'Unused'}
+                        ? `Usado por ${usageCount} episodio${usageCount === 1 ? '' : 's'}`
+                        : 'Sin usar'}
                     </Badge>
                   </div>
                 </CardHeader>
@@ -125,14 +125,14 @@ export function SpeakerProfilesPanel({
                             </span>
                           </div>
                           <span className="text-xs text-muted-foreground">
-                            Voice ID: {speaker.voice_id}
+                            ID de Voz: {speaker.voice_id}
                           </span>
                         </div>
                         <p className="mt-2 text-xs text-muted-foreground whitespace-pre-wrap">
-                          <span className="font-semibold">Backstory:</span> {speaker.backstory}
+                          <span className="font-semibold">Historia:</span> {speaker.backstory}
                         </p>
                         <p className="mt-2 text-xs text-muted-foreground whitespace-pre-wrap">
-                          <span className="font-semibold">Personality:</span> {speaker.personality}
+                          <span className="font-semibold">Personalidad:</span> {speaker.personality}
                         </p>
                       </div>
                     ))}
@@ -144,7 +144,7 @@ export function SpeakerProfilesPanel({
                       size="sm"
                       onClick={() => setEditProfile(profile)}
                     >
-                      <Edit3 className="mr-2 h-4 w-4" /> Edit
+                      <Edit3 className="mr-2 h-4 w-4" /> Editar
                     </Button>
                     <AlertDialog>
                       <DropdownMenu>
@@ -168,7 +168,7 @@ export function SpeakerProfilesPanel({
                             disabled={duplicateProfile.isPending}
                           >
                             <Copy className="h-4 w-4 mr-2" />
-                            Duplicate
+                            Duplicar
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <AlertDialogTrigger asChild>
@@ -177,30 +177,30 @@ export function SpeakerProfilesPanel({
                               disabled={deleteDisabled}
                             >
                               <Trash2 className="h-4 w-4 mr-2" />
-                              Delete
+                              Eliminar
                             </DropdownMenuItem>
                           </AlertDialogTrigger>
                         </DropdownMenuContent>
                       </DropdownMenu>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle>Delete speaker profile?</AlertDialogTitle>
+                          <AlertDialogTitle>¿Eliminar perfil de locutor?</AlertDialogTitle>
                           <AlertDialogDescription>
-                            Deleting “{profile.name}” cannot be undone.
+                            Eliminar "{profile.name}" no se puede deshacer.
                           </AlertDialogDescription>
                           {deleteDisabled ? (
                             <p className="mt-2 text-sm text-muted-foreground">
-                              Remove this speaker from episode profiles before deleting it.
+                              Elimina este locutor de los perfiles de episodio antes de eliminarlo.
                             </p>
                           ) : null}
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogCancel>Cancelar</AlertDialogCancel>
                           <AlertDialogAction
                             onClick={() => deleteProfile.mutate(profile.id)}
                             disabled={deleteDisabled || deleteProfile.isPending}
                           >
-                            {deleteProfile.isPending ? 'Deleting…' : 'Delete'}
+                            {deleteProfile.isPending ? 'Eliminando…' : 'Eliminar'}
                           </AlertDialogAction>
                         </AlertDialogFooter>
                       </AlertDialogContent>

@@ -121,10 +121,10 @@ export function RebuildEmbeddings() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          🔄 Rebuild Embeddings
+          🔄 Reconstruir Embeddings
         </CardTitle>
         <CardDescription>
-          Rebuild vector embeddings for your content. Use this when switching embedding models or fixing corrupted embeddings.
+          Reconstruye los embeddings vectoriales de tu contenido. Usa esto cuando cambies de modelo de embedding o necesites corregir embeddings corruptos.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -132,25 +132,25 @@ export function RebuildEmbeddings() {
         {!isRebuildActive && (
           <div className="space-y-6">
             <div className="space-y-3">
-              <Label htmlFor="mode">Rebuild Mode</Label>
+              <Label htmlFor="mode">Modo de Reconstrucción</Label>
               <Select value={mode} onValueChange={(value) => setMode(value as 'existing' | 'all')}>
                 <SelectTrigger id="mode">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="existing">Existing</SelectItem>
-                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="existing">Existentes</SelectItem>
+                  <SelectItem value="all">Todos</SelectItem>
                 </SelectContent>
               </Select>
               <p className="text-sm text-muted-foreground">
                 {mode === 'existing'
-                  ? 'Re-embed only items that already have embeddings (faster, for model switching)'
-                  : 'Re-embed existing items + create embeddings for items without any (slower, comprehensive)'}
+                  ? 'Re-embeber solo elementos que ya tienen embeddings (más rápido, para cambiar de modelo)'
+                  : 'Re-embeber elementos existentes + crear embeddings para elementos sin ninguno (más lento, completo)'}
               </p>
             </div>
 
             <div className="space-y-3">
-              <Label>Include in Rebuild</Label>
+              <Label>Incluir en la Reconstrucción</Label>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <Checkbox
@@ -159,7 +159,7 @@ export function RebuildEmbeddings() {
                     onCheckedChange={(checked) => setIncludeSources(checked === true)}
                   />
                   <Label htmlFor="sources" className="font-normal cursor-pointer">
-                    Sources
+                    Fuentes
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -169,7 +169,7 @@ export function RebuildEmbeddings() {
                     onCheckedChange={(checked) => setIncludeNotes(checked === true)}
                   />
                   <Label htmlFor="notes" className="font-normal cursor-pointer">
-                    Notes
+                    Notas
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -179,7 +179,7 @@ export function RebuildEmbeddings() {
                     onCheckedChange={(checked) => setIncludeInsights(checked === true)}
                   />
                   <Label htmlFor="insights" className="font-normal cursor-pointer">
-                    Insights
+                    Perspectivas
                   </Label>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export function RebuildEmbeddings() {
                 <Alert variant="destructive">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    Please select at least one item type to rebuild
+                    Por favor selecciona al menos un tipo de elemento para reconstruir
                   </AlertDescription>
                 </Alert>
               )}
@@ -201,10 +201,10 @@ export function RebuildEmbeddings() {
               {rebuildMutation.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Starting Rebuild...
+                  Iniciando Reconstrucción...
                 </>
               ) : (
-                '🚀 Start Rebuild'
+                '🚀 Iniciar Reconstrucción'
               )}
             </Button>
 
@@ -212,7 +212,7 @@ export function RebuildEmbeddings() {
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>
-                  Failed to start rebuild: {(rebuildMutation.error as Error)?.message || 'Unknown error'}
+                  Error al iniciar la reconstrucción: {(rebuildMutation.error as Error)?.message || 'Error desconocido'}
                 </AlertDescription>
               </Alert>
             )}
@@ -230,21 +230,21 @@ export function RebuildEmbeddings() {
                 {status.status === 'failed' && <XCircle className="h-5 w-5 text-red-500" />}
                 <div className="flex flex-col">
                   <span className="font-medium">
-                    {status.status === 'queued' && 'Queued'}
-                    {status.status === 'running' && 'Running...'}
-                    {status.status === 'completed' && 'Completed!'}
-                    {status.status === 'failed' && 'Failed'}
+                    {status.status === 'queued' && 'En Cola'}
+                    {status.status === 'running' && 'Ejecutando...'}
+                    {status.status === 'completed' && '¡Completado!'}
+                    {status.status === 'failed' && 'Fallido'}
                   </span>
                   {status.status === 'running' && (
                     <span className="text-sm text-muted-foreground">
-                      You can leave this page as this will run in the background
+                      Puedes abandonar esta página, se ejecutará en segundo plano
                     </span>
                   )}
                 </div>
               </div>
               {(status.status === 'completed' || status.status === 'failed') && (
                 <Button variant="outline" size="sm" onClick={handleReset}>
-                  Start New Rebuild
+                  Iniciar Nueva Reconstrucción
                 </Button>
               )}
             </div>
@@ -252,15 +252,15 @@ export function RebuildEmbeddings() {
             {progressData && (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Progress</span>
+                  <span>Progreso</span>
                   <span className="font-medium">
-                    {processedItems}/{totalItems} items ({progressPercent.toFixed(1)}%)
+                    {processedItems}/{totalItems} elementos ({progressPercent.toFixed(1)}%)
                   </span>
                 </div>
                 <Progress value={progressPercent} className="h-2" />
                 {failedItems > 0 && (
                   <p className="text-sm text-yellow-600">
-                    ⚠️ {failedItems} items failed to process
+                    ⚠️ {failedItems} elementos fallaron al procesarse
                   </p>
                 )}
               </div>
@@ -269,19 +269,19 @@ export function RebuildEmbeddings() {
             {stats && (
               <div className="grid grid-cols-4 gap-4">
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Sources</p>
+                  <p className="text-sm text-muted-foreground">Fuentes</p>
                   <p className="text-2xl font-bold">{sourcesProcessed}</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Notes</p>
+                  <p className="text-sm text-muted-foreground">Notas</p>
                   <p className="text-2xl font-bold">{notesProcessed}</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Insights</p>
+                  <p className="text-sm text-muted-foreground">Perspectivas</p>
                   <p className="text-2xl font-bold">{insightsProcessed}</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Time</p>
+                  <p className="text-sm text-muted-foreground">Tiempo</p>
                   <p className="text-2xl font-bold">
                     {processingTimeSeconds !== undefined ? `${processingTimeSeconds.toFixed(1)}s` : '—'}
                   </p>
@@ -298,9 +298,9 @@ export function RebuildEmbeddings() {
 
             {status.started_at && (
               <div className="text-sm text-muted-foreground space-y-1">
-                <p>Started: {new Date(status.started_at).toLocaleString()}</p>
+                <p>Iniciado: {new Date(status.started_at).toLocaleString()}</p>
                 {status.completed_at && (
-                  <p>Completed: {new Date(status.completed_at).toLocaleString()}</p>
+                  <p>Completado: {new Date(status.completed_at).toLocaleString()}</p>
                 )}
               </div>
             )}
@@ -310,49 +310,49 @@ export function RebuildEmbeddings() {
         {/* Help Section */}
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="when">
-            <AccordionTrigger>When should I rebuild embeddings?</AccordionTrigger>
+            <AccordionTrigger>¿Cuándo debo reconstruir los embeddings?</AccordionTrigger>
             <AccordionContent className="space-y-2 text-sm">
-              <p><strong>You should rebuild embeddings when:</strong></p>
+              <p><strong>Debes reconstruir los embeddings cuando:</strong></p>
               <ul className="list-disc list-inside space-y-1 ml-2">
-                <li><strong>Switching embedding models:</strong> If you change from one embedding model to another, you need to rebuild all embeddings to ensure consistency.</li>
-                <li><strong>Upgrading model versions:</strong> When updating to a newer version of your embedding model, rebuild to take advantage of improvements.</li>
-                <li><strong>Fixing corrupted embeddings:</strong> If you suspect some embeddings are corrupted or missing, rebuilding can restore them.</li>
-                <li><strong>After bulk imports:</strong> If you imported content without embeddings, use &quot;All&quot; mode to embed everything.</li>
+                <li><strong>Cambiar modelos de embedding:</strong> Si cambias de un modelo de embedding a otro, necesitas reconstruir todos los embeddings para asegurar consistencia.</li>
+                <li><strong>Actualizar versiones del modelo:</strong> Al actualizar a una versión más nueva de tu modelo de embedding, reconstruye para aprovechar las mejoras.</li>
+                <li><strong>Corregir embeddings corruptos:</strong> Si sospechas que algunos embeddings están corruptos o faltan, reconstruirlos puede restaurarlos.</li>
+                <li><strong>Después de importaciones masivas:</strong> Si importaste contenido sin embeddings, usa el modo &quot;Todos&quot; para embeber todo.</li>
               </ul>
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="time">
-            <AccordionTrigger>How long does rebuilding take?</AccordionTrigger>
+            <AccordionTrigger>¿Cuánto tiempo toma reconstruir?</AccordionTrigger>
             <AccordionContent className="space-y-2 text-sm">
-              <p><strong>Processing time depends on:</strong></p>
+              <p><strong>El tiempo de procesamiento depende de:</strong></p>
               <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>Number of items to process</li>
-                <li>Embedding model speed</li>
-                <li>API rate limits (for cloud providers)</li>
-                <li>System resources</li>
+                <li>Número de elementos a procesar</li>
+                <li>Velocidad del modelo de embedding</li>
+                <li>Límites de tasa de la API (para proveedores en la nube)</li>
+                <li>Recursos del sistema</li>
               </ul>
-              <p className="mt-2"><strong>Typical rates:</strong></p>
+              <p className="mt-2"><strong>Tasas típicas:</strong></p>
               <ul className="list-disc list-inside space-y-1 ml-2">
-                <li><strong>Local models</strong> (Ollama): Very fast, limited only by hardware</li>
-                <li><strong>Cloud APIs</strong> (OpenAI, Google): Moderate speed, may hit rate limits with large datasets</li>
-                <li><strong>Sources:</strong> Slower than notes/insights (creates multiple chunks per source)</li>
+                <li><strong>Modelos locales</strong> (Ollama): Muy rápido, limitado solo por el hardware</li>
+                <li><strong>APIs en la nube</strong> (OpenAI, Google): Velocidad moderada, puede alcanzar límites de tasa con conjuntos de datos grandes</li>
+                <li><strong>Fuentes:</strong> Más lento que notas/perspectivas (crea múltiples fragmentos por fuente)</li>
               </ul>
-              <p className="mt-2"><em>Example: Rebuilding 200 items might take 2-5 minutes with cloud APIs, or under 1 minute with local models.</em></p>
+              <p className="mt-2"><em>Ejemplo: Reconstruir 200 elementos puede tomar de 2-5 minutos con APIs en la nube, o menos de 1 minuto con modelos locales.</em></p>
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="safe">
-            <AccordionTrigger>Is it safe to rebuild while using the app?</AccordionTrigger>
+            <AccordionTrigger>¿Es seguro reconstruir mientras uso la aplicación?</AccordionTrigger>
             <AccordionContent className="space-y-2 text-sm">
-              <p><strong>Yes, rebuilding is safe!</strong> The rebuild process:</p>
+              <p><strong>¡Sí, reconstruir es seguro!</strong> El proceso de reconstrucción:</p>
               <ul className="list-disc list-inside space-y-1 ml-2">
-                <li>✅ <strong>Is idempotent:</strong> Running multiple times produces the same result</li>
-                <li>✅ <strong>Doesn&apos;t delete content:</strong> Only replaces embeddings</li>
-                <li>✅ <strong>Can be run anytime:</strong> No need to stop other operations</li>
-                <li>✅ <strong>Handles errors gracefully:</strong> Failed items are logged and skipped</li>
+                <li>✅ <strong>Es idempotente:</strong> Ejecutar múltiples veces produce el mismo resultado</li>
+                <li>✅ <strong>No elimina contenido:</strong> Solo reemplaza los embeddings</li>
+                <li>✅ <strong>Puede ejecutarse en cualquier momento:</strong> No necesitas detener otras operaciones</li>
+                <li>✅ <strong>Maneja errores con elegancia:</strong> Los elementos fallidos se registran y se omiten</li>
               </ul>
-              <p className="mt-2">⚠️ <strong>However:</strong> Very large rebuilds (1000s of items) may temporarily slow down searches while processing.</p>
+              <p className="mt-2">⚠️ <strong>Sin embargo:</strong> Reconstrucciones muy grandes (miles de elementos) pueden ralentizar temporalmente las búsquedas durante el procesamiento.</p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

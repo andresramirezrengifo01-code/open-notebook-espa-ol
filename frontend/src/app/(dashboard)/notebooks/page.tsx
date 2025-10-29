@@ -50,7 +50,7 @@ export default function NotebooksPage() {
       <div className="p-6 space-y-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold">Notebooks</h1>
+            <h1 className="text-2xl font-bold">Cuadernos</h1>
             <Button variant="outline" size="sm" onClick={() => refetch()}>
               <RefreshCw className="h-4 w-4" />
             </Button>
@@ -59,33 +59,33 @@ export default function NotebooksPage() {
             <Input
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search notebooks..."
+              placeholder="Buscar cuadernos..."
               className="w-full sm:w-64"
             />
             <Button onClick={() => setCreateDialogOpen(true)}>
               <Plus className="h-4 w-4 mr-2" />
-              New Notebook
+              Nuevo Cuaderno
             </Button>
           </div>
         </div>
         
         <div className="space-y-8">
-          <NotebookList 
-            notebooks={filteredActive} 
+          <NotebookList
+            notebooks={filteredActive}
             isLoading={isLoading}
-            title="Active Notebooks"
-            emptyTitle={isSearching ? 'No notebooks match your search' : undefined}
-            emptyDescription={isSearching ? 'Try using a different notebook name.' : undefined}
+            title="Cuadernos Activos"
+            emptyTitle={isSearching ? 'No hay cuadernos que coincidan con tu búsqueda' : undefined}
+            emptyDescription={isSearching ? 'Intenta usar un nombre de cuaderno diferente.' : undefined}
           />
           
           {hasArchived && (
-            <NotebookList 
-              notebooks={filteredArchived} 
+            <NotebookList
+              notebooks={filteredArchived}
               isLoading={false}
-              title="Archived Notebooks"
+              title="Cuadernos Archivados"
               collapsible
-              emptyTitle={isSearching ? 'No archived notebooks match your search' : undefined}
-              emptyDescription={isSearching ? 'Modify your search to find archived notebooks.' : undefined}
+              emptyTitle={isSearching ? 'No hay cuadernos archivados que coincidan con tu búsqueda' : undefined}
+              emptyDescription={isSearching ? 'Modifica tu búsqueda para encontrar cuadernos archivados.' : undefined}
             />
           )}
         </div>

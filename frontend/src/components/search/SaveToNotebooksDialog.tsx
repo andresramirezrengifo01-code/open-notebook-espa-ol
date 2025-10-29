@@ -43,7 +43,7 @@ export function SaveToNotebooksDialog({
 
   const handleSave = async () => {
     if (selectedNotebooks.length === 0) {
-      toast.error('Please select at least one notebook')
+      toast.error('Por favor, selecciona al menos un cuaderno')
       return
     }
 
@@ -58,11 +58,11 @@ export function SaveToNotebooksDialog({
         })
       }
 
-      toast.success(`Answer saved to ${selectedNotebooks.length} notebook${selectedNotebooks.length > 1 ? 's' : ''}`)
+      toast.success(`Respuesta guardada en ${selectedNotebooks.length} cuaderno${selectedNotebooks.length > 1 ? 's' : ''}`)
       setSelectedNotebooks([])
       onOpenChange(false)
     } catch {
-      toast.error('Failed to save answer')
+      toast.error('Error al guardar la respuesta')
     }
   }
 
@@ -76,9 +76,9 @@ export function SaveToNotebooksDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Save to Notebooks</DialogTitle>
+          <DialogTitle>Guardar en Cuadernos</DialogTitle>
           <DialogDescription>
-            Select one or more notebooks to save this answer
+            Selecciona uno o más cuadernos para guardar esta respuesta
           </DialogDescription>
         </DialogHeader>
 
@@ -92,14 +92,14 @@ export function SaveToNotebooksDialog({
               items={notebookItems}
               selectedIds={selectedNotebooks}
               onToggle={handleToggle}
-              emptyMessage="No notebooks found. Create a notebook first."
+              emptyMessage="No se encontraron cuadernos. Crea primero un cuaderno."
             />
           )}
         </div>
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            Cancelar
           </Button>
           <Button
             onClick={handleSave}
@@ -108,10 +108,10 @@ export function SaveToNotebooksDialog({
             {createNote.isPending ? (
               <>
                 <LoadingSpinner size="sm" className="mr-2" />
-                Saving...
+                Guardando...
               </>
             ) : (
-              `Save to ${selectedNotebooks.length || ''} Notebook${selectedNotebooks.length !== 1 ? 's' : ''}`
+              `Guardar en ${selectedNotebooks.length || ''} Cuaderno${selectedNotebooks.length !== 1 ? 's' : ''}`
             )}
           </Button>
         </DialogFooter>

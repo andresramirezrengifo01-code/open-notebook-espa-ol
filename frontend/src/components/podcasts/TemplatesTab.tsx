@@ -58,9 +58,9 @@ export function TemplatesTab() {
   return (
     <div className="space-y-6">
       <div className="space-y-1">
-        <h2 className="text-xl font-semibold">Templates workspace</h2>
+        <h2 className="text-xl font-semibold">Espacio de trabajo de plantillas</h2>
         <p className="text-sm text-muted-foreground">
-          Build reusable episode and speaker configurations for fast podcast production.
+          Construye configuraciones reutilizables de episodios y locutores para una producción rápida de podcasts.
         </p>
       </div>
 
@@ -72,44 +72,42 @@ export function TemplatesTab() {
           <AccordionTrigger className="gap-2 py-4 text-left text-sm font-semibold">
             <div className="flex items-center gap-2">
               <Lightbulb className="h-4 w-4 text-primary" />
-              How templates power podcast generation
+              Cómo las plantillas impulsan la generación de podcasts
             </div>
           </AccordionTrigger>
           <AccordionContent className="text-sm text-muted-foreground">
             <div className="space-y-4">
               <p className="text-muted-foreground/90">
-                Templates split the podcast workflow into two reusable building blocks. Mix and match
-                them whenever you generate a new episode.
+                Las plantillas dividen el flujo de trabajo del podcast en dos bloques de construcción reutilizables. Combínalos y mezclalos cada vez que generes un nuevo episodio.
               </p>
 
               <div className="space-y-2">
-                <h4 className="font-medium text-foreground">Episode profiles set the format</h4>
+                <h4 className="font-medium text-foreground">Los perfiles de episodio establecen el formato</h4>
                 <ul className="list-disc space-y-1 pl-5">
-                  <li>Outline the number of segments and how the story flows</li>
-                  <li>Pick the language models used for briefing, outlining, and script writing</li>
-                  <li>Store default briefings so every episode starts with a consistent tone</li>
+                  <li>Delinea el número de segmentos y cómo fluye la historia</li>
+                  <li>Elige los modelos de lenguaje usados para briefing, esquematización y escritura del guion</li>
+                  <li>Almacena briefings predeterminados para que cada episodio comience con un tono consistente</li>
                 </ul>
               </div>
 
               <div className="space-y-2">
-                <h4 className="font-medium text-foreground">Speaker profiles bring voices to life</h4>
+                <h4 className="font-medium text-foreground">Los perfiles de locutor dan vida a las voces</h4>
                 <ul className="list-disc space-y-1 pl-5">
-                  <li>Choose the text-to-speech provider and model</li>
-                  <li>Capture personality, backstory, and pronunciation notes per speaker</li>
-                  <li>Reuse the same host or guest voices across different episode formats</li>
+                  <li>Elige el proveedor y modelo de texto a voz</li>
+                  <li>Captura personalidad, historia de fondo y notas de pronunciación por locutor</li>
+                  <li>Reutiliza las mismas voces de anfitrión o invitado en diferentes formatos de episodio</li>
                 </ul>
               </div>
 
               <div className="space-y-2">
-                <h4 className="font-medium text-foreground">Recommended workflow</h4>
+                <h4 className="font-medium text-foreground">Flujo de trabajo recomendado</h4>
                 <ol className="list-decimal space-y-1 pl-5">
-                  <li>Create speaker profiles for each voice you need</li>
-                  <li>Build episode profiles that reference those speakers by name</li>
-                  <li>Generate podcasts by selecting the episode profile that fits the story</li>
+                  <li>Crea perfiles de locutor para cada voz que necesites</li>
+                  <li>Construye perfiles de episodio que hagan referencia a esos locutores por nombre</li>
+                  <li>Genera podcasts seleccionando el perfil de episodio que se ajuste a la historia</li>
                 </ol>
                 <p className="text-xs text-muted-foreground/80">
-                  Episode profiles reference speaker profiles by name, so starting with speakers avoids
-                  missing voice assignments later.
+                  Los perfiles de episodio hacen referencia a perfiles de locutor por nombre, por lo que comenzar con locutores evita asignaciones de voz faltantes más adelante.
                 </p>
               </div>
             </div>
@@ -120,9 +118,9 @@ export function TemplatesTab() {
       {hasError ? (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Failed to load templates data</AlertTitle>
+          <AlertTitle>Error al cargar los datos de plantillas</AlertTitle>
           <AlertDescription>
-            Ensure the API is running and try again. Some sections may be incomplete.
+            Asegúrate de que la API esté ejecutándose e intenta de nuevo. Algunas secciones pueden estar incompletas.
           </AlertDescription>
         </Alert>
       ) : null}
@@ -130,7 +128,7 @@ export function TemplatesTab() {
       {isLoading ? (
         <div className="flex items-center gap-3 rounded-lg border border-dashed p-6 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
-          Loading templates…
+          Cargando plantillas…
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-2">

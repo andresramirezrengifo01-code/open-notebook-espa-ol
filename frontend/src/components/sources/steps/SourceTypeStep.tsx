@@ -24,21 +24,21 @@ interface CreateSourceFormData {
 const SOURCE_TYPES = [
   {
     value: 'link' as const,
-    label: 'Link',
+    label: 'Enlace',
     icon: LinkIcon,
-    description: 'Add a web page or URL',
+    description: 'Agregar una página web o URL',
   },
   {
     value: 'upload' as const,
-    label: 'Upload',
+    label: 'Subir',
     icon: FileIcon,
-    description: 'Upload a document or file',
+    description: 'Subir un documento o archivo',
   },
   {
     value: 'text' as const,
-    label: 'Text',
+    label: 'Texto',
     icon: FileTextIcon,
-    description: 'Add text content directly',
+    description: 'Agregar contenido de texto directamente',
   },
 ]
 
@@ -54,8 +54,8 @@ export function SourceTypeStep({ control, register, errors }: SourceTypeStepProp
   return (
     <div className="space-y-6">
       <FormSection
-        title="Source Type"
-        description="Choose how you want to add your content"
+        title="Tipo de Fuente"
+        description="Elige cómo deseas agregar tu contenido"
       >
         <Controller
           control={control}
@@ -100,7 +100,7 @@ export function SourceTypeStep({ control, register, errors }: SourceTypeStepProp
                   
                   {type.value === 'upload' && (
                     <div>
-                      <Label htmlFor="file" className="mb-2 block">File *</Label>
+                      <Label htmlFor="file" className="mb-2 block">Archivo *</Label>
                       <Input
                         id="file"
                         type="file"
@@ -108,7 +108,7 @@ export function SourceTypeStep({ control, register, errors }: SourceTypeStepProp
                         accept=".pdf,.doc,.docx,.txt,.md,.epub"
                       />
                       <p className="text-xs text-muted-foreground mt-1">
-                        Supported formats: PDF, DOC, DOCX, TXT, MD, EPUB
+                        Formatos soportados: PDF, DOC, DOCX, TXT, MD, EPUB
                       </p>
                       {errors.file && (
                         <p className="text-sm text-destructive mt-1">{errors.file.message}</p>
@@ -118,11 +118,11 @@ export function SourceTypeStep({ control, register, errors }: SourceTypeStepProp
                   
                   {type.value === 'text' && (
                     <div>
-                      <Label htmlFor="content" className="mb-2 block">Text Content *</Label>
+                      <Label htmlFor="content" className="mb-2 block">Contenido de Texto *</Label>
                       <Textarea
                         id="content"
                         {...register('content')}
-                        placeholder="Paste or type your content here..."
+                        placeholder="Pega o escribe tu contenido aquí..."
                         rows={6}
                       />
                       {errors.content && (
@@ -141,16 +141,16 @@ export function SourceTypeStep({ control, register, errors }: SourceTypeStepProp
       </FormSection>
 
       <FormSection
-        title={selectedType === 'text' ? "Title *" : "Title (optional)"}
+        title={selectedType === 'text' ? "Título *" : "Título (opcional)"}
         description={selectedType === 'text'
-          ? "A title is required for text content"
-          : "If left empty, a title will be generated from the content"
+          ? "Se requiere un título para el contenido de texto"
+          : "Si se deja vacío, se generará un título del contenido"
         }
       >
         <Input
           id="title"
           {...register('title')}
-          placeholder="Give your source a descriptive title"
+          placeholder="Dale a tu fuente un título descriptivo"
         />
         {errors.title && (
           <p className="text-sm text-destructive mt-1">{errors.title.message}</p>

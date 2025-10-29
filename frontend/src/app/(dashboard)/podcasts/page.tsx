@@ -18,7 +18,7 @@ export default function PodcastsPage() {
           <header className="space-y-1">
             <h1 className="text-2xl font-semibold tracking-tight">Podcasts</h1>
             <p className="text-muted-foreground">
-              Keep track of generated episodes and manage reusable templates.
+              Mantén registro de los episodios generados y gestiona plantillas reutilizables.
             </p>
           </header>
 
@@ -28,15 +28,15 @@ export default function PodcastsPage() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Choose a view</p>
-              <TabsList aria-label="Podcast views" className="w-full max-w-md">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Elige una vista</p>
+              <TabsList aria-label="Vistas de podcasts" className="w-full max-w-md">
                 <TabsTrigger value="episodes">
                   <Mic className="h-4 w-4" />
-                  Episodes
+                  Episodios
                 </TabsTrigger>
                 <TabsTrigger value="templates">
                   <LayoutTemplate className="h-4 w-4" />
-                  Templates
+                  Plantillas
                 </TabsTrigger>
               </TabsList>
             </div>

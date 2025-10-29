@@ -33,9 +33,9 @@ export function DefaultPromptEditor() {
               <div className="flex items-center gap-2">
                 <Settings className="h-5 w-5" />
                 <div className="text-left">
-                  <CardTitle className="text-lg">Default Transformation Prompt</CardTitle>
+                  <CardTitle className="text-lg">Prompt de Transformación Predeterminado</CardTitle>
                   <CardDescription>
-                    This will be added to all your transformation prompts
+                    Esto se agregará a todos tus prompts de transformación
                   </CardDescription>
                 </div>
               </div>
@@ -52,16 +52,16 @@ export function DefaultPromptEditor() {
             <Textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Enter your default transformation instructions..."
+              placeholder="Ingresa tus instrucciones de transformación predeterminadas..."
               className="min-h-[200px] font-mono text-sm"
               disabled={isLoading}
             />
             <div className="flex justify-end">
-              <Button 
+              <Button
                 onClick={handleSave}
                 disabled={isLoading || updateDefaultPrompt.isPending}
               >
-                Save
+                Guardar
               </Button>
             </div>
           </CardContent>

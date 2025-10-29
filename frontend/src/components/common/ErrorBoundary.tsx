@@ -55,33 +55,33 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               <div className="mx-auto w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-4">
                 <AlertTriangle className="w-6 h-6 text-red-600 dark:text-red-400" />
               </div>
-              <CardTitle className="text-red-900 dark:text-red-100">Something went wrong</CardTitle>
+              <CardTitle className="text-red-900 dark:text-red-100">Algo salió mal</CardTitle>
               <CardDescription>
-                An unexpected error occurred. Please try refreshing the page.
+                Ocurrió un error inesperado. Por favor, intenta refrescar la página.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {process.env.NODE_ENV === 'development' && this.state.error && (
                 <details className="text-xs bg-muted p-3 rounded border">
-                  <summary className="cursor-pointer font-medium">Error Details</summary>
+                  <summary className="cursor-pointer font-medium">Detalles del Error</summary>
                   <pre className="mt-2 whitespace-pre-wrap break-all">
                     {this.state.error.toString()}
                   </pre>
                 </details>
               )}
-              <Button 
-                onClick={this.resetError} 
+              <Button
+                onClick={this.resetError}
                 className="w-full"
                 variant="outline"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Try Again
+                Intentar de Nuevo
               </Button>
-              <Button 
-                onClick={() => window.location.reload()} 
+              <Button
+                onClick={() => window.location.reload()}
                 className="w-full"
               >
-                Refresh Page
+                Refrescar Página
               </Button>
             </CardContent>
           </Card>

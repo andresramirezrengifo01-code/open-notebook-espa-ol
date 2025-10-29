@@ -55,54 +55,54 @@ export function EmbeddingModelChangeDialog({
         <AlertDialogHeader>
           <div className="flex items-center gap-2 mb-2">
             <AlertTriangle className="h-5 w-5 text-yellow-500" />
-            <AlertDialogTitle>Embedding Model Change</AlertDialogTitle>
+            <AlertDialogTitle>Cambio de Modelo de Embedding</AlertDialogTitle>
           </div>
           <AlertDialogDescription asChild>
             <div className="space-y-3 text-base text-muted-foreground">
               <p>
-                You are about to change your embedding model{' '}
+                Estás a punto de cambiar tu modelo de embedding{' '}
                 {oldModelName && newModelName && (
                   <>
-                    from <strong>{oldModelName}</strong> to <strong>{newModelName}</strong>
+                    de <strong>{oldModelName}</strong> a <strong>{newModelName}</strong>
                   </>
                 )}
                 .
               </p>
 
               <div className="bg-muted p-4 rounded-md space-y-2">
-                <p className="font-semibold text-foreground">⚠️ Important: Rebuild Required</p>
+                <p className="font-semibold text-foreground">⚠️ Importante: Reconstrucción Requerida</p>
                 <p className="text-sm">
-                  Changing your embedding model requires rebuilding all existing embeddings to maintain consistency.
-                  Without rebuilding, your searches may return incorrect or incomplete results.
+                  Cambiar tu modelo de embedding requiere reconstruir todos los embeddings existentes para mantener la consistencia.
+                  Sin reconstruir, tus búsquedas pueden devolver resultados incorrectos o incompletos.
                 </p>
               </div>
 
               <div className="space-y-2 text-sm">
-                <p className="font-medium text-foreground">What happens next:</p>
+                <p className="font-medium text-foreground">Qué sucede después:</p>
                 <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>Your default embedding model will be updated</li>
-                  <li>Existing embeddings will remain unchanged until rebuild</li>
-                  <li>New content will use the new embedding model</li>
-                  <li>You should rebuild embeddings as soon as possible</li>
+                  <li>Tu modelo de embedding predeterminado será actualizado</li>
+                  <li>Los embeddings existentes permanecerán sin cambios hasta la reconstrucción</li>
+                  <li>El nuevo contenido usará el nuevo modelo de embedding</li>
+                  <li>Deberías reconstruir los embeddings lo antes posible</li>
                 </ul>
               </div>
 
               <p className="text-sm font-medium text-foreground">
-                Would you like to proceed to the Advanced page to start the rebuild now?
+                ¿Te gustaría proceder a la página Avanzado para iniciar la reconstrucción ahora?
               </p>
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="flex-col sm:flex-row gap-2">
           <AlertDialogCancel disabled={isConfirming}>
-            Cancel
+            Cancelar
           </AlertDialogCancel>
           <Button
             variant="outline"
             onClick={handleConfirmOnly}
             disabled={isConfirming}
           >
-            Change Model Only
+            Solo Cambiar Modelo
           </Button>
           <AlertDialogAction
             onClick={handleConfirmAndRebuild}
@@ -110,7 +110,7 @@ export function EmbeddingModelChangeDialog({
             className="bg-primary"
           >
             <ExternalLink className="mr-2 h-4 w-4" />
-            Change & Go to Rebuild
+            Cambiar e Ir a Reconstruir
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

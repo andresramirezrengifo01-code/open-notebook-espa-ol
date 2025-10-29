@@ -78,9 +78,9 @@ export function SettingsForm() {
   if (error) {
     return (
       <Alert variant="destructive">
-        <AlertTitle>Failed to load settings</AlertTitle>
+        <AlertTitle>Error al cargar la configuración</AlertTitle>
         <AlertDescription>
-          {error instanceof Error ? error.message : 'An unexpected error occurred.'}
+          {error instanceof Error ? error.message : 'Ocurrió un error inesperado.'}
         </AlertDescription>
       </Alert>
     )
@@ -90,14 +90,14 @@ export function SettingsForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Content Processing</CardTitle>
+          <CardTitle>Procesamiento de Contenido</CardTitle>
           <CardDescription>
-            Configure how documents and URLs are processed
+            Configura cómo se procesan los documentos y URLs
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-3">
-            <Label htmlFor="doc_engine">Document Processing Engine</Label>
+            <Label htmlFor="doc_engine">Motor de Procesamiento de Documentos</Label>
             <Controller
               name="default_content_processing_engine_doc"
               control={control}
@@ -109,10 +109,10 @@ export function SettingsForm() {
                   disabled={field.disabled || isLoading}
                 >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select document processing engine" />
+                      <SelectValue placeholder="Selecciona el motor de procesamiento de documentos" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="auto">Auto (Recommended)</SelectItem>
+                      <SelectItem value="auto">Auto (Recomendado)</SelectItem>
                       <SelectItem value="docling">Docling</SelectItem>
                       <SelectItem value="simple">Simple</SelectItem>
                     </SelectContent>
@@ -122,18 +122,18 @@ export function SettingsForm() {
             <Collapsible open={expandedSections.doc} onOpenChange={() => toggleSection('doc')}>
               <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <ChevronDownIcon className={`h-4 w-4 transition-transform ${expandedSections.doc ? 'rotate-180' : ''}`} />
-                Help me choose
+                Ayúdame a elegir
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-2 text-sm text-muted-foreground space-y-2">
-                <p>• <strong>Docling</strong> is a little slower but more accurate, specially if the documents contain tables and images.</p>
-                <p>• <strong>Simple</strong> will extract any content from the document without formatting it. It&apos;s ok for simple documents, but will lose quality in complex ones.</p>
-                <p>• <strong>Auto (recommended)</strong> will try to process through docling and default to simple.</p>
+                <p>• <strong>Docling</strong> es un poco más lento pero más preciso, especialmente si los documentos contienen tablas e imágenes.</p>
+                <p>• <strong>Simple</strong> extraerá cualquier contenido del documento sin formatearlo. Está bien para documentos simples, pero perderá calidad en los complejos.</p>
+                <p>• <strong>Auto (recomendado)</strong> intentará procesar a través de docling y volverá a simple por defecto.</p>
               </CollapsibleContent>
             </Collapsible>
           </div>
           
           <div className="space-y-3">
-            <Label htmlFor="url_engine">URL Processing Engine</Label>
+            <Label htmlFor="url_engine">Motor de Procesamiento de URLs</Label>
             <Controller
               name="default_content_processing_engine_url"
               control={control}
@@ -145,10 +145,10 @@ export function SettingsForm() {
                   disabled={field.disabled || isLoading}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select URL processing engine" />
+                    <SelectValue placeholder="Selecciona el motor de procesamiento de URLs" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="auto">Auto (Recommended)</SelectItem>
+                    <SelectItem value="auto">Auto (Recomendado)</SelectItem>
                     <SelectItem value="firecrawl">Firecrawl</SelectItem>
                     <SelectItem value="jina">Jina</SelectItem>
                     <SelectItem value="simple">Simple</SelectItem>
@@ -159,13 +159,13 @@ export function SettingsForm() {
             <Collapsible open={expandedSections.url} onOpenChange={() => toggleSection('url')}>
               <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <ChevronDownIcon className={`h-4 w-4 transition-transform ${expandedSections.url ? 'rotate-180' : ''}`} />
-                Help me choose
+                Ayúdame a elegir
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-2 text-sm text-muted-foreground space-y-2">
-                <p>• <strong>Firecrawl</strong> is a paid service (with a free tier), and very powerful.</p>
-                <p>• <strong>Jina</strong> is a good option as well and also has a free tier.</p>
-                <p>• <strong>Simple</strong> will use basic HTTP extraction and will miss content on javascript-based websites.</p>
-                <p>• <strong>Auto (recommended)</strong> will try to use firecrawl (if API Key is present). Then, it will use Jina until reaches the limit (or will keep using Jina if you setup the API Key). It will fallback to simple, when none of the previous options is possible.</p>
+                <p>• <strong>Firecrawl</strong> es un servicio de pago (con nivel gratuito), y muy potente.</p>
+                <p>• <strong>Jina</strong> es una buena opción también y también tiene un nivel gratuito.</p>
+                <p>• <strong>Simple</strong> usará extracción HTTP básica y perderá contenido en sitios web basados en javascript.</p>
+                <p>• <strong>Auto (recomendado)</strong> intentará usar firecrawl (si la clave API está presente). Luego, usará Jina hasta alcanzar el límite (o seguirá usando Jina si configuras la clave API). Volverá a simple cuando ninguna de las opciones anteriores sea posible.</p>
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -174,14 +174,14 @@ export function SettingsForm() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Embedding and Search</CardTitle>
+          <CardTitle>Embedding y Búsqueda</CardTitle>
           <CardDescription>
-            Configure search and embedding options
+            Configura las opciones de búsqueda y embedding
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-3">
-            <Label htmlFor="embedding">Default Embedding Option</Label>
+            <Label htmlFor="embedding">Opción de Embedding Predeterminada</Label>
             <Controller
               name="default_embedding_option"
               control={control}
@@ -193,12 +193,12 @@ export function SettingsForm() {
                   disabled={field.disabled || isLoading}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select embedding option" />
+                    <SelectValue placeholder="Selecciona la opción de embedding" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ask">Ask</SelectItem>
-                    <SelectItem value="always">Always</SelectItem>
-                    <SelectItem value="never">Never</SelectItem>
+                    <SelectItem value="ask">Preguntar</SelectItem>
+                    <SelectItem value="always">Siempre</SelectItem>
+                    <SelectItem value="never">Nunca</SelectItem>
                   </SelectContent>
                 </Select>
               )}
@@ -206,14 +206,14 @@ export function SettingsForm() {
             <Collapsible open={expandedSections.embedding} onOpenChange={() => toggleSection('embedding')}>
               <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <ChevronDownIcon className={`h-4 w-4 transition-transform ${expandedSections.embedding ? 'rotate-180' : ''}`} />
-                Help me choose
+                Ayúdame a elegir
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-2 text-sm text-muted-foreground space-y-2">
-                <p>Embedding the content will make it easier to find by you and by your AI agents. If you are running a local embedding model (Ollama, for example), you shouldn&apos;t worry about cost and just embed everything. For online providers, you might want to be careful only if you process a lot of content (like 100s of documents at a day).</p>
-                <p>• Choose <strong>always</strong> if you are running a local embedding model or if your content volume is not that big</p>
-                <p>• Choose <strong>ask</strong> if you want to decide every time</p>
-                <p>• Choose <strong>never</strong> if you don&apos;t care about vector search or do not have an embedding provider.</p>
-                <p>As a reference, OpenAI&apos;s text-embedding-3-small costs about 0.02 for 1 million tokens -- which is about 30 times the Wikipedia page for Earth. With Gemini API, Text Embedding 004 is free with a rate limit of 1500 requests per minute.</p>
+                <p>Embeber el contenido facilitará que tú y tus agentes de IA lo encuentren. Si estás ejecutando un modelo de embedding local (Ollama, por ejemplo), no deberías preocuparte por el costo y simplemente embeber todo. Para proveedores en línea, es posible que quieras tener cuidado solo si procesas mucho contenido (como cientos de documentos al día).</p>
+                <p>• Elige <strong>siempre</strong> si estás ejecutando un modelo de embedding local o si tu volumen de contenido no es muy grande</p>
+                <p>• Elige <strong>preguntar</strong> si quieres decidir cada vez</p>
+                <p>• Elige <strong>nunca</strong> si no te importa la búsqueda vectorial o no tienes un proveedor de embedding.</p>
+                <p>Como referencia, text-embedding-3-small de OpenAI cuesta alrededor de 0.02 por 1 millón de tokens, que es aproximadamente 30 veces la página de Wikipedia de la Tierra. Con la API de Gemini, Text Embedding 004 es gratuito con un límite de tasa de 1500 solicitudes por minuto.</p>
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -222,14 +222,14 @@ export function SettingsForm() {
 
       <Card>
         <CardHeader>
-          <CardTitle>File Management</CardTitle>
+          <CardTitle>Gestión de Archivos</CardTitle>
           <CardDescription>
-            Configure file handling and storage options
+            Configura las opciones de manejo y almacenamiento de archivos
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-3">
-            <Label htmlFor="auto_delete">Auto Delete Files</Label>
+            <Label htmlFor="auto_delete">Eliminar Archivos Automáticamente</Label>
             <Controller
               name="auto_delete_files"
               control={control}
@@ -241,10 +241,10 @@ export function SettingsForm() {
                   disabled={field.disabled || isLoading}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select auto delete option" />
+                    <SelectValue placeholder="Selecciona la opción de eliminación automática" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="yes">Yes</SelectItem>
+                    <SelectItem value="yes">Sí</SelectItem>
                     <SelectItem value="no">No</SelectItem>
                   </SelectContent>
                 </Select>
@@ -253,12 +253,12 @@ export function SettingsForm() {
             <Collapsible open={expandedSections.files} onOpenChange={() => toggleSection('files')}>
               <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <ChevronDownIcon className={`h-4 w-4 transition-transform ${expandedSections.files ? 'rotate-180' : ''}`} />
-                Help me choose
+                Ayúdame a elegir
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-2 text-sm text-muted-foreground space-y-2">
-                <p>Once your files are uploaded and processed, they are not required anymore. Most users should allow Open Notebook to delete uploaded files from the upload folder automatically. Choose <strong>no</strong>, ONLY if you are using Notebook as the primary storage location for those files (which you shouldn&apos;t be at all). This option will soon be deprecated in favor of always downloading the files.</p>
-                <p>• Choose <strong>yes</strong> (recommended) to automatically delete uploaded files after processing</p>
-                <p>• Choose <strong>no</strong> only if you need to keep the original files in the upload folder</p>
+                <p>Una vez que tus archivos se cargan y procesan, ya no son necesarios. La mayoría de los usuarios deberían permitir que Open Notebook elimine automáticamente los archivos cargados de la carpeta de carga. Elige <strong>no</strong>, SOLO si estás usando Notebook como la ubicación de almacenamiento principal para esos archivos (lo cual no deberías hacer en absoluto). Esta opción pronto quedará obsoleta en favor de descargar siempre los archivos.</p>
+                <p>• Elige <strong>sí</strong> (recomendado) para eliminar automáticamente los archivos cargados después del procesamiento</p>
+                <p>• Elige <strong>no</strong> solo si necesitas mantener los archivos originales en la carpeta de carga</p>
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -266,11 +266,11 @@ export function SettingsForm() {
       </Card>
 
       <div className="flex justify-end">
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           disabled={!isDirty || updateSettings.isPending}
         >
-          {updateSettings.isPending ? 'Saving...' : 'Save Settings'}
+          {updateSettings.isPending ? 'Guardando...' : 'Guardar Configuración'}
         </Button>
       </div>
     </form>

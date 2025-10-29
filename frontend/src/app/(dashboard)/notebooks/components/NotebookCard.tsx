@@ -59,7 +59,7 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
                 </CardTitle>
                 {notebook.archived && (
                   <Badge variant="secondary" className="mt-1">
-                    Archived
+                    Archivado
                   </Badge>
                 )}
               </div>
@@ -80,12 +80,12 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
                     {notebook.archived ? (
                       <>
                         <ArchiveRestore className="h-4 w-4 mr-2" />
-                        Unarchive
+                        Desarchivar
                       </>
                     ) : (
                       <>
                         <Archive className="h-4 w-4 mr-2" />
-                        Archive
+                        Archivar
                       </>
                     )}
                   </DropdownMenuItem>
@@ -97,7 +97,7 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
                     className="text-red-600"
                   >
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Delete
+                    Eliminar
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -106,11 +106,11 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
           
           <CardContent>
             <CardDescription className="line-clamp-2 text-sm">
-              {notebook.description || 'No description'}
+              {notebook.description || 'Sin descripción'}
             </CardDescription>
 
             <div className="mt-3 text-xs text-muted-foreground">
-              Updated {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true })}
+              Actualizado {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true })}
             </div>
 
             {/* Item counts footer */}
@@ -130,9 +130,9 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete Notebook"
-        description={`Are you sure you want to delete "${notebook.name}"? This action cannot be undone and will delete all sources, notes, and chat sessions.`}
-        confirmText="Delete"
+        title="Eliminar Cuaderno"
+        description={`¿Estás seguro de que quieres eliminar "${notebook.name}"? Esta acción no se puede deshacer y eliminará todas las fuentes, notas y sesiones de chat.`}
+        confirmText="Eliminar"
         confirmVariant="destructive"
         onConfirm={handleDelete}
       />

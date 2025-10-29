@@ -46,18 +46,18 @@ export function TransformationPlayground({ transformations, selectedTransformati
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Playground</CardTitle>
+          <CardTitle>Área de Pruebas</CardTitle>
           <CardDescription>
-            Test your transformations on sample text before applying them to your sources
+            Prueba tus transformaciones en texto de muestra antes de aplicarlas a tus fuentes
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="transformation">Transformation</Label>
+              <Label htmlFor="transformation">Transformación</Label>
               <Select value={selectedId} onValueChange={setSelectedId}>
                 <SelectTrigger id="transformation">
-                  <SelectValue placeholder="Select a transformation" />
+                  <SelectValue placeholder="Selecciona una transformación" />
                 </SelectTrigger>
                 <SelectContent>
                   {transformations?.map((transformation) => (
@@ -71,29 +71,29 @@ export function TransformationPlayground({ transformations, selectedTransformati
 
             <div>
               <ModelSelector
-                label="Model"
+                label="Modelo"
                 modelType="language"
                 value={modelId}
                 onChange={setModelId}
-                placeholder="Select a model"
+                placeholder="Selecciona un modelo"
               />
             </div>
           </div>
 
           <div>
-            <Label htmlFor="input">Input Text</Label>
+            <Label htmlFor="input">Texto de Entrada</Label>
             <Textarea
               id="input"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder="Enter some text to transform..."
+              placeholder="Ingresa un texto para transformar..."
               rows={8}
               className="font-mono text-sm"
             />
           </div>
 
           <div className="flex justify-center">
-            <Button 
+            <Button
               onClick={handleExecute}
               disabled={!canExecute}
               size="lg"
@@ -101,12 +101,12 @@ export function TransformationPlayground({ transformations, selectedTransformati
               {executeTransformation.isPending ? (
                 <>
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Running...
+                  Ejecutando...
                 </>
               ) : (
                 <>
                   <Play className="h-4 w-4 mr-2" />
-                  Run Transformation
+                  Ejecutar Transformación
                 </>
               )}
             </Button>
@@ -114,7 +114,7 @@ export function TransformationPlayground({ transformations, selectedTransformati
 
           {output && (
             <div className="space-y-2">
-              <Label>Output</Label>
+              <Label>Salida</Label>
               <Card>
                 <ScrollArea className="h-[400px]">
                   <CardContent className="pt-6">

@@ -33,11 +33,11 @@ export function ProviderStatus({ providers }: ProviderStatusProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>AI Providers</CardTitle>
+        <CardTitle>Proveedores de IA</CardTitle>
         <CardDescription>
-          Configure providers through environment variables to enable their models. 
+          Configura proveedores mediante variables de entorno para habilitar sus modelos.
           <span className="ml-1">
-            {providers.available.length} of {allProviders.length} configured
+            {providers.available.length} de {allProviders.length} configurados
           </span>
         </CardDescription>
       </CardHeader>
@@ -83,12 +83,12 @@ export function ProviderStatus({ providers }: ProviderStatusProps) {
                           </Badge>
                         ))
                       ) : (
-                        <Badge variant="outline" className="text-xs">No models</Badge>
+                        <Badge variant="outline" className="text-xs">Sin modelos</Badge>
                       )}
                     </div>
                   ) : (
                     <Badge variant="outline" className="text-xs text-muted-foreground border-dashed">
-                      Not configured
+                      No configurado
                     </Badge>
                   )}
                 </div>
@@ -104,7 +104,7 @@ export function ProviderStatus({ providers }: ProviderStatusProps) {
               onClick={() => setExpanded((prev) => !prev)}
               className="text-sm font-medium text-primary hover:underline"
             >
-              {expanded ? 'See less' : `See all ${allProviders.length} providers`}
+              {expanded ? 'Ver menos' : `Ver todos los ${allProviders.length} proveedores`}
             </button>
           </div>
         ) : null}
@@ -116,7 +116,7 @@ export function ProviderStatus({ providers }: ProviderStatusProps) {
             rel="noopener noreferrer"
             className="text-sm text-primary hover:underline"
           >
-            Learn how to configure providers →
+            Aprende cómo configurar proveedores →
           </a>
         </div>
       </CardContent>

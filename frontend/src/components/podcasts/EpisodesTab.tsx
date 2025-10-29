@@ -18,23 +18,23 @@ const STATUS_ORDER: Array<{
 }> = [
   {
     key: 'running',
-    title: 'Currently Processing',
-    description: 'Episodes that are actively generating assets.',
+    title: 'Actualmente en Procesamiento',
+    description: 'Episodios que están generando activos activamente.',
   },
   {
     key: 'pending',
-    title: 'Queued / Pending',
-    description: 'Submitted episodes waiting to start processing.',
+    title: 'En Cola / Pendiente',
+    description: 'Episodios enviados esperando para comenzar el procesamiento.',
   },
   {
     key: 'completed',
-    title: 'Completed Episodes',
-    description: 'Ready to review, download, or publish.',
+    title: 'Episodios Completados',
+    description: 'Listos para revisar, descargar o publicar.',
   },
   {
     key: 'failed',
-    title: 'Failed Episodes',
-    description: 'Episodes that encountered issues during generation.',
+    title: 'Episodios Fallidos',
+    description: 'Episodios que encontraron problemas durante la generación.',
   },
 ]
 
@@ -75,14 +75,14 @@ export function EpisodesTab() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="space-y-1">
-          <h2 className="text-xl font-semibold">Episodes overview</h2>
+          <h2 className="text-xl font-semibold">Vista general de episodios</h2>
           <p className="text-sm text-muted-foreground">
-            Monitor podcast generation jobs and review the final artefacts.
+            Monitorea los trabajos de generación de podcasts y revisa los artefactos finales.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={() => setShowGenerateDialog(true)}>
-            Generate Podcast
+            Generar Podcast
           </Button>
           <Button
             variant="outline"
@@ -95,25 +95,25 @@ export function EpisodesTab() {
             ) : (
               <RefreshCcw className="mr-2 h-4 w-4" />
             )}
-            Refresh
+            Actualizar
           </Button>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-2">
         <SummaryBadge label="Total" value={statusCounts.total} />
-        <SummaryBadge label="Processing" value={statusCounts.running} />
-        <SummaryBadge label="Completed" value={statusCounts.completed} />
-        <SummaryBadge label="Failed" value={statusCounts.failed} />
-        <SummaryBadge label="Pending" value={statusCounts.pending} />
+        <SummaryBadge label="Procesando" value={statusCounts.running} />
+        <SummaryBadge label="Completados" value={statusCounts.completed} />
+        <SummaryBadge label="Fallidos" value={statusCounts.failed} />
+        <SummaryBadge label="Pendientes" value={statusCounts.pending} />
       </div>
 
       {isError ? (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Failed to load episodes</AlertTitle>
+          <AlertTitle>Error al cargar los episodios</AlertTitle>
           <AlertDescription>
-            We could not fetch the latest podcast episodes. Try again shortly.
+            No pudimos obtener los últimos episodios de podcast. Intenta de nuevo en breve.
           </AlertDescription>
         </Alert>
       ) : null}
@@ -121,15 +121,14 @@ export function EpisodesTab() {
       {isLoading ? (
         <div className="flex items-center gap-3 rounded-lg border border-dashed p-6 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
-          Loading episodes…
+          Cargando episodios…
         </div>
       ) : null}
 
       {emptyState ? (
         <div className="rounded-lg border border-dashed bg-muted/30 p-10 text-center">
           <p className="text-sm text-muted-foreground">
-            No podcast episodes yet. Generate your first one from the notebook or source
-            chat interfaces.
+            Aún no hay episodios de podcast. Genera tu primer episodio desde las interfaces de chat de cuaderno o fuente.
           </p>
         </div>
       ) : null}

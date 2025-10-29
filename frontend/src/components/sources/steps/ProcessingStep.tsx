@@ -45,21 +45,21 @@ export function ProcessingStep({
   return (
     <div className="space-y-8">
       <FormSection
-        title="Transformations (optional)"
-        description="Apply AI transformations to analyze and extract insights from your content."
+        title="Transformaciones (opcional)"
+        description="Aplica transformaciones de IA para analizar y extraer insights de tu contenido."
       >
         <CheckboxList
           items={transformationItems}
           selectedIds={selectedTransformations}
           onToggle={onToggleTransformation}
           loading={loading}
-          emptyMessage="No transformations found."
+          emptyMessage="No se encontraron transformaciones."
         />
       </FormSection>
 
       <FormSection
-        title="Processing Settings"
-        description="Configure how your source will be processed and stored."
+        title="Configuración de Procesamiento"
+        description="Configura cómo se procesará y almacenará tu fuente."
       >
         <div className="space-y-4">
           {settings?.default_embedding_option === 'ask' && (
@@ -74,9 +74,9 @@ export function ProcessingStep({
                     className="mt-0.5"
                   />
                   <div className="flex-1">
-                    <span className="text-sm font-medium block">Enable embedding for search</span>
+                    <span className="text-sm font-medium block">Habilitar incrustación para búsqueda</span>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Allows this source to be found in vector searches and AI queries
+                      Permite que esta fuente sea encontrada en búsquedas vectoriales y consultas de IA
                     </p>
                   </div>
                 </label>
@@ -89,10 +89,10 @@ export function ProcessingStep({
               <div className="flex items-start gap-3">
                 <div className="w-4 h-4 bg-primary rounded-full mt-0.5 flex-shrink-0"></div>
                 <div className="flex-1">
-                  <span className="text-sm font-medium block text-primary">Embedding enabled automatically</span>
+                  <span className="text-sm font-medium block text-primary">Incrustación habilitada automáticamente</span>
                   <p className="text-xs text-primary mt-1">
-                    Your settings are configured to always embed content for vector search.
-                    You can change this in <span className="font-medium">Settings</span>.
+                    Tu configuración está configurada para siempre incrustar contenido para búsqueda vectorial.
+                    Puedes cambiar esto en <span className="font-medium">Configuración</span>.
                   </p>
                 </div>
               </div>
@@ -104,10 +104,10 @@ export function ProcessingStep({
               <div className="flex items-start gap-3">
                 <div className="w-4 h-4 bg-muted-foreground rounded-full mt-0.5 flex-shrink-0"></div>
                 <div className="flex-1">
-                  <span className="text-sm font-medium block text-foreground">Embedding disabled</span>
+                  <span className="text-sm font-medium block text-foreground">Incrustación deshabilitada</span>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Your settings are configured to skip embedding. Vector search won&apos;t be available for this source.
-                    You can change this in <span className="font-medium">Settings</span>.
+                    Tu configuración está configurada para omitir la incrustación. La búsqueda vectorial no estará disponible para esta fuente.
+                    Puedes cambiar esto en <span className="font-medium">Configuración</span>.
                   </p>
                 </div>
               </div>

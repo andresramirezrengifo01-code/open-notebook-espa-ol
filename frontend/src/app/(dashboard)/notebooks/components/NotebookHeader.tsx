@@ -61,10 +61,10 @@ export function NotebookHeader({ notebook }: NotebookHeaderProps) {
                 onSave={handleUpdateName}
                 className="text-2xl font-bold"
                 inputClassName="text-2xl font-bold"
-                placeholder="Notebook name"
+                placeholder="Nombre del cuaderno"
               />
               {notebook.archived && (
-                <Badge variant="secondary">Archived</Badge>
+                <Badge variant="secondary">Archivado</Badge>
               )}
             </div>
             <div className="flex gap-2">
@@ -76,12 +76,12 @@ export function NotebookHeader({ notebook }: NotebookHeaderProps) {
                 {notebook.archived ? (
                   <>
                     <ArchiveRestore className="h-4 w-4 mr-2" />
-                    Unarchive
+                    Desarchivar
                   </>
                 ) : (
                   <>
                     <Archive className="h-4 w-4 mr-2" />
-                    Archive
+                    Archivar
                   </>
                 )}
               </Button>
@@ -92,7 +92,7 @@ export function NotebookHeader({ notebook }: NotebookHeaderProps) {
                 className="text-red-600 hover:text-red-700"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete
+                Eliminar
               </Button>
             </div>
           </div>
@@ -102,14 +102,14 @@ export function NotebookHeader({ notebook }: NotebookHeaderProps) {
             onSave={handleUpdateDescription}
             className="text-muted-foreground"
             inputClassName="text-muted-foreground"
-            placeholder="Add a description..."
+            placeholder="Agregar una descripción..."
             multiline
-            emptyText="Add a description..."
+            emptyText="Agregar una descripción..."
           />
-          
+
           <div className="text-sm text-muted-foreground">
-            Created {formatDistanceToNow(new Date(notebook.created), { addSuffix: true })} • 
-            Updated {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true })}
+            Creado {formatDistanceToNow(new Date(notebook.created), { addSuffix: true })} •
+            Actualizado {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true })}
           </div>
         </div>
       </div>
@@ -117,9 +117,9 @@ export function NotebookHeader({ notebook }: NotebookHeaderProps) {
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete Notebook"
-        description={`Are you sure you want to delete "${notebook.name}"? This action cannot be undone and will delete all sources, notes, and chat sessions.`}
-        confirmText="Delete Forever"
+        title="Eliminar Cuaderno"
+        description={`¿Estás seguro de que quieres eliminar "${notebook.name}"? Esta acción no se puede deshacer y eliminará todas las fuentes, notas y sesiones de chat.`}
+        confirmText="Eliminar Permanentemente"
         confirmVariant="destructive"
         onConfirm={handleDelete}
       />

@@ -57,44 +57,44 @@ export function AdvancedModelsDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Advanced Model Selection</DialogTitle>
+          <DialogTitle>Selección Avanzada de Modelos</DialogTitle>
           <DialogDescription>
-            Choose specific models for each stage of the Ask process
+            Elige modelos específicos para cada etapa del proceso de Consulta
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
           <ModelSelector
-            label="Strategy Model"
+            label="Modelo de Estrategia"
             modelType="language"
             value={strategyModel}
             onChange={setStrategyModel}
-            placeholder="Select strategy model"
+            placeholder="Selecciona modelo de estrategia"
           />
 
           <ModelSelector
-            label="Answer Model"
+            label="Modelo de Respuesta"
             modelType="language"
             value={answerModel}
             onChange={setAnswerModel}
-            placeholder="Select answer model"
+            placeholder="Selecciona modelo de respuesta"
           />
 
           <ModelSelector
-            label="Final Answer Model"
+            label="Modelo de Respuesta Final"
             modelType="language"
             value={finalAnswerModel}
             onChange={setFinalAnswerModel}
-            placeholder="Select final answer model"
+            placeholder="Selecciona modelo de respuesta final"
           />
         </div>
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            Cancelar
           </Button>
           <Button onClick={handleSave}>
-            Save Changes
+            Guardar Cambios
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -30,32 +30,32 @@ export function ModelTypeSection({ type, models, providers, isLoading }: ModelTy
     switch (type) {
       case 'language':
         return {
-          title: 'Language Models',
-          description: 'Chat, transformations, and text generation',
+          title: 'Modelos de Lenguaje',
+          description: 'Chat, transformaciones y generación de texto',
           icon: Bot,
           iconColor: 'text-blue-500',
           bgColor: 'bg-blue-50 dark:bg-blue-950/20'
         }
       case 'embedding':
         return {
-          title: 'Embedding Models',
-          description: 'Semantic search and vector embeddings',
+          title: 'Modelos de Embedding',
+          description: 'Búsqueda semántica y embeddings vectoriales',
           icon: Search,
           iconColor: 'text-green-500',
           bgColor: 'bg-green-50 dark:bg-green-950/20'
         }
       case 'text_to_speech':
         return {
-          title: 'Text-to-Speech',
-          description: 'Generate audio from text',
+          title: 'Texto a Voz',
+          description: 'Genera audio desde texto',
           icon: Volume2,
           iconColor: 'text-purple-500',
           bgColor: 'bg-purple-50 dark:bg-purple-950/20'
         }
       case 'speech_to_text':
         return {
-          title: 'Speech-to-Text',
-          description: 'Transcribe audio to text',
+          title: 'Voz a Texto',
+          description: 'Transcribe audio a texto',
           icon: Mic,
           iconColor: 'text-orange-500',
           bgColor: 'bg-orange-50 dark:bg-orange-950/20'
@@ -118,7 +118,7 @@ export function ModelTypeSection({ type, models, providers, isLoading }: ModelTy
                 className="cursor-pointer text-xs"
                 onClick={() => setSelectedProvider(null)}
               >
-                All
+                Todos
               </Badge>
               {modelProviders.map(provider => (
                 <Badge
@@ -142,9 +142,9 @@ export function ModelTypeSection({ type, models, providers, isLoading }: ModelTy
             </div>
           ) : filteredModels.length === 0 ? (
             <div className="text-center py-6 text-sm text-muted-foreground">
-              {selectedProvider 
-                ? `No ${selectedProvider} models configured`
-                : 'No models configured'
+              {selectedProvider
+                ? `No hay modelos de ${selectedProvider} configurados`
+                : 'No hay modelos configurados'
               }
             </div>
           ) : (
@@ -182,12 +182,12 @@ export function ModelTypeSection({ type, models, providers, isLoading }: ModelTy
                   {isExpanded ? (
                     <>
                       <ChevronUp className="h-4 w-4 mr-2" />
-                      Show less
+                      Mostrar menos
                     </>
                   ) : (
                     <>
                       <ChevronDown className="h-4 w-4 mr-2" />
-                      Show {filteredModels.length - COLLAPSED_ITEM_COUNT} more
+                      Mostrar {filteredModels.length - COLLAPSED_ITEM_COUNT} más
                     </>
                   )}
                 </Button>
@@ -200,9 +200,9 @@ export function ModelTypeSection({ type, models, providers, isLoading }: ModelTy
       <ConfirmDialog
         open={!!deleteModel}
         onOpenChange={(open) => !open && setDeleteModel(null)}
-        title="Delete Model"
-        description={`Are you sure you want to delete "${deleteModel?.name}"? This action cannot be undone.`}
-        confirmText="Delete"
+        title="Eliminar Modelo"
+        description={`¿Estás seguro de que quieres eliminar "${deleteModel?.name}"? Esta acción no se puede deshacer.`}
+        confirmText="Eliminar"
         confirmVariant="destructive"
         onConfirm={handleDelete}
       />

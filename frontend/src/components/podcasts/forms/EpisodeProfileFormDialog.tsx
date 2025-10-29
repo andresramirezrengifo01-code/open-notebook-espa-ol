@@ -32,18 +32,18 @@ import { Textarea } from '@/components/ui/textarea'
 import { Separator } from '@/components/ui/separator'
 
 const episodeProfileSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
+  name: z.string().min(1, 'Se requiere nombre'),
   description: z.string().optional(),
-  speaker_config: z.string().min(1, 'Speaker profile is required'),
-  outline_provider: z.string().min(1, 'Outline provider is required'),
-  outline_model: z.string().min(1, 'Outline model is required'),
-  transcript_provider: z.string().min(1, 'Transcript provider is required'),
-  transcript_model: z.string().min(1, 'Transcript model is required'),
-  default_briefing: z.string().min(1, 'Default briefing is required'),
+  speaker_config: z.string().min(1, 'Se requiere perfil de locutor'),
+  outline_provider: z.string().min(1, 'Se requiere proveedor de esquema'),
+  outline_model: z.string().min(1, 'Se requiere modelo de esquema'),
+  transcript_provider: z.string().min(1, 'Se requiere proveedor de transcripción'),
+  transcript_model: z.string().min(1, 'Se requiere modelo de transcripción'),
+  default_briefing: z.string().min(1, 'Se requiere briefing predeterminado'),
   num_segments: z.number()
-    .int('Must be an integer')
-    .min(3, 'At least 3 segments')
-    .max(20, 'Maximum 20 segments'),
+    .int('Debe ser un número entero')
+    .min(3, 'Al menos 3 segmentos')
+    .max(20, 'Máximo 20 segmentos'),
 })
 
 export type EpisodeProfileFormValues = z.infer<typeof episodeProfileSchema>
@@ -185,29 +185,29 @@ export function EpisodeProfileFormDialog({
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? 'Edit Episode Profile' : 'Create Episode Profile'}
+            {isEdit ? 'Editar Perfil de Episodio' : 'Crear Perfil de Episodio'}
           </DialogTitle>
           <DialogDescription>
-            Define how episodes should be generated and which speaker configuration
-            they use by default.
+            Define cómo se deben generar los episodios y qué configuración de locutor
+            utilizan de forma predeterminada.
           </DialogDescription>
         </DialogHeader>
 
         {speakerProfiles.length === 0 ? (
           <Alert className="bg-amber-50 text-amber-900">
-            <AlertTitle>No speaker profiles available</AlertTitle>
+            <AlertTitle>No hay perfiles de locutor disponibles</AlertTitle>
             <AlertDescription>
-              Create a speaker profile before configuring an episode profile.
+              Crea un perfil de locutor antes de configurar un perfil de episodio.
             </AlertDescription>
           </Alert>
         ) : null}
 
         {providers.length === 0 ? (
           <Alert className="bg-amber-50 text-amber-900">
-            <AlertTitle>No language models available</AlertTitle>
+            <AlertTitle>No hay modelos de lenguaje disponibles</AlertTitle>
             <AlertDescription>
-              Add language models in the Models section to configure outline and transcript
-              generation.
+              Agrega modelos de lenguaje en la sección de Modelos para configurar la generación
+              de esquema y transcripción.
             </AlertDescription>
           </Alert>
         ) : null}
@@ -215,15 +215,15 @@ export function EpisodeProfileFormDialog({
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 pt-2">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="name">Profile name *</Label>
-              <Input id="name" placeholder="Tech discussion" {...register('name')} />
+              <Label htmlFor="name">Nombre del perfil *</Label>
+              <Input id="name" placeholder="Discusión técnica" {...register('name')} />
               {errors.name ? (
                 <p className="text-xs text-red-600">{errors.name.message}</p>
               ) : null}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="num_segments">Segments *</Label>
+              <Label htmlFor="num_segments">Segmentos *</Label>
               <Input
                 id="num_segments"
                 type="number"
@@ -237,11 +237,11 @@ export function EpisodeProfileFormDialog({
             </div>
 
             <div className="md:col-span-2 space-y-2">
-              <Label htmlFor="description">Description</Label>
+              <Label htmlFor="description">Descripción</Label>
               <Textarea
                 id="description"
                 rows={3}
-                placeholder="Short summary of when to use this profile"
+                placeholder="Resumen breve de cuándo usar este perfil"
                 {...register('description')}
               />
             </div>
@@ -250,7 +250,7 @@ export function EpisodeProfileFormDialog({
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                Speaker configuration
+                Configuración de locutor
               </h3>
               <Separator className="mt-2" />
             </div>
@@ -259,10 +259,10 @@ export function EpisodeProfileFormDialog({
               name="speaker_config"
               render={({ field }) => (
                 <div className="space-y-2">
-                  <Label>Speaker profile *</Label>
+                  <Label>Perfil de locutor *</Label>
                   <Select value={field.value} onValueChange={field.onChange}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a speaker profile" />
+                      <SelectValue placeholder="Seleccionar un perfil de locutor" />
                     </SelectTrigger>
                     <SelectContent>
                       {speakerProfiles.map((profile) => (
@@ -285,7 +285,7 @@ export function EpisodeProfileFormDialog({
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                Outline generation
+                Generación de esquema
               </h3>
               <Separator className="mt-2" />
             </div>
@@ -295,10 +295,10 @@ export function EpisodeProfileFormDialog({
                 name="outline_provider"
                 render={({ field }) => (
                   <div className="space-y-2">
-                    <Label>Provider *</Label>
+                    <Label>Proveedor *</Label>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select provider" />
+                        <SelectValue placeholder="Seleccionar proveedor" />
                       </SelectTrigger>
                       <SelectContent>
                         {providers.map((provider) => (
@@ -322,10 +322,10 @@ export function EpisodeProfileFormDialog({
                 name="outline_model"
                 render={({ field }) => (
                   <div className="space-y-2">
-                    <Label>Model *</Label>
+                    <Label>Modelo *</Label>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select model" />
+                        <SelectValue placeholder="Seleccionar modelo" />
                       </SelectTrigger>
                       <SelectContent>
                         {availableOutlineModels.map((model) => (
@@ -349,7 +349,7 @@ export function EpisodeProfileFormDialog({
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                Transcript generation
+                Generación de transcripción
               </h3>
               <Separator className="mt-2" />
             </div>
@@ -359,10 +359,10 @@ export function EpisodeProfileFormDialog({
                 name="transcript_provider"
                 render={({ field }) => (
                   <div className="space-y-2">
-                    <Label>Provider *</Label>
+                    <Label>Proveedor *</Label>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select provider" />
+                        <SelectValue placeholder="Seleccionar proveedor" />
                       </SelectTrigger>
                       <SelectContent>
                         {providers.map((provider) => (
@@ -386,10 +386,10 @@ export function EpisodeProfileFormDialog({
                 name="transcript_model"
                 render={({ field }) => (
                   <div className="space-y-2">
-                    <Label>Model *</Label>
+                    <Label>Modelo *</Label>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select model" />
+                        <SelectValue placeholder="Seleccionar modelo" />
                       </SelectTrigger>
                       <SelectContent>
                         {availableTranscriptModels.map((model) => (
@@ -411,11 +411,11 @@ export function EpisodeProfileFormDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="default_briefing">Default briefing *</Label>
+            <Label htmlFor="default_briefing">Briefing predeterminado *</Label>
             <Textarea
               id="default_briefing"
               rows={6}
-              placeholder="Outline the structure, tone, and goals for this episode format"
+              placeholder="Describe la estructura, tono y objetivos para este formato de episodio"
               {...register('default_briefing')}
             />
             {errors.default_briefing ? (
@@ -431,16 +431,16 @@ export function EpisodeProfileFormDialog({
               variant="outline"
               onClick={() => onOpenChange(false)}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button type="submit" disabled={disableSubmit}>
               {isSubmitting
                 ? isEdit
-                  ? 'Saving…'
-                  : 'Creating…'
+                  ? 'Guardando…'
+                  : 'Creando…'
                 : isEdit
-                  ? 'Save changes'
-                  : 'Create profile'}
+                  ? 'Guardar cambios'
+                  : 'Crear perfil'}
             </Button>
           </div>
         </form>

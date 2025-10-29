@@ -58,7 +58,7 @@ export function AddModelForm({ modelType, providers }: AddModelFormProps) {
   if (availableProviders.length === 0) {
     return (
       <div className="text-sm text-muted-foreground">
-        No providers available for {getModelTypeName()} models
+        No hay proveedores disponibles para modelos de {getModelTypeName()}
       </div>
     )
   }
@@ -75,22 +75,22 @@ export function AddModelForm({ modelType, providers }: AddModelFormProps) {
       <DialogTrigger asChild>
         <Button size="sm">
           <Plus className="h-4 w-4 mr-2" />
-          Add Model
+          Agregar Modelo
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add {getModelTypeName()} Model</DialogTitle>
+          <DialogTitle>Agregar Modelo de {getModelTypeName()}</DialogTitle>
           <DialogDescription>
-            Configure a new {getModelTypeName()} model from available providers.
+            Configura un nuevo modelo de {getModelTypeName()} de los proveedores disponibles.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <Label htmlFor="provider">Provider</Label>
+            <Label htmlFor="provider">Proveedor</Label>
             <Select onValueChange={(value) => setValue('provider', value)} required>
               <SelectTrigger>
-                <SelectValue placeholder="Select a provider" />
+                <SelectValue placeholder="Selecciona un proveedor" />
               </SelectTrigger>
               <SelectContent>
                 {availableProviders.map((provider) => (
@@ -101,15 +101,15 @@ export function AddModelForm({ modelType, providers }: AddModelFormProps) {
               </SelectContent>
             </Select>
             {errors.provider && (
-              <p className="text-sm text-destructive mt-1">Provider is required</p>
+              <p className="text-sm text-destructive mt-1">El proveedor es requerido</p>
             )}
           </div>
 
           <div>
-            <Label htmlFor="name">Model Name</Label>
+            <Label htmlFor="name">Nombre del Modelo</Label>
             <Input
               id="name"
-              {...register('name', { required: 'Model name is required' })}
+              {...register('name', { required: 'El nombre del modelo es requerido' })}
               placeholder={getModelPlaceholder()}
             />
             {errors.name && (
@@ -117,16 +117,16 @@ export function AddModelForm({ modelType, providers }: AddModelFormProps) {
             )}
             <p className="text-xs text-muted-foreground mt-1">
               {modelType === 'language' && watch('provider') === 'azure' &&
-                'For Azure, use the deployment name as the model name'}
+                'Para Azure, usa el nombre de despliegue como nombre del modelo'}
             </p>
           </div>
 
           <div className="flex justify-end gap-2">
             <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-              Cancel
+              Cancelar
             </Button>
             <Button type="submit" disabled={createModel.isPending}>
-              {createModel.isPending ? 'Adding...' : 'Add Model'}
+              {createModel.isPending ? 'Agregando...' : 'Agregar Modelo'}
             </Button>
           </div>
         </form>

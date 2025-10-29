@@ -65,7 +65,7 @@ export function NotesColumn({
       <Card className="h-full flex flex-col flex-1 overflow-hidden">
         <CardHeader className="pb-3 flex-shrink-0">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-lg">Notes</CardTitle>
+            <CardTitle className="text-lg">Notas</CardTitle>
             <Button
               size="sm"
               onClick={() => {
@@ -74,7 +74,7 @@ export function NotesColumn({
               }}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Write Note
+              Escribir Nota
             </Button>
           </div>
         </CardHeader>
@@ -87,8 +87,8 @@ export function NotesColumn({
           ) : !notes || notes.length === 0 ? (
             <EmptyState
               icon={StickyNote}
-              title="No notes yet"
-              description="Create your first note to capture insights and observations."
+              title="Aún no hay notas"
+              description="Crea tu primera nota para capturar perspectivas y observaciones."
             />
           ) : (
             <div className="space-y-3">
@@ -106,7 +106,7 @@ export function NotesColumn({
                         <User className="h-4 w-4 text-muted-foreground" />
                       )}
                       <Badge variant="secondary" className="text-xs">
-                        {note.note_type === 'ai' ? 'AI Generated' : 'Human'}
+                        {note.note_type === 'ai' ? 'Generado por IA' : 'Humano'}
                       </Badge>
                     </div>
 
@@ -147,7 +147,7 @@ export function NotesColumn({
                             className="text-red-600 focus:text-red-600"
                           >
                             <Trash2 className="h-4 w-4 mr-2" />
-                            Delete Note
+                            Eliminar Nota
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -187,9 +187,9 @@ export function NotesColumn({
       <ConfirmDialog
         open={deleteDialogOpen}
         onOpenChange={setDeleteDialogOpen}
-        title="Delete Note"
-        description="Are you sure you want to delete this note? This action cannot be undone."
-        confirmText="Delete"
+        title="Eliminar Nota"
+        description="¿Estás seguro de que quieres eliminar esta nota? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
         onConfirm={handleDeleteConfirm}
         isLoading={deleteNote.isPending}
         confirmVariant="destructive"

@@ -35,7 +35,7 @@ export default function ModelsPage() {
       <AppShell>
         <div className="p-6">
           <div className="text-center py-12">
-            <p className="text-muted-foreground">Failed to load models data</p>
+            <p className="text-muted-foreground">Error al cargar los datos de modelos</p>
           </div>
         </div>
       </AppShell>
@@ -48,9 +48,9 @@ export default function ModelsPage() {
         <div className="p-6 space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold">Model Management</h1>
+              <h1 className="text-2xl font-bold">Gestión de Modelos</h1>
               <p className="text-muted-foreground mt-1">
-                Configure AI models for different purposes across Open Notebook
+                Configura modelos de IA para diferentes propósitos en Open Notebook
               </p>
             </div>
             <Button variant="outline" size="sm" onClick={handleRefresh}>

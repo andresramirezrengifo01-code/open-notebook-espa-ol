@@ -48,7 +48,7 @@ const createSourceSchema = z.object({
   }
   return true
 }, {
-  message: 'Please provide the required content for the selected source type',
+  message: 'Por favor, proporciona el contenido requerido para el tipo de fuente seleccionado',
   path: ['type'],
 }).refine((data) => {
   // Make title mandatory for text sources
@@ -57,7 +57,7 @@ const createSourceSchema = z.object({
   }
   return true
 }, {
-  message: 'Title is required for text sources',
+  message: 'El título es obligatorio para fuentes de texto',
   path: ['title'],
 })
 
@@ -70,9 +70,9 @@ interface AddSourceDialogProps {
 }
 
 const WIZARD_STEPS: readonly WizardStep[] = [
-  { number: 1, title: 'Source & Content', description: 'Choose type and add content' },
-  { number: 2, title: 'Organization', description: 'Select notebooks' },
-  { number: 3, title: 'Processing', description: 'Choose transformations and options' },
+  { number: 1, title: 'Fuente y Contenido', description: 'Elige el tipo y agrega contenido' },
+  { number: 2, title: 'Organización', description: 'Selecciona cuadernos' },
+  { number: 3, title: 'Procesamiento', description: 'Elige transformaciones y opciones' },
 ]
 
 interface ProcessingState {
@@ -227,7 +227,7 @@ export function AddSourceDialog({
   const onSubmit = async (data: CreateSourceFormData) => {
     try {
       setProcessing(true)
-      setProcessingStatus({ message: 'Submitting source for processing...' })
+      setProcessingStatus({ message: 'Enviando fuente para procesamiento...' })
 
       const createRequest: CreateSourceRequest = {
         type: data.type,
@@ -254,8 +254,8 @@ export function AddSourceDialog({
       handleClose()
     } catch (error) {
       console.error('Error creating source:', error)
-      setProcessingStatus({ 
-        message: 'Error creating source. Please try again.',
+      setProcessingStatus({
+        message: 'Error al crear la fuente. Por favor, intenta de nuevo.',
       })
       timeoutRef.current = setTimeout(() => {
         setProcessing(false)
@@ -297,9 +297,9 @@ export function AddSourceDialog({
       <Dialog open={open} onOpenChange={handleClose}>
         <DialogContent className="sm:max-w-[500px]" showCloseButton={true}>
           <DialogHeader>
-            <DialogTitle>Processing Source</DialogTitle>
+            <DialogTitle>Procesando Fuente</DialogTitle>
             <DialogDescription>
-              Your source is being processed. This may take a few moments.
+              Tu fuente se está procesando. Esto puede tomar unos momentos.
             </DialogDescription>
           </DialogHeader>
           
@@ -307,7 +307,7 @@ export function AddSourceDialog({
             <div className="flex items-center gap-3">
               <LoaderIcon className="h-5 w-5 animate-spin text-primary" />
               <span className="text-sm text-muted-foreground">
-                {processingStatus?.message || 'Processing...'}
+                {processingStatus?.message || 'Procesando...'}
               </span>
             </div>
             
@@ -331,9 +331,9 @@ export function AddSourceDialog({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[700px] p-0">
         <DialogHeader className="px-6 pt-6 pb-0">
-          <DialogTitle>Add New Source</DialogTitle>
+          <DialogTitle>Agregar Nueva Fuente</DialogTitle>
           <DialogDescription>
-            Add content from links, uploads, or text to your notebooks.
+            Agrega contenido desde enlaces, archivos o texto a tus cuadernos.
           </DialogDescription>
         </DialogHeader>
 
@@ -378,12 +378,12 @@ export function AddSourceDialog({
 
           {/* Navigation */}
           <div className="flex justify-between items-center px-6 py-4 border-t border-border bg-muted">
-            <Button 
-              type="button" 
-              variant="outline" 
+            <Button
+              type="button"
+              variant="outline"
               onClick={handleClose}
             >
-              Cancel
+              Cancelar
             </Button>
 
             <div className="flex gap-2">
@@ -393,7 +393,7 @@ export function AddSourceDialog({
                   variant="outline"
                   onClick={handlePrevStep}
                 >
-                  Back
+                  Atrás
                 </Button>
               )}
 
@@ -405,7 +405,7 @@ export function AddSourceDialog({
                   onClick={(e) => handleNextStep(e)}
                   disabled={!currentStepValid}
                 >
-                  Next
+                  Siguiente
                 </Button>
               )}
 
@@ -415,7 +415,7 @@ export function AddSourceDialog({
                 disabled={!currentStepValid || createSource.isPending}
                 className="min-w-[120px]"
               >
-                {createSource.isPending ? 'Creating...' : 'Done'}
+                {createSource.isPending ? 'Creando...' : 'Listo'}
               </Button>
             </div>
           </div>

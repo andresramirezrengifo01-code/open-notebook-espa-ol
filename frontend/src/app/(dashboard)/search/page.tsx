@@ -58,7 +58,7 @@ export default function SearchPage() {
   }, [availableModels])
 
   const resolveModelName = (id?: string | null) => {
-    if (!id) return 'Not set'
+    if (!id) return 'No configurado'
     return modelNameById.get(id) ?? id
   }
 
@@ -98,19 +98,19 @@ export default function SearchPage() {
   return (
     <AppShell>
       <div className="p-4 md:p-6">
-        <h1 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Ask and Search</h1>
+        <h1 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Consultar y Buscar</h1>
 
         <Tabs defaultValue="ask" className="w-full space-y-6">
           <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Choose a mode</p>
-            <TabsList aria-label="Ask or search your knowledge base" className="w-full max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Elige un modo</p>
+            <TabsList aria-label="Consultar o buscar en tu base de conocimiento" className="w-full max-w-xl">
               <TabsTrigger value="ask">
                 <MessageCircleQuestion className="h-4 w-4" />
-                Ask (beta)
+                Consultar (beta)
               </TabsTrigger>
               <TabsTrigger value="search">
                 <Search className="h-4 w-4" />
-                Search
+                Buscar
               </TabsTrigger>
             </TabsList>
           </div>
@@ -118,18 +118,18 @@ export default function SearchPage() {
           <TabsContent value="ask" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Ask Your Knowledge Base (beta)</CardTitle>
+                <CardTitle className="text-lg">Consulta tu Base de Conocimiento (beta)</CardTitle>
                 <p className="text-sm text-muted-foreground">
-                  The LLM will answer your query based on the documents in your knowledge base.
+                  El LLM responderá tu consulta basándose en los documentos de tu base de conocimiento.
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Question Input */}
                 <div className="space-y-2">
-                  <Label htmlFor="ask-question">Question</Label>
+                  <Label htmlFor="ask-question">Pregunta</Label>
                   <Textarea
                     id="ask-question"
-                    placeholder="Enter your question..."
+                    placeholder="Ingresa tu pregunta..."
                     value={askQuestion}
                     onChange={(e) => setAskQuestion(e.target.value)}
                     onKeyDown={(e) => {
@@ -141,23 +141,23 @@ export default function SearchPage() {
                     }}
                     disabled={ask.isStreaming}
                     rows={3}
-                    aria-label="Enter your question to ask the knowledge base"
+                    aria-label="Ingresa tu pregunta para consultar la base de conocimiento"
                   />
-                  <p className="text-xs text-muted-foreground">Press Cmd/Ctrl+Enter to submit</p>
+                  <p className="text-xs text-muted-foreground">Presiona Cmd/Ctrl+Enter para enviar</p>
                 </div>
 
                 {/* Models Display */}
                 {!hasEmbeddingModel ? (
                   <div className="flex items-center gap-2 p-3 text-sm text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-950/20 rounded-md">
                     <AlertCircle className="h-4 w-4" />
-                    <span>You can&apos;t use this feature because you have no embedding model selected. Please set one up in the Models page.</span>
+                    <span>No puedes usar esta función porque no tienes un modelo de embeddings seleccionado. Por favor, configura uno en la página de Modelos.</span>
                   </div>
                 ) : (
                   <>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">
-                          {customModels ? 'Using Custom Models' : 'Using Default Models'}
+                          {customModels ? 'Usando Modelos Personalizados' : 'Usando Modelos Predeterminados'}
                         </Label>
                         <Button
                           variant="ghost"
@@ -167,15 +167,15 @@ export default function SearchPage() {
                           className="h-auto py-1 px-2"
                         >
                           <Settings className="h-3 w-3 mr-1" />
-                          Advanced
+                          Avanzado
                         </Button>
                       </div>
                       <div className="flex gap-2 text-xs flex-wrap">
                         <Badge variant="secondary">
-                          Strategy: {resolveModelName(customModels?.strategy || modelDefaults?.default_chat_model)}
+                          Estrategia: {resolveModelName(customModels?.strategy || modelDefaults?.default_chat_model)}
                         </Badge>
                         <Badge variant="secondary">
-                          Answer: {resolveModelName(customModels?.answer || modelDefaults?.default_chat_model)}
+                          Respuesta: {resolveModelName(customModels?.answer || modelDefaults?.default_chat_model)}
                         </Badge>
                         <Badge variant="secondary">
                           Final: {resolveModelName(customModels?.finalAnswer || modelDefaults?.default_chat_model)}
@@ -192,10 +192,10 @@ export default function SearchPage() {
                         {ask.isStreaming ? (
                           <>
                             <LoadingSpinner size="sm" className="mr-2" />
-                            Processing...
+                            Procesando...
                           </>
                         ) : (
-                          'Ask'
+                          'Consultar'
                         )}
                       </Button>
 
@@ -206,7 +206,7 @@ export default function SearchPage() {
                           className="w-full"
                         >
                           <Save className="h-4 w-4 mr-2" />
-                          Save to Notebooks
+                          Guardar en Cuadernos
                         </Button>
                       )}
                     </div>
@@ -249,9 +249,9 @@ export default function SearchPage() {
           <TabsContent value="search" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Search</CardTitle>
+                <CardTitle className="text-lg">Buscar</CardTitle>
                 <p className="text-sm text-muted-foreground">
-                  Search your knowledge base for specific keywords or concepts
+                  Busca en tu base de conocimiento por palabras clave o conceptos específicos
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -260,18 +260,18 @@ export default function SearchPage() {
                   <div className="flex flex-col sm:flex-row gap-2">
                     <Input
                       id="search-query"
-                      placeholder="Enter search query..."
+                      placeholder="Ingresa tu búsqueda..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onKeyPress={handleKeyPress}
                       disabled={searchMutation.isPending}
                       className="flex-1"
-                      aria-label="Enter search query"
+                      aria-label="Ingresa tu búsqueda"
                     />
                     <Button
                       onClick={handleSearch}
                       disabled={searchMutation.isPending || !searchQuery.trim()}
-                      aria-label="Search knowledge base"
+                      aria-label="Buscar en la base de conocimiento"
                       className="w-full sm:w-auto"
                     >
                       {searchMutation.isPending ? (
@@ -279,21 +279,21 @@ export default function SearchPage() {
                       ) : (
                         <Search className="h-4 w-4 mr-2" />
                       )}
-                      Search
+                      Buscar
                     </Button>
                   </div>
-                  <p className="text-xs text-muted-foreground">Press Enter to search</p>
+                  <p className="text-xs text-muted-foreground">Presiona Enter para buscar</p>
                 </div>
 
                 {/* Search Options */}
                 <div className="space-y-4">
                   {/* Search Type */}
                   <div className="space-y-2">
-                    <Label>Search Type</Label>
+                    <Label>Tipo de Búsqueda</Label>
                     {!hasEmbeddingModel && (
                       <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-500">
                         <AlertCircle className="h-4 w-4" />
-                        <span>Vector search requires an embedding model. Only text search is available.</span>
+                        <span>La búsqueda vectorial requiere un modelo de embeddings. Solo está disponible la búsqueda de texto.</span>
                       </div>
                     )}
                     <RadioGroup
@@ -304,7 +304,7 @@ export default function SearchPage() {
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="text" id="text" />
                         <Label htmlFor="text" className="font-normal cursor-pointer">
-                          Text Search
+                          Búsqueda de Texto
                         </Label>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -317,7 +317,7 @@ export default function SearchPage() {
                           htmlFor="vector"
                           className={`font-normal ${!hasEmbeddingModel ? 'text-muted-foreground cursor-not-allowed' : 'cursor-pointer'}`}
                         >
-                          Vector Search
+                          Búsqueda Vectorial
                         </Label>
                       </div>
                     </RadioGroup>
@@ -325,7 +325,7 @@ export default function SearchPage() {
 
                   {/* Search Locations */}
                   <div className="space-y-2">
-                    <Label>Search In</Label>
+                    <Label>Buscar En</Label>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -335,7 +335,7 @@ export default function SearchPage() {
                           disabled={searchMutation.isPending}
                         />
                         <Label htmlFor="sources" className="font-normal cursor-pointer">
-                          Search Sources
+                          Buscar en Fuentes
                         </Label>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -346,7 +346,7 @@ export default function SearchPage() {
                           disabled={searchMutation.isPending}
                         />
                         <Label htmlFor="notes" className="font-normal cursor-pointer">
-                          Search Notes
+                          Buscar en Notas
                         </Label>
                       </div>
                     </div>
@@ -358,15 +358,15 @@ export default function SearchPage() {
                   <div className="mt-6 space-y-3">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium">
-                        {searchMutation.data.total_count} result{searchMutation.data.total_count !== 1 ? 's' : ''} found
+                        {searchMutation.data.total_count} resultado{searchMutation.data.total_count !== 1 ? 's' : ''} encontrado{searchMutation.data.total_count !== 1 ? 's' : ''}
                       </h3>
-                      <Badge variant="outline">{searchMutation.data.search_type} search</Badge>
+                      <Badge variant="outline">búsqueda {searchMutation.data.search_type}</Badge>
                     </div>
 
                     {searchMutation.data.results.length === 0 ? (
                       <Card>
                         <CardContent className="pt-6 text-center text-muted-foreground">
-                          No results found for &ldquo;{searchQuery}&rdquo;
+                          No se encontraron resultados para &ldquo;{searchQuery}&rdquo;
                         </CardContent>
                       </Card>
                     ) : (
@@ -397,7 +397,7 @@ export default function SearchPage() {
                                 <Collapsible className="mt-3">
                                   <CollapsibleTrigger className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
                                     <ChevronDown className="h-4 w-4" />
-                                    Matches ({result.matches.length})
+                                    Coincidencias ({result.matches.length})
                                   </CollapsibleTrigger>
                                   <CollapsibleContent className="mt-2 space-y-1">
                                     {result.matches.map((match, i) => (

@@ -28,47 +28,47 @@ interface DefaultConfig {
 const defaultConfigs: DefaultConfig[] = [
   {
     key: 'default_chat_model',
-    label: 'Chat Model',
-    description: 'Used for chat conversations',
+    label: 'Modelo de Chat',
+    description: 'Usado para conversaciones de chat',
     modelType: 'language',
     required: true
   },
   {
     key: 'default_transformation_model',
-    label: 'Transformation Model',
-    description: 'Used for summaries, insights, and transformations',
+    label: 'Modelo de Transformación',
+    description: 'Usado para resúmenes, perspectivas y transformaciones',
     modelType: 'language',
     required: true
   },
   {
     key: 'default_tools_model',
-    label: 'Tools Model',
-    description: 'Used for function calling - OpenAI or Anthropic recommended',
+    label: 'Modelo de Herramientas',
+    description: 'Usado para llamadas de funciones - OpenAI o Anthropic recomendado',
     modelType: 'language'
   },
   {
     key: 'large_context_model',
-    label: 'Large Context Model',
-    description: 'Used for processing large documents - Gemini recommended',
+    label: 'Modelo de Contexto Grande',
+    description: 'Usado para procesar documentos grandes - Gemini recomendado',
     modelType: 'language'
   },
   {
     key: 'default_embedding_model',
-    label: 'Embedding Model',
-    description: 'Used for semantic search and vector embeddings',
+    label: 'Modelo de Embedding',
+    description: 'Usado para búsqueda semántica y embeddings vectoriales',
     modelType: 'embedding',
     required: true
   },
   {
     key: 'default_text_to_speech_model',
-    label: 'Text-to-Speech Model',
-    description: 'Used for podcast generation',
+    label: 'Modelo de Texto a Voz',
+    description: 'Usado para generación de podcasts',
     modelType: 'text_to_speech'
   },
   {
     key: 'default_speech_to_text_model',
-    label: 'Speech-to-Text Model',
-    description: 'Used for audio transcription',
+    label: 'Modelo de Voz a Texto',
+    description: 'Usado para transcripción de audio',
     modelType: 'speech_to_text'
   }
 ]
@@ -153,9 +153,9 @@ export function DefaultModelsSection({ models, defaults }: DefaultModelsSectionP
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Default Model Assignments</CardTitle>
+        <CardTitle>Asignaciones de Modelos Predeterminados</CardTitle>
         <CardDescription>
-          Configure which models to use for different purposes across Open Notebook
+          Configura qué modelos usar para diferentes propósitos en Open Notebook
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -163,8 +163,8 @@ export function DefaultModelsSection({ models, defaults }: DefaultModelsSectionP
           <Alert>
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              Missing required models: {missingRequired.join(', ')}. 
-              Open Notebook may not function properly without these.
+              Faltan modelos requeridos: {missingRequired.join(', ')}.
+              Open Notebook puede no funcionar correctamente sin estos.
             </AlertDescription>
           </Alert>
         )}
@@ -190,13 +190,13 @@ export function DefaultModelsSection({ models, defaults }: DefaultModelsSectionP
                   >
                     <SelectTrigger className={
                       config.required && !isValidModel && availableModels.length > 0
-                        ? 'border-destructive' 
+                        ? 'border-destructive'
                         : ''
                     }>
                       <SelectValue placeholder={
-                        config.required && !isValidModel && availableModels.length > 0 
-                          ? "⚠️ Required - Select a model"
-                          : "Select a model"
+                        config.required && !isValidModel && availableModels.length > 0
+                          ? "⚠️ Requerido - Selecciona un modelo"
+                          : "Selecciona un modelo"
                       } />
                     </SelectTrigger>
                     <SelectContent>
@@ -236,7 +236,7 @@ export function DefaultModelsSection({ models, defaults }: DefaultModelsSectionP
             rel="noopener noreferrer"
             className="text-sm text-primary hover:underline"
           >
-            Which model should I choose? →
+            ¿Qué modelo debo elegir? →
           </a>
         </div>
       </CardContent>

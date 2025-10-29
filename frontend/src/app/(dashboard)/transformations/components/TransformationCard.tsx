@@ -47,7 +47,7 @@ export function TransformationCard({ transformation, onPlayground, onEdit }: Tra
                     )}
                   </div>
                   {transformation.apply_default && (
-                    <Badge variant="secondary">default</Badge>
+                    <Badge variant="secondary">predeterminado</Badge>
                   )}
                 </div>
               </CollapsibleTrigger>
@@ -56,13 +56,13 @@ export function TransformationCard({ transformation, onPlayground, onEdit }: Tra
                 {onPlayground && (
                   <Button variant="outline" size="sm" onClick={onPlayground}>
                     <Wand2 className="h-4 w-4 mr-2" />
-                    Playground
+                    Probar
                   </Button>
                 )}
                 {onEdit && (
                   <Button variant="outline" size="sm" onClick={onEdit}>
                     <Edit className="h-4 w-4 mr-2" />
-                    Edit
+                    Editar
                   </Button>
                 )}
                 <Button
@@ -80,13 +80,13 @@ export function TransformationCard({ transformation, onPlayground, onEdit }: Tra
           <CollapsibleContent>
             <CardContent className="space-y-4">
               <div>
-                <p className="text-sm text-muted-foreground">Title</p>
-                <p className="text-sm font-medium">{transformation.title || 'Untitled'}</p>
+                <p className="text-sm text-muted-foreground">Título</p>
+                <p className="text-sm font-medium">{transformation.title || 'Sin título'}</p>
               </div>
 
               {transformation.description && (
                 <div>
-                  <p className="text-sm text-muted-foreground">Description</p>
+                  <p className="text-sm text-muted-foreground">Descripción</p>
                   <p className="text-sm leading-6">{transformation.description}</p>
                 </div>
               )}
@@ -105,9 +105,9 @@ export function TransformationCard({ transformation, onPlayground, onEdit }: Tra
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete Transformation"
-        description={`Are you sure you want to delete "${transformation.name}"? This action cannot be undone.`}
-        confirmText="Delete"
+        title="Eliminar Transformación"
+        description={`¿Estás seguro de que quieres eliminar "${transformation.name}"? Esta acción no se puede deshacer.`}
+        confirmText="Eliminar"
         confirmVariant="destructive"
         onConfirm={handleDelete}
         isLoading={deleteTransformation.isPending}
