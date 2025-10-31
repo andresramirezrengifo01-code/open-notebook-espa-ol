@@ -186,7 +186,7 @@ export function SpeakerProfilesPanel({
                         <AlertDialogHeader>
                           <AlertDialogTitle>¿Eliminar perfil de locutor?</AlertDialogTitle>
                           <AlertDialogDescription>
-                            Eliminar "{profile.name}" no se puede deshacer.
+                            Eliminar &quot;{profile.name}&quot; no se puede deshacer.
                           </AlertDialogDescription>
                           {deleteDisabled ? (
                             <p className="mt-2 text-sm text-muted-foreground">

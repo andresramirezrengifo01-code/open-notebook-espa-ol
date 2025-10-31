@@ -157,7 +157,7 @@ export function EpisodeProfilesPanel({
                         <AlertDialogHeader>
                           <AlertDialogTitle>¿Eliminar perfil?</AlertDialogTitle>
                           <AlertDialogDescription>
-                            Esto eliminará "{profile.name}". Los episodios existentes conservan sus
+                            Esto eliminará &quot;{profile.name}&quot;. Los episodios existentes conservan sus
                             datos, pero los nuevos ya no usarán esta configuración.
                           </AlertDialogDescription>
                         </AlertDialogHeader>
