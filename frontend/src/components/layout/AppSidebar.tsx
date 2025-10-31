@@ -61,16 +61,16 @@ const navigation = [
     items: [
       { name: 'Podcasts', href: '/podcasts', icon: Mic },
     ],
-  },
-  {
-    title: 'Gestionar',
-    items: [
-      { name: 'Modelos', href: '/models', icon: Bot },
-      { name: 'Transformaciones', href: '/transformations', icon: Shuffle },
-      { name: 'Configuración', href: '/settings', icon: Settings },
-      { name: 'Avanzado', href: '/advanced', icon: Wrench },
-    ],
-  },
+  }
+  // {
+  //   title: 'Gestionar',
+  //   items: [
+  //     { name: 'Modelos', href: '/models', icon: Bot },
+  //     { name: 'Transformaciones', href: '/transformations', icon: Shuffle },
+  //     { name: 'Configuración', href: '/settings', icon: Settings },
+  //     { name: 'Avanzado', href: '/advanced', icon: Wrench },
+  //   ],
+  // },
 ] as const
 
 type CreateTarget = 'source' | 'notebook' | 'podcast'
