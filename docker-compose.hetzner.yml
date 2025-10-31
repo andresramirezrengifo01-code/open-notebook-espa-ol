@@ -1,0 +1,114 @@
+version: '3.8'
+
+# ===================================================================
+# OPEN NOTEBOOK - CONFIGURACIÓN PARA HETZNER CON OPENAI
+# ===================================================================
+# Este docker-compose está optimizado para deployment en producción
+# en un servidor Hetzner con OpenAI como proveedor de IA
+# ===================================================================
+
+services:
+  # ===================================================================
+  # OPEN NOTEBOOK - Contenedor único (single-container)
+  # ===================================================================
+  # Incluye: Next.js Frontend + FastAPI Backend + SurrealDB embebido
+  # ===================================================================
+  open_notebook:
+    image: lfnovo/open_notebook:v1-latest-single
+    container_name: open-notebook
+
+    # Puertos expuestos
+    # IMPORTANTE: Si usas Nginx como reverse proxy, puedes cambiar
+    # el mapeo a 127.0.0.1:8502:8502 para mayor seguridad
+    ports:
+      - "8502:8502"  # Frontend (Next.js)
+      - "5055:5055"  # API (FastAPI)
+
+    # Variables de entorno desde archivo
+    env_file:
+      - .env.hetzner
+
+    # Volúmenes para persistencia de datos
+    volumes:
+      # Datos de la aplicación (fuentes, notebooks, archivos subidos)
+      - ./data/notebook_data:/app/data
+      # Base de datos SurrealDB (embebida)
+      - ./data/surreal_data:/mydata
+      # Opcional: Si usas credenciales de Google Cloud
+      # - ./google-credentials.json:/app/google-credentials.json:ro
+
+    # Política de reinicio automático
+    restart: unless-stopped
+
+    # Health check para monitoreo
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5055/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Límites de recursos (ajusta según tu plan de Hetzner)
+    # Recomendado para CPX21 (3 vCPU, 4GB RAM) o superior
+    deploy:
+      resources:
+        limits:
+          memory: 3G      # Máximo 3GB de RAM
+          cpus: "2.0"     # Máximo 2 CPUs
+        reservations:
+          memory: 1G      # Mínimo 1GB de RAM
+          cpus: "0.5"     # Mínimo 0.5 CPUs
+
+    # Configuración de logging para no llenar el disco
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ===================================================================
+  # NGINX REVERSE PROXY (OPCIONAL PERO RECOMENDADO)
+  # ===================================================================
+  # Descomenta esta sección si quieres usar Nginx como reverse proxy
+  # con SSL automático
+  # ===================================================================
+
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: open-notebook-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./nginx/ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - open_notebook
+  #   restart: unless-stopped
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "5m"
+  #       max-file: "2"
+
+# ===================================================================
+# CONFIGURACIÓN DE RED (OPCIONAL)
+# ===================================================================
+# Puedes crear una red personalizada para mejor aislamiento
+# ===================================================================
+
+# networks:
+#   open_notebook_network:
+#     driver: bridge
+
+# ===================================================================
+# VOLÚMENES CON NOMBRES (ALTERNATIVA)
+# ===================================================================
+# Si prefieres usar volúmenes con nombres en lugar de rutas locales
+# ===================================================================
+
+# volumes:
+#   notebook_data:
+#     driver: local
+#   surreal_data:
+#     driver: local
