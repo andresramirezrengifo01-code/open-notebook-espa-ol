@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/lib/hooks/use-auth'
 import { useSidebarStore } from '@/lib/stores/sidebar-store'
+import { useTheme } from '@/lib/stores/theme-store'
 import {
   Tooltip,
   TooltipContent,
@@ -78,6 +79,7 @@ export function AppSidebar() {
   const pathname = usePathname()
   const { logout } = useAuth()
   const { isCollapsed, toggleCollapse } = useSidebarStore()
+  const { effectiveTheme } = useTheme()
 
   const [createMenuOpen, setCreateMenuOpen] = useState(false)
   const [sourceDialogOpen, setSourceDialogOpen] = useState(false)
@@ -113,11 +115,11 @@ export function AppSidebar() {
           {isCollapsed ? (
             <div className="relative flex items-center justify-center w-full">
               <Image
-                src="/logo.svg"
-                alt="Open Notebook"
-                width={32}
+                src="/Praxia-Favicon.png"
+                alt="Praxia Notebook"
+                width={24}
                 height={32}
-                className="transition-opacity group-hover:opacity-0"
+                className="transition-opacity  object-cover group-hover:opacity-0"
               />
               <Button
                 variant="ghost"
@@ -131,10 +133,13 @@ export function AppSidebar() {
           ) : (
             <>
               <div className="flex items-center gap-2">
-                <Image src="/logo.svg" alt="Open Notebook" width={32} height={32} />
-                <span className="text-base font-medium text-sidebar-foreground">
-                  Open Notebook
-                </span>
+                <Image
+                  src={effectiveTheme === 'light' ? '/Praxia - Logo.png' : '/Logo Praxia - Blanco.png'}
+                  alt="Praxia Notebook"
+                  width={180}
+                  height={32}
+                  className="object-cover"
+                />
               </div>
               <Button
                 variant="ghost"
