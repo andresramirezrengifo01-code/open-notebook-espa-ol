@@ -372,7 +372,7 @@ export function EpisodeCard({ episode, onDelete, deleting }: EpisodeCardProps) {
                 <AlertDialogHeader>
                   <AlertDialogTitle>¿Eliminar episodio?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Esto eliminará "{episode.name}" y su archivo de audio permanentemente.
+                    Esto eliminará &quot;{episode.name}&quot; y su archivo de audio permanentemente.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

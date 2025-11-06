@@ -41,6 +41,7 @@ export default function PodcastsPage() {
                   Plantillas
                 </TabsTrigger>
                */}
+
               </TabsList>
             </div>
 
@@ -48,11 +49,11 @@ export default function PodcastsPage() {
               <EpisodesTab />
             </TabsContent>
 
-            {/*
-            <TabsContent value="templates">
+                  
+            {/* <TabsContent value="templates">
               <TemplatesTab />
-            </TabsContent>
-            */}
+            </TabsContent> */}
+            
           </Tabs>
         </div>
       </div>
