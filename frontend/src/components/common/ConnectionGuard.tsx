@@ -28,7 +28,7 @@ export function ConnectionGuard({ children }: ConnectionGuardProps) {
         setError({
           type: 'database-offline',
           details: {
-            message: 'The API server is running, but the database is not accessible',
+            message: 'El servidor API está funcionando, pero la base de datos no es accesible',
             attemptedUrl: config.apiUrl,
           },
         })
@@ -42,7 +42,7 @@ export function ConnectionGuard({ children }: ConnectionGuardProps) {
     } catch (err) {
       // API is unreachable
       const errorMessage =
-        err instanceof Error ? err.message : 'Unknown error occurred'
+        err instanceof Error ? err.message : 'Ocurrió un error desconocido'
       const attemptedUrl =
         typeof window !== 'undefined'
           ? `${window.location.origin}/api/config`
@@ -51,7 +51,7 @@ export function ConnectionGuard({ children }: ConnectionGuardProps) {
       setError({
         type: 'api-unreachable',
         details: {
-          message: 'The Open Notebook API server could not be reached',
+          message: 'No se pudo conectar con el servidor API de Open Notebook',
           technicalMessage: errorMessage,
           stack: err instanceof Error ? err.stack : undefined,
           attemptedUrl,

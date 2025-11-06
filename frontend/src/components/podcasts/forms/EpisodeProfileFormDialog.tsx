@@ -411,7 +411,7 @@ export function EpisodeProfileFormDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="default_briefing">Briefing predeterminado *</Label>
+            <Label htmlFor="default_briefing">Instrucciones predeterminadas *</Label>
             <Textarea
               id="default_briefing"
               rows={6}

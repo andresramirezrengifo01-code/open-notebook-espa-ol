@@ -65,7 +65,7 @@ export function ModelSelector({
     if (defaultModel) {
       return defaultModel.name
     }
-    return 'Default Model'
+    return 'Modelo por Defecto'
   }, [currentModel, languageModels, defaultModel])
 
   const handleSave = () => {
@@ -98,24 +98,24 @@ export function ModelSelector({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Sparkles className="h-5 w-5" />
-            Model Configuration
+            Configuración de Modelo
           </DialogTitle>
           <DialogDescription>
-            Override the default model for this chat session. Leave empty to use the system default.
+            Sobrescribe el modelo predeterminado para esta sesión de chat. Déjalo vacío para usar el predeterminado del sistema.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="model">Model</Label>
+            <Label htmlFor="model">Modelo</Label>
             <Select value={selectedModel} onValueChange={setSelectedModel}>
               <SelectTrigger id="model">
-                <SelectValue placeholder="Select a model (or use default)" />
+                <SelectValue placeholder="Selecciona un modelo (o usa el predeterminado)" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="default">
                   <div className="flex items-center justify-between w-full">
                     <span>
-                      {defaultModel ? `Default (${defaultModel.name})` : 'System Default'}
+                      {defaultModel ? `Por Defecto (${defaultModel.name})` : 'Predeterminado del Sistema'}
                     </span>
                     {defaultModel?.provider && (
                       <span className="text-xs text-muted-foreground ml-2">
@@ -146,17 +146,17 @@ export function ModelSelector({
           {selectedModel && selectedModel !== 'default' && (
             <div className="rounded-lg bg-muted p-3">
               <p className="text-sm text-muted-foreground">
-                This session will use <strong>{languageModels.find(m => m.id === selectedModel)?.name}</strong> instead of the default model.
+                Esta sesión usará <strong>{languageModels.find(m => m.id === selectedModel)?.name}</strong> en lugar del modelo predeterminado.
               </p>
             </div>
           )}
         </div>
         <DialogFooter className="flex justify-between">
           <Button variant="outline" onClick={handleReset}>
-            Reset to Default
+            Restablecer a Predeterminado
           </Button>
           <Button onClick={handleSave}>
-            Save Changes
+            Guardar Cambios
           </Button>
         </DialogFooter>
       </DialogContent>

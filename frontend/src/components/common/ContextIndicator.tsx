@@ -38,7 +38,7 @@ export function ContextIndicator({
   if (!hasContext) {
     return (
       <div className={cn('flex-shrink-0 text-xs text-muted-foreground py-2 px-3 border-t', className)}>
-        No sources or notes included in context. Toggle icons on cards to include them.
+        No hay fuentes o notas incluidas en el contexto. Activa los íconos en las tarjetas para incluirlas.
       </div>
     )
   }
@@ -46,7 +46,7 @@ export function ContextIndicator({
   return (
     <div className={cn('flex-shrink-0 flex items-center justify-between gap-2 py-2 px-3 border-t bg-muted/30', className)}>
       <div className="flex items-center gap-2">
-        <span className="text-xs font-medium text-muted-foreground">Context:</span>
+        <span className="text-xs font-medium text-muted-foreground">Contexto:</span>
 
         <div className="flex items-center gap-1.5">
           {sourcesInsights > 0 && (
@@ -58,7 +58,7 @@ export function ContextIndicator({
                 </Badge>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Insights for {sourcesInsights} source{sourcesInsights !== 1 ? 's' : ''}</p>
+                <p>Insights de {sourcesInsights} fuente{sourcesInsights !== 1 ? 's' : ''}</p>
               </TooltipContent>
             </Tooltip>
           )}
@@ -72,7 +72,7 @@ export function ContextIndicator({
                 </Badge>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{sourcesFull} full source{sourcesFull !== 1 ? 's' : ''}</p>
+                <p>{sourcesFull} fuente{sourcesFull !== 1 ? 's' : ''} completa{sourcesFull !== 1 ? 's' : ''}</p>
               </TooltipContent>
             </Tooltip>
           )}
@@ -91,7 +91,7 @@ export function ContextIndicator({
                 </Badge>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{notesCount} full note{notesCount !== 1 ? 's' : ''}</p>
+                <p>{notesCount} nota{notesCount !== 1 ? 's' : ''} completa{notesCount !== 1 ? 's' : ''}</p>
               </TooltipContent>
             </Tooltip>
           </>
@@ -107,7 +107,7 @@ export function ContextIndicator({
             <span>/</span>
           )}
           {charCount !== undefined && charCount > 0 && (
-            <span>{formatNumber(charCount)} chars</span>
+            <span>{formatNumber(charCount)} caracteres</span>
           )}
         </div>
       )}

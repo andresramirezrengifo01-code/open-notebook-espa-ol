@@ -131,7 +131,7 @@ export function SourceDetailContent({
 
   const createInsight = async () => {
     if (!selectedTransformation) {
-      toast.error('Please select a transformation')
+      toast.error('Por favor, selecciona una transformación')
       return
     }
 
@@ -140,12 +140,12 @@ export function SourceDetailContent({
       await insightsApi.create(sourceId, {
         transformation_id: selectedTransformation
       })
-      toast.success('Insight created successfully')
+      toast.success('Insight creado exitosamente')
       await fetchInsights()
       setSelectedTransformation('')
     } catch (err) {
       console.error('Failed to create insight:', err)
-      toast.error('Failed to create insight')
+      toast.error('Error al crear el insight')
     } finally {
       setCreatingInsight(false)
     }
@@ -156,11 +156,11 @@ export function SourceDetailContent({
 
     try {
       await sourcesApi.update(sourceId, { title })
-      toast.success('Source title updated')
+      toast.success('Título de fuente actualizado')
       setSource({ ...source, title })
     } catch (err) {
       console.error('Failed to update source title:', err)
-      toast.error('Failed to update source title')
+      toast.error('Error al actualizar el título de fuente')
       await fetchSource()
     }
   }
@@ -175,7 +175,7 @@ export function SourceDetailContent({
       await fetchSource()
     } catch (err) {
       console.error('Failed to embed content:', err)
-      toast.error('Failed to embed content')
+      toast.error('Error al embeber contenido')
     } finally {
       setIsEmbedding(false)
     }
@@ -227,14 +227,14 @@ export function SourceDetailContent({
       document.body.removeChild(link)
       window.URL.revokeObjectURL(blobUrl)
       setFileAvailable(true)
-      toast.success('Download started')
+      toast.success('Descarga iniciada')
     } catch (err) {
       console.error('Failed to download file:', err)
       if (isAxiosError(err) && err.response?.status === 404) {
         setFileAvailable(false)
-        toast.error('Original file is no longer available on the server')
+        toast.error('El archivo original ya no está disponible en el servidor')
       } else {
-        toast.error('Failed to download file')
+        toast.error('Error al descargar archivo')
       }
     } finally {
       setIsDownloadingFile(false)
@@ -259,7 +259,7 @@ export function SourceDetailContent({
     if (source?.asset?.url) {
       navigator.clipboard.writeText(source.asset.url)
       setCopied(true)
-      toast.success('URL copied to clipboard')
+      toast.success('URL copiada al portapapeles')
       setTimeout(() => setCopied(false), 2000)
     }
   }, [source])
@@ -296,14 +296,14 @@ export function SourceDetailContent({
   const handleDelete = async () => {
     if (!source) return
 
-    if (confirm('Are you sure you want to delete this source?')) {
+    if (confirm('¿Estás seguro de que quieres eliminar esta fuente?')) {
       try {
         await sourcesApi.delete(source.id)
-        toast.success('Source deleted successfully')
+        toast.success('Fuente eliminada exitosamente')
         onClose?.()
       } catch (error) {
         console.error('Failed to delete source:', error)
-        toast.error('Failed to delete source')
+        toast.error('Error al eliminar fuente')
       }
     }
   }
@@ -319,7 +319,7 @@ export function SourceDetailContent({
   if (error || !source) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-4 p-8">
-        <p className="text-red-500">{error || 'Source not found'}</p>
+        <p className="text-red-500">{error || 'Fuente no encontrada'}</p>
       </div>
     )
   }
@@ -335,11 +335,11 @@ export function SourceDetailContent({
               onSave={handleUpdateTitle}
               className="text-2xl font-bold"
               inputClassName="text-2xl font-bold"
-              placeholder="Source title"
-              emptyText="Untitled Source"
+              placeholder="Título de fuente"
+              emptyText="Fuente sin título"
             />
             <p className="mt-1 text-sm text-muted-foreground">
-              Source ID: {source.id}
+              ID de Fuente: {source.id}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -352,7 +352,7 @@ export function SourceDetailContent({
             {showChatButton && onChatClick && (
               <Button variant="outline" size="sm" onClick={onChatClick}>
                 <MessageSquare className="h-4 w-4 mr-2" />
-                Chat with source
+                Chat con fuente
               </Button>
             )}
 
@@ -371,10 +371,10 @@ export function SourceDetailContent({
                     >
                       <Download className="mr-2 h-4 w-4" />
                       {fileAvailable === false
-                        ? 'File unavailable'
+                        ? 'Archivo no disponible'
                         : isDownloadingFile
-                          ? 'Preparing download…'
-                          : 'Download File'}
+                          ? 'Preparando descarga…'
+                          : 'Descargar Archivo'}
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                   </>
@@ -384,7 +384,7 @@ export function SourceDetailContent({
                   disabled={isEmbedding || source.embedded}
                 >
                   <Database className="mr-2 h-4 w-4" />
-                  {isEmbedding ? 'Embedding...' : source.embedded ? 'Already Embedded' : 'Embed Content'}
+                  {isEmbedding ? 'Embebiendo...' : source.embedded ? 'Ya Embebido' : 'Embeber Contenido'}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
@@ -392,7 +392,7 @@ export function SourceDetailContent({
                   onClick={handleDelete}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  Delete Source
+                  Eliminar Fuente
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -404,11 +404,11 @@ export function SourceDetailContent({
       <div className="flex-1 overflow-y-auto px-2">
         <Tabs defaultValue="content" className="w-full">
           <TabsList className="grid w-full grid-cols-3 sticky top-0 z-10">
-            <TabsTrigger value="content">Content</TabsTrigger>
+            <TabsTrigger value="content">Contenido</TabsTrigger>
             <TabsTrigger value="insights">
               Insights {insights.length > 0 && `(${insights.length})`}
             </TabsTrigger>
-            <TabsTrigger value="details">Details</TabsTrigger>
+            <TabsTrigger value="details">Detalles</TabsTrigger>
           </TabsList>
 
           <TabsContent value="content" className="mt-6">
@@ -416,7 +416,7 @@ export function SourceDetailContent({
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   {isYouTubeUrl && <Youtube className="h-5 w-5" />}
-                  Content
+                  Contenido
                 </CardTitle>
                 {source.asset?.url && !isYouTubeUrl && (
                   <CardDescription className="flex items-center gap-2">
@@ -453,7 +453,7 @@ export function SourceDetailContent({
                           className="text-sm text-muted-foreground hover:underline inline-flex items-center gap-1"
                         >
                           <ExternalLink className="h-3 w-3" />
-                          Open on YouTube
+                          Abrir en YouTube
                         </a>
                       </div>
                     )}
@@ -471,7 +471,7 @@ export function SourceDetailContent({
                       li: ({ children }) => <li className="mb-1">{children}</li>,
                     }}
                   >
-                    {source.full_text || 'No content available'}
+                    {source.full_text || 'No hay contenido disponible'}
                   </ReactMarkdown>
                 </div>
               </CardContent>
@@ -489,7 +489,7 @@ export function SourceDetailContent({
                   <Badge variant="secondary">{insights.length}</Badge>
                 </CardTitle>
                 <CardDescription>
-                  AI-generated insights about this source
+                  Insights generados por IA sobre esta fuente
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -497,7 +497,7 @@ export function SourceDetailContent({
                 <div className="rounded-lg border bg-muted/30 p-4">
                   <h3 className="mb-3 text-sm font-semibold flex items-center gap-2">
                     <Sparkles className="h-4 w-4" />
-                    Generate New Insight
+                    Generar Nuevo Insight
                   </h3>
                   <div className="flex gap-2">
                     <Select
@@ -506,7 +506,7 @@ export function SourceDetailContent({
                       disabled={creatingInsight}
                     >
                       <SelectTrigger className="flex-1">
-                        <SelectValue placeholder="Select a transformation..." />
+                        <SelectValue placeholder="Selecciona una transformación..." />
                       </SelectTrigger>
                       <SelectContent>
                         {transformations.map((trans) => (
@@ -524,12 +524,12 @@ export function SourceDetailContent({
                       {creatingInsight ? (
                         <>
                           <LoadingSpinner className="mr-2 h-3 w-3" />
-                          Creating...
+                          Creando...
                         </>
                       ) : (
                         <>
                           <Plus className="mr-2 h-4 w-4" />
-                          Create
+                          Crear
                         </>
                       )}
                     </Button>
@@ -544,8 +544,8 @@ export function SourceDetailContent({
                 ) : insights.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground">
                     <Lightbulb className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                    <p className="text-sm">No insights yet</p>
-                    <p className="text-xs mt-1">Create your first insight using a transformation above</p>
+                    <p className="text-sm">Aún no hay insights</p>
+                    <p className="text-xs mt-1">Crea tu primer insight usando una transformación arriba</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -563,11 +563,11 @@ export function SourceDetailContent({
                                 try {
                                   const date = new Date(insight.created)
                                   if (isNaN(date.getTime())) {
-                                    return 'Unknown date'
+                                    return 'Fecha desconocida'
                                   }
                                   return formatDistanceToNow(date, { addSuffix: true })
                                 } catch {
-                                  return 'Unknown date'
+                                  return 'Fecha desconocida'
                                 }
                               })()}
                             </span>
@@ -578,7 +578,7 @@ export function SourceDetailContent({
                         </p>
                         <div className="mt-3 flex justify-end">
                           <Button size="sm" variant="outline" onClick={() => setSelectedInsight(insight)}>
-                            View Insight
+                            Ver Insight
                           </Button>
                         </div>
                       </div>
@@ -592,7 +592,7 @@ export function SourceDetailContent({
           <TabsContent value="details" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Details</CardTitle>
+                <CardTitle>Detalles</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Embedding Alert */}
@@ -600,10 +600,10 @@ export function SourceDetailContent({
                   <Alert>
                     <AlertCircle className="h-4 w-4" />
                     <AlertTitle>
-                      Content Not Embedded
+                      Contenido No Embebido
                     </AlertTitle>
                     <AlertDescription>
-                      This content hasn&apos;t been embedded for vector search. Embedding enables advanced search capabilities and better content discovery.
+                      Este contenido no ha sido embebido para búsqueda vectorial. El embebido habilita capacidades avanzadas de búsqueda y mejor descubrimiento de contenido.
                       <div className="mt-3">
                         <Button
                           onClick={handleEmbedContent}
@@ -611,7 +611,7 @@ export function SourceDetailContent({
                           size="sm"
                         >
                           <Database className="mr-2 h-4 w-4" />
-                          {isEmbedding ? 'Embedding...' : 'Embed Content'}
+                          {isEmbedding ? 'Embebiendo...' : 'Embeber Contenido'}
                         </Button>
                       </div>
                     </AlertDescription>
@@ -651,7 +651,7 @@ export function SourceDetailContent({
 
                   {source.asset?.file_path && (
                     <div className="space-y-2">
-                      <h3 className="text-sm font-semibold">Uploaded File</h3>
+                      <h3 className="text-sm font-semibold">Archivo Subido</h3>
                       <div className="flex flex-wrap items-center gap-2">
                         <code className="rounded bg-muted px-2 py-1 text-sm">
                           {source.asset.file_path}
@@ -664,16 +664,15 @@ export function SourceDetailContent({
                         >
                           <Download className="mr-2 h-4 w-4" />
                           {fileAvailable === false
-                            ? 'Unavailable'
+                            ? 'No disponible'
                             : isDownloadingFile
-                              ? 'Preparing…'
-                              : 'Download'}
+                              ? 'Preparando…'
+                              : 'Descargar'}
                         </Button>
                       </div>
                       {fileAvailable === false ? (
                         <p className="text-xs text-muted-foreground">
-                          Original file is no longer available on the server (likely removed after
-                          processing). Upload it again if you need a fresh copy.
+                          El archivo original ya no está disponible en el servidor (probablemente eliminado después del procesamiento). Súbelo nuevamente si necesitas una copia fresca.
                         </p>
                       ) : null}
                     </div>
@@ -681,7 +680,7 @@ export function SourceDetailContent({
 
                   {source.topics && source.topics.length > 0 && (
                     <div>
-                      <h3 className="mb-2 text-sm font-semibold">Topics</h3>
+                      <h3 className="mb-2 text-sm font-semibold">Temas</h3>
                       <div className="flex flex-wrap gap-2">
                         {source.topics.map((topic, idx) => (
                           <Badge key={idx} variant="outline">
@@ -696,17 +695,17 @@ export function SourceDetailContent({
                 {/* Metadata */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-sm font-semibold">Metadata</h3>
+                    <h3 className="text-sm font-semibold">Metadatos</h3>
                     <div className="flex items-center gap-2">
                       <Database className="h-3.5 w-3.5 text-muted-foreground" />
                       <Badge variant={source.embedded ? "default" : "secondary"} className="text-xs">
-                        {source.embedded ? "Embedded" : "Not Embedded"}
+                        {source.embedded ? "Embebido" : "No Embebido"}
                       </Badge>
                     </div>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <p className="text-xs font-medium text-muted-foreground">Created</p>
+                      <p className="text-xs font-medium text-muted-foreground">Creado</p>
                       <p className="text-sm">
                         {formatDistanceToNow(new Date(source.created), { addSuffix: true })}
                       </p>
@@ -715,7 +714,7 @@ export function SourceDetailContent({
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs font-medium text-muted-foreground">Updated</p>
+                      <p className="text-xs font-medium text-muted-foreground">Actualizado</p>
                       <p className="text-sm">
                         {formatDistanceToNow(new Date(source.updated), { addSuffix: true })}
                       </p>

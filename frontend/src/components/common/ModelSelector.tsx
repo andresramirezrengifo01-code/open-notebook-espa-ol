@@ -17,15 +17,26 @@ interface ModelSelectorProps {
 export function ModelSelector({ 
   label, 
   modelType, 
-  value, 
-  onChange, 
-  placeholder = 'Select a model',
+  value,
+  onChange,
+  placeholder = 'Selecciona un modelo',
   disabled = false 
 }: ModelSelectorProps) {
   const { data: models, isLoading } = useModels()
-  
+
   // Filter models by type
   const filteredModels = models?.filter(model => model.type === modelType) || []
+
+  const getModelTypeName = (type: string) => {
+    const translations: Record<string, string> = {
+      'language': 'lenguaje',
+      'embedding': 'embedding',
+      'speech_to_text': 'voz a texto',
+      'text_to_speech': 'texto a voz'
+    }
+    return translations[type] || type
+  }
+
   return (
     <div className="space-y-2">
       {label && <Label>{label}</Label>}
@@ -40,7 +51,7 @@ export function ModelSelector({
             </div>
           ) : filteredModels.length === 0 ? (
             <div className="text-sm text-muted-foreground py-2 px-2">
-              No {modelType.replace('_', ' ')} models available
+              No hay modelos de {getModelTypeName(modelType)} disponibles
             </div>
           ) : (
             filteredModels.map((model) => (

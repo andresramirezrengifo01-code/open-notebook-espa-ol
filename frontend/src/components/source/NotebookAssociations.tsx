@@ -108,10 +108,10 @@ export function NotebookAssociations({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BookOpen className="h-5 w-5" />
-            Notebooks
+            Cuadernos
           </CardTitle>
           <CardDescription>
-            Manage which notebooks contain this source
+            Administra qué cuadernos contienen esta fuente
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -136,7 +136,7 @@ export function NotebookAssociations({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground">No notebooks available</p>
+          <p className="text-sm text-muted-foreground">No hay cuadernos disponibles</p>
         </CardContent>
       </Card>
     )
@@ -203,7 +203,7 @@ export function NotebookAssociations({
               onClick={handleCancel}
               disabled={isSaving}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               size="sm"
@@ -213,10 +213,10 @@ export function NotebookAssociations({
               {isSaving ? (
                 <>
                   <LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
-                  Saving...
+                  Guardando...
                 </>
               ) : (
-                'Save Changes'
+                'Guardar Cambios'
               )}
             </Button>
           </div>

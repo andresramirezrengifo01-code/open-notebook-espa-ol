@@ -18,7 +18,7 @@ export function MessageActions({ content, notebookId }: MessageActionsProps) {
 
   const handleSaveToNote = () => {
     if (!notebookId) {
-      toast.error('Cannot save note: notebook ID not available')
+      toast.error('No se puede guardar la nota: ID de cuaderno no disponible')
       return
     }
 
@@ -35,7 +35,7 @@ export function MessageActions({ content, notebookId }: MessageActionsProps) {
       // Try modern clipboard API first
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(content)
-        toast.success('Message copied to clipboard')
+        toast.success('Mensaje copiado al portapapeles')
         setCopySuccess(true)
         setTimeout(() => setCopySuccess(false), 2000)
       } else {
@@ -51,18 +51,18 @@ export function MessageActions({ content, notebookId }: MessageActionsProps) {
 
         try {
           document.execCommand('copy')
-          toast.success('Message copied to clipboard')
+          toast.success('Mensaje copiado al portapapeles')
           setCopySuccess(true)
           setTimeout(() => setCopySuccess(false), 2000)
         } catch {
-          toast.error('Failed to copy message')
+          toast.error('Error al copiar mensaje')
         }
 
         document.body.removeChild(textArea)
       }
     } catch (err) {
       console.error('Failed to copy to clipboard:', err)
-      toast.error('Failed to copy message')
+      toast.error('Error al copiar mensaje')
     }
   }
 
@@ -87,7 +87,7 @@ export function MessageActions({ content, notebookId }: MessageActionsProps) {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Save to note</p>
+              <p>Guardar en nota</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -108,7 +108,7 @@ export function MessageActions({ content, notebookId }: MessageActionsProps) {
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Copy to clipboard</p>
+            <p>Copiar al portapapeles</p>
           </TooltipContent>
         </Tooltip>
       </div>

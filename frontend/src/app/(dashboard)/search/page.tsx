@@ -106,7 +106,7 @@ export default function SearchPage() {
             <TabsList aria-label="Consultar o buscar en tu base de conocimiento" className="w-full max-w-xl">
               <TabsTrigger value="ask">
                 <MessageCircleQuestion className="h-4 w-4" />
-                Consultar (beta)
+                Consultar
               </TabsTrigger>
               <TabsTrigger value="search">
                 <Search className="h-4 w-4" />
@@ -154,7 +154,8 @@ export default function SearchPage() {
                   </div>
                 ) : (
                   <>
-                    <div className="space-y-2">
+
+                    {/* <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label className="text-xs text-muted-foreground">
                           {customModels ? 'Usando Modelos Personalizados' : 'Usando Modelos Predeterminados'}
@@ -181,7 +182,8 @@ export default function SearchPage() {
                           Final: {resolveModelName(customModels?.finalAnswer || modelDefaults?.default_chat_model)}
                         </Badge>
                       </div>
-                    </div>
+                    </div> */}
+                  
 
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Button

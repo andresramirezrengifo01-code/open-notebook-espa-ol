@@ -34,10 +34,13 @@ export default function PodcastsPage() {
                   <Mic className="h-4 w-4" />
                   Episodios
                 </TabsTrigger>
+
+                {/*
                 <TabsTrigger value="templates">
                   <LayoutTemplate className="h-4 w-4" />
                   Plantillas
                 </TabsTrigger>
+               */}
               </TabsList>
             </div>
 
@@ -45,9 +48,11 @@ export default function PodcastsPage() {
               <EpisodesTab />
             </TabsContent>
 
+            {/*
             <TabsContent value="templates">
               <TemplatesTab />
             </TabsContent>
+            */}
           </Tabs>
         </div>
       </div>

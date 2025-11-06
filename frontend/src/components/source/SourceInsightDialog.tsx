@@ -32,7 +32,7 @@ export function SourceInsightDialog({ open, onOpenChange, insight }: SourceInsig
       <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between gap-2">
-            <span>Source Insight</span>
+            <span>Insight de Fuente</span>
             {displayInsight?.insight_type && (
               <Badge variant="outline" className="text-xs uppercase">
                 {displayInsight.insight_type}
@@ -44,14 +44,14 @@ export function SourceInsightDialog({ open, onOpenChange, insight }: SourceInsig
         <div className="flex-1 overflow-y-auto">
           {isLoading ? (
             <div className="flex items-center justify-center py-10">
-              <span className="text-sm text-muted-foreground">Loading insight…</span>
+              <span className="text-sm text-muted-foreground">Cargando insight…</span>
             </div>
           ) : displayInsight ? (
             <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
               <ReactMarkdown>{displayInsight.content}</ReactMarkdown>
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground">No insight selected.</p>
+            <p className="text-sm text-muted-foreground">No se seleccionó ningún insight.</p>
           )}
         </div>
       </DialogContent>

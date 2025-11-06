@@ -68,7 +68,7 @@ export function ChatPanel({
   onDeleteSession,
   onUpdateSession,
   loadingSessions = false,
-  title = 'Chat with Source',
+  title = 'Chat con Fuente',
   contextType = 'source',
   notebookContextStats,
   notebookId
@@ -89,7 +89,7 @@ export function ChatPanel({
       // This try-catch is here for future enhancements or unexpected errors.
     } catch {
       const typeLabel = type === 'source_insight' ? 'insight' : type
-      toast.error(`This ${typeLabel} could not be found`)
+      toast.error(`Este ${typeLabel} no pudo ser encontrado`)
     }
   }
 
@@ -139,10 +139,10 @@ export function ChatPanel({
                 disabled={loadingSessions}
               >
                 <Clock className="h-4 w-4" />
-                <span className="text-xs">Sessions</span>
+                <span className="text-xs">Sesiones</span>
               </Button>
               <DialogContent className="sm:max-w-[420px] p-0 overflow-hidden">
-                <DialogTitle className="sr-only">Chat Sessions</DialogTitle>
+                <DialogTitle className="sr-only">Sesiones de Chat</DialogTitle>
                 <SessionManager
                   sessions={sessions}
                   currentSessionId={currentSessionId ?? null}
@@ -167,9 +167,9 @@ export function ChatPanel({
               <div className="text-center text-muted-foreground py-8">
                 <Bot className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p className="text-sm">
-                  Start a conversation about this {contextType}
+                  Inicia una conversación sobre est{contextType === 'source' ? 'a fuente' : 'e cuaderno'}
                 </p>
-                <p className="text-xs mt-2">Ask questions to understand the content better</p>
+                <p className="text-xs mt-2">Haz preguntas para entender mejor el contenido</p>
               </div>
             ) : (
               messages.map((message) => (
@@ -243,7 +243,7 @@ export function ChatPanel({
               {contextIndicators.sources?.length > 0 && (
                 <Badge variant="outline" className="gap-1">
                   <FileText className="h-3 w-3" />
-                  {contextIndicators.sources.length} source{contextIndicators.sources.length > 1 ? 's' : ''}
+                  {contextIndicators.sources.length} fuente{contextIndicators.sources.length > 1 ? 's' : ''}
                 </Badge>
               )}
               {contextIndicators.insights?.length > 0 && (
@@ -255,7 +255,7 @@ export function ChatPanel({
               {contextIndicators.notes?.length > 0 && (
                 <Badge variant="outline" className="gap-1">
                   <StickyNote className="h-3 w-3" />
-                  {contextIndicators.notes.length} note{contextIndicators.notes.length > 1 ? 's' : ''}
+                  {contextIndicators.notes.length} nota{contextIndicators.notes.length > 1 ? 's' : ''}
                 </Badge>
               )}
             </div>
@@ -278,7 +278,7 @@ export function ChatPanel({
           {/* Model selector */}
           {onModelChange && (
             <div className="flex items-center justify-between">
-              <span className="text-xs text-muted-foreground">Model</span>
+              <span className="text-xs text-muted-foreground">Modelo</span>
               <ModelSelector
                 currentModel={modelOverride}
                 onModelChange={onModelChange}
@@ -292,7 +292,7 @@ export function ChatPanel({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder={`Ask a question about this ${contextType}... (${keyHint} to send)`}
+              placeholder={`Haz una pregunta sobre est${contextType === 'source' ? 'a fuente' : 'e cuaderno'}... (${keyHint} para enviar)`}
               disabled={isStreaming}
               className="flex-1 min-h-[40px] max-h-[100px] resize-none py-2 px-3"
               rows={1}
