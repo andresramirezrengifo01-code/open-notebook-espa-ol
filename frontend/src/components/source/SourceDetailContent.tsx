@@ -140,12 +140,12 @@ export function SourceDetailContent({
       await insightsApi.create(sourceId, {
         transformation_id: selectedTransformation
       })
-      toast.success('Insight creado exitosamente')
+      toast.success('Idea creada exitosamente')
       await fetchInsights()
       setSelectedTransformation('')
     } catch (err) {
-      console.error('Failed to create insight:', err)
-      toast.error('Error al crear el insight')
+      console.error('No logró generar idea:', err)
+      toast.error('Error al crear la idea')
     } finally {
       setCreatingInsight(false)
     }
@@ -174,8 +174,8 @@ export function SourceDetailContent({
       toast.success(response.message)
       await fetchSource()
     } catch (err) {
-      console.error('Failed to embed content:', err)
-      toast.error('Error al embeber contenido')
+      console.error('No se pudo insertar el contenido:', err)
+      toast.error('Error al insertar contenido')
     } finally {
       setIsEmbedding(false)
     }
@@ -229,7 +229,7 @@ export function SourceDetailContent({
       setFileAvailable(true)
       toast.success('Descarga iniciada')
     } catch (err) {
-      console.error('Failed to download file:', err)
+      console.error('No se pudo descargar el archivo:', err)
       if (isAxiosError(err) && err.response?.status === 404) {
         setFileAvailable(false)
         toast.error('El archivo original ya no está disponible en el servidor')
@@ -249,10 +249,10 @@ export function SourceDetailContent({
   }
 
   const getSourceType = () => {
-    if (!source) return 'unknown'
-    if (source.asset?.url) return 'link'
-    if (source.asset?.file_path) return 'file'
-    return 'text'
+    if (!source) return 'No reconocido'
+    if (source.asset?.url) return 'Enlace'
+    if (source.asset?.file_path) return 'Archivo'
+    return 'Texto'
   }
 
   const handleCopyUrl = useCallback(() => {
@@ -302,8 +302,8 @@ export function SourceDetailContent({
         toast.success('Fuente eliminada exitosamente')
         onClose?.()
       } catch (error) {
-        console.error('Failed to delete source:', error)
-        toast.error('Error al eliminar fuente')
+        console.error('No se pudo eliminar la fuente:', error)
+        toast.error('Error al eliminar la fuente')
       }
     }
   }
@@ -384,7 +384,7 @@ export function SourceDetailContent({
                   disabled={isEmbedding || source.embedded}
                 >
                   <Database className="mr-2 h-4 w-4" />
-                  {isEmbedding ? 'Embebiendo...' : source.embedded ? 'Ya Embebido' : 'Embeber Contenido'}
+                  {isEmbedding ? 'Incorporando...' : source.embedded ? 'Ya Incorporado' : 'Incorporar Contenido'}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
@@ -406,7 +406,7 @@ export function SourceDetailContent({
           <TabsList className="grid w-full grid-cols-3 sticky top-0 z-10">
             <TabsTrigger value="content">Contenido</TabsTrigger>
             <TabsTrigger value="insights">
-              Insights {insights.length > 0 && `(${insights.length})`}
+              Ideas por IA {insights.length > 0 && `(${insights.length})`}
             </TabsTrigger>
             <TabsTrigger value="details">Detalles</TabsTrigger>
           </TabsList>
@@ -484,12 +484,12 @@ export function SourceDetailContent({
                 <CardTitle className="flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <Lightbulb className="h-5 w-5" />
-                    Insights
+                    Ideas
                   </span>
                   <Badge variant="secondary">{insights.length}</Badge>
                 </CardTitle>
                 <CardDescription>
-                  Insights generados por IA sobre esta fuente
+                  Ideas generadas por IA sobre esta fuente
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -497,7 +497,7 @@ export function SourceDetailContent({
                 <div className="rounded-lg border bg-muted/30 p-4">
                   <h3 className="mb-3 text-sm font-semibold flex items-center gap-2">
                     <Sparkles className="h-4 w-4" />
-                    Generar Nuevo Insight
+                    Generar Nueva Idea
                   </h3>
                   <div className="flex gap-2">
                     <Select

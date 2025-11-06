@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { MoreHorizontal, Archive, ArchiveRestore, Trash2, FileText, StickyNote } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
+import { es } from 'date-fns/locale'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -110,7 +111,7 @@ export function NotebookCard({ notebook }: NotebookCardProps) {
             </CardDescription>
 
             <div className="mt-3 text-xs text-muted-foreground">
-              Actualizado {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true })}
+              Actualizado {formatDistanceToNow(new Date(notebook.updated), { addSuffix: true, locale: es })}
             </div>
 
             {/* Item counts footer */}

@@ -260,7 +260,7 @@ export function SourceCard({
 
               {isCompleted && source.insights_count > 0 && (
                 <Badge variant="outline" className="text-xs">
-                  {source.insights_count} insights
+                  {source.insights_count} perspectivas
                 </Badge>
               )}
               {source.topics && source.topics.length > 0 && isCompleted && (
@@ -314,7 +314,7 @@ export function SourceCard({
                     disabled={!onRemoveFromNotebook}
                   >
                     <Unlink className="h-4 w-4 mr-2" />
-                    Remove from Notebook
+                    Quitar del cuaderno
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                 </>
@@ -330,7 +330,7 @@ export function SourceCard({
                     disabled={!onRetry}
                   >
                     <RefreshCw className="h-4 w-4 mr-2" />
-                    Retry Processing
+                    Reintentar procesamiento
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                 </>
@@ -345,7 +345,7 @@ export function SourceCard({
                 className="text-red-600 focus:text-red-600"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete Source
+                Eliminar fuente
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -362,7 +362,7 @@ export function SourceCard({
               className="h-7 text-xs"
             >
               <RefreshCw className="h-3 w-3 mr-1" />
-              Retry
+              Reintentar
             </Button>
           </div>
         )}
@@ -371,7 +371,7 @@ export function SourceCard({
         {isProcessing && statusData?.processing_info?.progress && (
           <div className="mt-3 pt-2 border-t">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-xs text-gray-600">Progress</span>
+              <span className="text-xs text-gray-600">Progreso</span>
               <span className="text-xs text-gray-600">
                 {Math.round(statusData.processing_info.progress as number)}%
               </span>

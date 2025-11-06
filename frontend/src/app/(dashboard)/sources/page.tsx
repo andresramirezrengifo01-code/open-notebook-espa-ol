@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
+import { es } from 'date-fns/locale'
 
 export default function SourcesPage() {
   const [sources, setSources] = useState<SourceListResponse[]>([])
@@ -330,7 +331,7 @@ export default function SourcesPage() {
                   </Button>
                 </th>
                 <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground hidden md:table-cell">
-                  Insights
+                  Perspectiva
                 </th>
                 <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground hidden lg:table-cell">
                   Incrustado
@@ -374,7 +375,7 @@ export default function SourcesPage() {
                     </div>
                   </td>
                   <td className="h-12 px-4 text-muted-foreground text-sm hidden sm:table-cell">
-                    {formatDistanceToNow(new Date(source.created), { addSuffix: true })}
+                    {formatDistanceToNow(new Date(source.created), { addSuffix: true, locale: es })}
                   </td>
                   <td className="h-12 px-4 text-center hidden md:table-cell">
                     <span className="text-sm font-medium">{source.insights_count || 0}</span>
