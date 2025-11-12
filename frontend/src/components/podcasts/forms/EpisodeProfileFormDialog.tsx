@@ -39,7 +39,7 @@ const episodeProfileSchema = z.object({
   outline_model: z.string().min(1, 'Se requiere modelo de esquema'),
   transcript_provider: z.string().min(1, 'Se requiere proveedor de transcripción'),
   transcript_model: z.string().min(1, 'Se requiere modelo de transcripción'),
-  default_briefing: z.string().min(1, 'Se requiere briefing predeterminado'),
+  default_briefing: z.string().min(1, 'Se requiere instrucciones predeterminadas'),
   num_segments: z.number()
     .int('Debe ser un número entero')
     .min(3, 'Al menos 3 segmentos')
@@ -282,7 +282,7 @@ export function EpisodeProfileFormDialog({
             />
           </div>
 
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Generación de esquema
@@ -344,9 +344,9 @@ export function EpisodeProfileFormDialog({
                 )}
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Generación de transcripción
@@ -408,7 +408,7 @@ export function EpisodeProfileFormDialog({
                 )}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <Label htmlFor="default_briefing">Instrucciones predeterminadas *</Label>

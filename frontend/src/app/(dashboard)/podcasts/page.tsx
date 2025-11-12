@@ -35,12 +35,12 @@ export default function PodcastsPage() {
                   Episodios
                 </TabsTrigger>
 
-                {/*
+                
                 <TabsTrigger value="templates">
                   <LayoutTemplate className="h-4 w-4" />
-                  Plantillas
+                  Configuracion de voz
                 </TabsTrigger>
-               */}
+               
 
               </TabsList>
             </div>
@@ -50,9 +50,9 @@ export default function PodcastsPage() {
             </TabsContent>
 
                   
-            {/* <TabsContent value="templates">
+             <TabsContent value="templates">
               <TemplatesTab />
-            </TabsContent> */}
+            </TabsContent> 
             
           </Tabs>
         </div>

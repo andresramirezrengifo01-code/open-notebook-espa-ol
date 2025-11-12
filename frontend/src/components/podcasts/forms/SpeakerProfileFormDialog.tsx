@@ -210,7 +210,7 @@ export function SpeakerProfileFormDialog({
               ) : null}
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="tts_provider">Proveedor *</Label>
               <Controller
                 control={control}
@@ -233,9 +233,9 @@ export function SpeakerProfileFormDialog({
               {errors.tts_provider ? (
                 <p className="text-xs text-red-600">{errors.tts_provider.message}</p>
               ) : null}
-            </div>
+            </div> */}
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="tts_model">Modelo *</Label>
               <Controller
                 control={control}
@@ -258,7 +258,7 @@ export function SpeakerProfileFormDialog({
               {errors.tts_model ? (
                 <p className="text-xs text-red-600">{errors.tts_model.message}</p>
               ) : null}
-            </div>
+            </div> */}
 
             <div className="space-y-2">
               <Label htmlFor="description">Descripción</Label>

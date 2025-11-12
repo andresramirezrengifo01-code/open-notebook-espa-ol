@@ -276,7 +276,7 @@ export function ChatPanel({
         {/* Input Area */}
         <div className="flex-shrink-0 p-4 space-y-3 border-t">
           {/* Model selector */}
-          {onModelChange && (
+          {/* {onModelChange && (
             <div className="flex items-center justify-between">
               <span className="text-xs text-muted-foreground">Modelo</span>
               <ModelSelector
@@ -285,7 +285,7 @@ export function ChatPanel({
                 disabled={isStreaming}
               />
             </div>
-          )}
+          )} */}
 
           <div className="flex gap-2 items-end">
             <Textarea

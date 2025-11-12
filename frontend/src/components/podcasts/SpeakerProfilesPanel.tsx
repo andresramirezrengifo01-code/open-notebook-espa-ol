@@ -94,9 +94,9 @@ export function SpeakerProfilesPanel({
                         {profile.description || 'No se proporcionó descripción.'}
                       </CardDescription>
                     </div>
-                    <Badge variant="outline" className="text-xs">
+                    {/* <Badge variant="outline" className="text-xs">
                       {profile.tts_provider} / {profile.tts_model}
-                    </Badge>
+                    </Badge> */}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Badge
