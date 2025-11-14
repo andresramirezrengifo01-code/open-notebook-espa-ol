@@ -1,0 +1,15 @@
+-- Add output_language field to episode_profile table
+DEFINE FIELD IF NOT EXISTS output_language ON TABLE episode_profile TYPE string DEFAULT "Spanish";
+
+-- Update existing episode profiles to have Spanish as default language
+UPDATE episode_profile SET output_language = "Spanish";
+
+-- Update default briefings to include Spanish language instruction
+UPDATE episode_profile:tech_discussion SET
+    default_briefing = "Crea una discusión técnica atractiva sobre el contenido proporcionado. Enfócate en conocimientos prácticos, aplicaciones del mundo real y explicaciones detalladas que interesen a desarrolladores y profesionales técnicos. TODO el diálogo debe ser en español.";
+
+UPDATE episode_profile:solo_expert SET
+    default_briefing = "Crea una explicación educativa del contenido proporcionado. Desglosa conceptos complejos en segmentos digeribles, usa analogías y ejemplos, y mantén un estilo de enseñanza atractivo. TODO el diálogo debe ser en español.";
+
+UPDATE episode_profile:business_analysis SET
+    default_briefing = "Analiza el contenido proporcionado desde una perspectiva empresarial. Discute las implicaciones del mercado, conocimientos estratégicos, ventajas competitivas e inteligencia empresarial accionable. TODO el diálogo debe ser en español.";

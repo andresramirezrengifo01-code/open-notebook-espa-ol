@@ -91,10 +91,14 @@ async def generate_podcast_command(
             profile["name"]: profile for profile in speaker_profiles
         }
 
-        # 4. Generate briefing
+        # 4. Generate briefing with language instruction
         briefing = episode_profile.default_briefing
         if input_data.briefing_suffix:
             briefing += f"\n\nAdditional instructions: {input_data.briefing_suffix}"
+
+        # Add language instruction to briefing
+        output_language = getattr(episode_profile, 'output_language', 'Spanish')
+        briefing += f"\n\nIMPORTANT: Generate the entire podcast in {output_language}. All dialogue must be in {output_language}."
 
         # Create the a record for the episose and associate with the ongoing command
         episode = PodcastEpisode(

@@ -529,13 +529,13 @@ export function GeneratePodcastDialog({ open, onOpenChange }: GeneratePodcastDia
                   )}{' '}
                   elementos seleccionados
                 </Badge>
-                {(tokenCount > 0 || charCount > 0) && (
+                {/* {(tokenCount > 0 || charCount > 0) && (
                   <span className="text-xs text-muted-foreground">
                     {tokenCount > 0 && `${formatNumber(tokenCount)} tokens`}
                     {tokenCount > 0 && charCount > 0 && ' / '}
                     {charCount > 0 && `${formatNumber(charCount)} chars`}
                   </span>
-                )}
+                )} */}
               </div>
             </div>
 

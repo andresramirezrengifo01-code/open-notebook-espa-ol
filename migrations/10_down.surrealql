@@ -1,0 +1,2 @@
+-- Remove output_language field from episode_profile table
+REMOVE FIELD IF EXISTS output_language ON TABLE episode_profile;

@@ -26,6 +26,7 @@ class EpisodeProfile(ObjectModel):
     transcript_model: str = Field(..., description="AI model for transcript generation")
     default_briefing: str = Field(..., description="Default briefing template")
     num_segments: int = Field(default=5, description="Number of podcast segments")
+    output_language: str = Field(default="Spanish", description="Output language for podcast")
 
     @field_validator("num_segments")
     @classmethod

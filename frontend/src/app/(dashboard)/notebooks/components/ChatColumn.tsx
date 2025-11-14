@@ -56,8 +56,8 @@ export function ChatColumn({ notebookId, contextSelections }: ChatColumnProps) {
       sourcesInsights,
       sourcesFull,
       notesCount,
-      tokenCount: chat.tokenCount,
-      charCount: chat.charCount
+      // tokenCount: chat.tokenCount,
+      // charCount: chat.charCount
     }
   }, [sources, notes, contextSelections, chat.tokenCount, chat.charCount])
 
