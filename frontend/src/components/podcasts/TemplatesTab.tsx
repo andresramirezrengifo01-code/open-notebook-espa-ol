@@ -85,15 +85,15 @@ export function TemplatesTab() {
                 <h4 className="font-medium text-foreground">Los perfiles de episodio establecen el formato</h4>
                 <ul className="list-disc space-y-1 pl-5">
                   <li>Delinea el número de segmentos y cómo fluye la historia</li>
-                  <li>Elige los modelos de lenguaje usados para briefing, esquematización y escritura del guion</li>
-                  <li>Almacena briefings predeterminados para que cada episodio comience con un tono consistente</li>
+                  {/* <li>Elige los modelos de lenguaje usados para briefing, esquematización y escritura del guion</li> */}
+                  <li>Almacena instrucciones predeterminadas para que cada episodio comience con un tono consistente</li>
                 </ul>
               </div>
 
               <div className="space-y-2">
                 <h4 className="font-medium text-foreground">Los perfiles de locutor dan vida a las voces</h4>
                 <ul className="list-disc space-y-1 pl-5">
-                  <li>Elige el proveedor y modelo de texto a voz</li>
+                  {/* <li>Elige el proveedor y modelo de texto a voz</li> */}
                   <li>Captura personalidad, historia de fondo y notas de pronunciación por locutor</li>
                   <li>Reutiliza las mismas voces de anfitrión o invitado en diferentes formatos de episodio</li>
                 </ul>
