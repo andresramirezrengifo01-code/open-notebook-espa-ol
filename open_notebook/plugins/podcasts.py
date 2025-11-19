@@ -22,7 +22,7 @@ class PodcastConfig(ObjectModel):
     name: str
     podcast_name: str
     podcast_tagline: str
-    output_language: str = Field(default="English")
+    output_language: str = Field(default="Spanish")
     person1_role: List[str]
     person2_role: List[str]
     conversation_style: List[str]

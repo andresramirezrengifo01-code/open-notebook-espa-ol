@@ -177,7 +177,9 @@ export function EpisodeProfilesPanel({
 
                 <CardContent className="space-y-4 text-sm">
                   <div className="grid gap-3 md:grid-cols-2">
-                    {/* <div>
+
+
+                    <div>
                       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                         Modelo de esquema
                       </p>
@@ -192,7 +194,9 @@ export function EpisodeProfilesPanel({
                       <p className="text-foreground">
                         {profile.transcript_provider} / {profile.transcript_model}
                       </p>
-                    </div> */}
+                    </div>
+
+
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                         Segmentos
@@ -204,13 +208,15 @@ export function EpisodeProfilesPanel({
                         Perfil de locutor
                       </p>
                       <div className="flex items-center gap-2 text-foreground">
-                        <Users className="h-4 w-4" />
+                        <Users className="h-4 w-4" />                    
                         <span>{profile.speaker_config}</span>
-                        {/* {speakerSummary ? (
-                          // <Badge variant="outline" className="text-xs">
-                          //   {speakerSummary.tts_provider} / {speakerSummary.tts_model}
-                          // </Badge>
-                        ) : null} */}
+
+                        {speakerSummary ? (
+                          <Badge variant="outline" className="text-xs">
+                            {speakerSummary.tts_provider} / {speakerSummary.tts_model}
+                          </Badge>
+                        ) : null}
+                        
                       </div>
                     </div>
                   </div>

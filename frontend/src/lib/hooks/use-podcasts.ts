@@ -87,14 +87,14 @@ export function useDeletePodcastEpisode() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Episode deleted',
-        description: 'Podcast episode removed successfully.',
+        title: 'Episodio eliminado',
+        description: 'Episodio de podcast removido exitosamente.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to delete episode',
-        description: 'Please try again or check the server logs for details.',
+        title: 'Error al eliminar el episodio',
+        description: 'Por favor, intenta de nuevo o revisa los logs del servidor para más detalles.',
         variant: 'destructive',
       })
     },
@@ -124,14 +124,14 @@ export function useCreateEpisodeProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Episode profile created',
-        description: 'The new episode profile is ready to use.',
+        title: 'Perfil de episodio creado',
+        description: 'El nuevo perfil de episodio está listo para usar.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to create episode profile',
-        description: 'Double-check the form and try again.',
+        title: 'Error al crear el perfil de episodio',
+        description: 'Verifica el formulario e intenta de nuevo.',
         variant: 'destructive',
       })
     },
@@ -154,14 +154,14 @@ export function useUpdateEpisodeProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Episode profile updated',
-        description: 'Changes saved successfully.',
+        title: 'Perfil de episodio actualizado',
+        description: 'Cambios guardados exitosamente.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to update episode profile',
-        description: 'Please try again later.',
+        title: 'Error al actualizar el perfil de episodio',
+        description: 'Por favor, intenta más tarde.',
         variant: 'destructive',
       })
     },
@@ -178,14 +178,14 @@ export function useDeleteEpisodeProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Episode profile deleted',
-        description: 'Profile removed successfully.',
+        title: 'Perfil de episodio eliminado',
+        description: 'Perfil removido exitosamente.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to delete episode profile',
-        description: 'Ensure the profile is not in use and try again.',
+        title: 'Error al eliminar el perfil de episodio',
+        description: 'Asegúrate de que el perfil no esté en uso e intenta de nuevo.',
         variant: 'destructive',
       })
     },
@@ -203,14 +203,14 @@ export function useDuplicateEpisodeProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Episode profile duplicated',
-        description: 'A copy of the profile has been created.',
+        title: 'Perfil de episodio duplicado',
+        description: 'Se ha creado una copia del perfil.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to duplicate episode profile',
-        description: 'Please try again later.',
+        title: 'Error al duplicar el perfil de episodio',
+        description: 'Por favor, intenta más tarde.',
         variant: 'destructive',
       })
     },
@@ -249,14 +249,14 @@ export function useCreateSpeakerProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Speaker profile created',
-        description: 'The speaker profile is ready to use.',
+        title: 'Perfil de locutor creado',
+        description: 'El perfil de locutor está listo para usar.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to create speaker profile',
-        description: 'Double-check the form and try again.',
+        title: 'Error al crear el perfil de locutor',
+        description: 'Verifica el formulario e intenta de nuevo.',
         variant: 'destructive',
       })
     },
@@ -280,14 +280,14 @@ export function useUpdateSpeakerProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Speaker profile updated',
-        description: 'Changes saved successfully.',
+        title: 'Perfil de locutor actualizado',
+        description: 'Cambios guardados exitosamente.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to update speaker profile',
-        description: 'Please try again later.',
+        title: 'Error al actualizar el perfil de locutor',
+        description: 'Por favor, intenta más tarde.',
         variant: 'destructive',
       })
     },
@@ -305,14 +305,14 @@ export function useDeleteSpeakerProfile() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.episodeProfiles })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Speaker profile deleted',
-        description: 'Profile removed successfully.',
+        title: 'Perfil de locutor eliminado',
+        description: 'Perfil removido exitosamente.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to delete speaker profile',
-        description: 'Ensure the profile is not in use and try again.',
+        title: 'Error al eliminar el perfil de locutor',
+        description: 'Asegúrate de que el perfil no esté en uso e intenta de nuevo.',
         variant: 'destructive',
       })
     },
@@ -329,14 +329,14 @@ export function useDuplicateSpeakerProfile() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.speakerProfiles })
       toast({
-        title: 'Speaker profile duplicated',
-        description: 'A copy of the profile has been created.',
+        title: 'Perfil de locutor duplicado',
+        description: 'Se ha creado una copia del perfil.',
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to duplicate speaker profile',
-        description: 'Please try again later.',
+        title: 'Error al duplicar el perfil de locutor',
+        description: 'Por favor, intenta más tarde.',
         variant: 'destructive',
       })
     },
@@ -354,14 +354,14 @@ export function useGeneratePodcast() {
       // Immediately refetch to show the new episode
       await queryClient.refetchQueries({ queryKey: QUERY_KEYS.podcastEpisodes })
       toast({
-        title: 'Podcast generation started',
-        description: `Episode "${response.episode_name}" is being created.`,
+        title: 'Generación de podcast iniciada',
+        description: `El episodio "${response.episode_name}" se está creando.`,
       })
     },
     onError: () => {
       toast({
-        title: 'Failed to start podcast generation',
-        description: 'Please try again in a moment.',
+        title: 'Error al iniciar la generación del podcast',
+        description: 'Por favor, intenta de nuevo en un momento.',
         variant: 'destructive',
       })
     },

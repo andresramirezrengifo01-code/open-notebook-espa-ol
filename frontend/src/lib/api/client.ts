@@ -32,7 +32,7 @@ apiClient.interceptors.request.use(async (config) => {
           config.headers.Authorization = `Bearer ${state.token}`
         }
       } catch (error) {
-        console.error('Error parsing auth storage:', error)
+        console.error('Error al analizar el almacenamiento de autenticación:', error)
       }
     }
   }

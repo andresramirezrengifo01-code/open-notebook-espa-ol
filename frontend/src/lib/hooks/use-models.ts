@@ -34,12 +34,12 @@ export function useCreateModel() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: MODEL_QUERY_KEYS.models })
       toast({
-        title: 'Success',
-        description: 'Model created successfully',
+        title: 'Éxito',
+        description: 'Modelo creado exitosamente',
       })
     },
     onError: (error: unknown) => {
-      const errorMessage = (error as { response?: { data?: { detail?: string } } })?.response?.data?.detail || 'Failed to create model'
+      const errorMessage = (error as { response?: { data?: { detail?: string } } })?.response?.data?.detail || 'Error al crear el modelo'
       toast({
         title: 'Error',
         description: errorMessage,
@@ -59,14 +59,14 @@ export function useDeleteModel() {
       queryClient.invalidateQueries({ queryKey: MODEL_QUERY_KEYS.models })
       queryClient.invalidateQueries({ queryKey: MODEL_QUERY_KEYS.defaults })
       toast({
-        title: 'Success',
-        description: 'Model deleted successfully',
+        title: 'Éxito',
+        description: 'Modelo eliminado exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to delete model',
+        description: 'Error al eliminar el modelo',
         variant: 'destructive',
       })
     },
@@ -89,14 +89,14 @@ export function useUpdateModelDefaults() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: MODEL_QUERY_KEYS.defaults })
       toast({
-        title: 'Success',
-        description: 'Default models updated successfully',
+        title: 'Éxito',
+        description: 'Modelos predeterminados actualizados exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update default models',
+        description: 'Error al actualizar los modelos predeterminados',
         variant: 'destructive',
       })
     },

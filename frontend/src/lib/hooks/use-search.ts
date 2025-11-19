@@ -23,8 +23,8 @@ export function useSearch() {
       }
     },
     onError: (error: Error) => {
-      toast.error('Search failed', {
-        description: error.message || 'An error occurred while searching'
+      toast.error('Búsqueda fallida', {
+        description: error.message || 'Ocurrió un error durante la búsqueda'
       })
     }
   })

@@ -39,14 +39,14 @@ export function useCreateTransformation() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TRANSFORMATION_QUERY_KEYS.transformations })
       toast({
-        title: 'Success',
-        description: 'Transformation created successfully',
+        title: 'Éxito',
+        description: 'Transformación creada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to create transformation',
+        description: 'Error al crear la transformación',
         variant: 'destructive',
       })
     },
@@ -64,14 +64,14 @@ export function useUpdateTransformation() {
       queryClient.invalidateQueries({ queryKey: TRANSFORMATION_QUERY_KEYS.transformations })
       queryClient.invalidateQueries({ queryKey: TRANSFORMATION_QUERY_KEYS.transformation(id) })
       toast({
-        title: 'Success',
-        description: `Transformation '${data.name || 'transformation'}' saved successfully`,
+        title: 'Éxito',
+        description: `Transformación '${data.name || 'transformación'}' guardada exitosamente`,
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update transformation',
+        description: 'Error al actualizar la transformación',
         variant: 'destructive',
       })
     },
@@ -87,14 +87,14 @@ export function useDeleteTransformation() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TRANSFORMATION_QUERY_KEYS.transformations })
       toast({
-        title: 'Success',
-        description: 'Transformation deleted successfully',
+        title: 'Éxito',
+        description: 'Transformación eliminada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to delete transformation',
+        description: 'Error al eliminar la transformación',
         variant: 'destructive',
       })
     },
@@ -109,7 +109,7 @@ export function useExecuteTransformation() {
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to execute transformation',
+        description: 'Error al ejecutar la transformación',
         variant: 'destructive',
       })
     },
@@ -132,14 +132,14 @@ export function useUpdateDefaultPrompt() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TRANSFORMATION_QUERY_KEYS.defaultPrompt })
       toast({
-        title: 'Success',
-        description: 'Default prompt saved successfully',
+        title: 'Éxito',
+        description: 'Prompt predeterminado guardado exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update default prompt',
+        description: 'Error al actualizar el prompt predeterminado',
         variant: 'destructive',
       })
     },

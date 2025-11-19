@@ -75,10 +75,10 @@ export function useNotebookChat({ notebookId, sources, notes, contextSelections 
         queryKey: QUERY_KEYS.notebookChatSessions(notebookId)
       })
       setCurrentSessionId(newSession.id)
-      toast.success('Chat session created')
+      toast.success('Sesión de chat creada')
     },
     onError: () => {
-      toast.error('Failed to create chat session')
+      toast.error('Error al crear la sesión de chat')
     }
   })
 
@@ -95,10 +95,10 @@ export function useNotebookChat({ notebookId, sources, notes, contextSelections 
       queryClient.invalidateQueries({
         queryKey: QUERY_KEYS.notebookChatSession(currentSessionId!)
       })
-      toast.success('Session updated')
+      toast.success('Sesión actualizada')
     },
     onError: () => {
-      toast.error('Failed to update session')
+      toast.error('Error al actualizar la sesión')
     }
   })
 
@@ -114,10 +114,10 @@ export function useNotebookChat({ notebookId, sources, notes, contextSelections 
         setCurrentSessionId(null)
         setMessages([])
       }
-      toast.success('Session deleted')
+      toast.success('Sesión eliminada')
     },
     onError: () => {
-      toast.error('Failed to delete session')
+      toast.error('Error al eliminar la sesión')
     }
   })
 
@@ -184,7 +184,7 @@ export function useNotebookChat({ notebookId, sources, notes, contextSelections 
           queryKey: QUERY_KEYS.notebookChatSessions(notebookId)
         })
       } catch {
-        toast.error('Failed to create chat session')
+        toast.error('Error al crear la sesión de chat')
         return
       }
     }
@@ -216,7 +216,7 @@ export function useNotebookChat({ notebookId, sources, notes, contextSelections 
       await refetchCurrentSession()
     } catch (error) {
       console.error('Error sending message:', error)
-      toast.error('Failed to send message')
+      toast.error('Error al enviar el mensaje')
       // Remove optimistic message on error
       setMessages(prev => prev.filter(msg => !msg.id.startsWith('temp-')))
     } finally {

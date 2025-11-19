@@ -61,7 +61,7 @@ export const useAuthStore = create<AuthState>()(
           // If it's a network error, set a more helpful error message
           if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
             set({
-              error: 'Unable to connect to server. Please check if the API is running.',
+              error: 'No se puede conectar al servidor. Por favor, verifica si la API está funcionando.',
               authRequired: null  // Don't assume auth is required if we can't connect
             })
           } else {
@@ -89,24 +89,24 @@ export const useAuthStore = create<AuthState>()(
           })
           
           if (response.ok) {
-            set({ 
-              isAuthenticated: true, 
-              token: password, 
+            set({
+              isAuthenticated: true,
+              token: password,
               isLoading: false,
               lastAuthCheck: Date.now(),
               error: null
             })
             return true
           } else {
-            let errorMessage = 'Authentication failed'
+            let errorMessage = 'Autenticación fallida'
             if (response.status === 401) {
-              errorMessage = 'Invalid password. Please try again.'
+              errorMessage = 'Contraseña inválida. Por favor, intenta de nuevo.'
             } else if (response.status === 403) {
-              errorMessage = 'Access denied. Please check your credentials.'
+              errorMessage = 'Acceso denegado. Por favor, verifica tus credenciales.'
             } else if (response.status >= 500) {
-              errorMessage = 'Server error. Please try again later.'
+              errorMessage = 'Error del servidor. Por favor, intenta más tarde.'
             } else {
-              errorMessage = `Authentication failed (${response.status})`
+              errorMessage = `Autenticación fallida (${response.status})`
             }
             
             set({ 
@@ -119,14 +119,14 @@ export const useAuthStore = create<AuthState>()(
           }
         } catch (error) {
           console.error('Network error during auth:', error)
-          let errorMessage = 'Authentication failed'
-          
+          let errorMessage = 'Autenticación fallida'
+
           if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-            errorMessage = 'Unable to connect to server. Please check if the API is running.'
+            errorMessage = 'No se puede conectar al servidor. Por favor, verifica si la API está funcionando.'
           } else if (error instanceof Error) {
-            errorMessage = `Network error: ${error.message}`
+            errorMessage = `Error de red: ${error.message}`
           } else {
-            errorMessage = 'An unexpected error occurred during authentication'
+            errorMessage = 'Ocurrió un error inesperado durante la autenticación'
           }
           
           set({ 

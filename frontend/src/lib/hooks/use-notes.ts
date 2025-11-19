@@ -28,18 +28,18 @@ export function useCreateNote() {
   return useMutation({
     mutationFn: (data: CreateNoteRequest) => notesApi.create(data),
     onSuccess: (_, variables) => {
-      queryClient.invalidateQueries({ 
-        queryKey: QUERY_KEYS.notes(variables.notebook_id) 
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEYS.notes(variables.notebook_id)
       })
       toast({
-        title: 'Success',
-        description: 'Note created successfully',
+        title: 'Éxito',
+        description: 'Nota creada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to create note',
+        description: 'Error al crear la nota',
         variant: 'destructive',
       })
     },
@@ -57,14 +57,14 @@ export function useUpdateNote() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.notes() })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.note(id) })
       toast({
-        title: 'Success',
-        description: 'Note updated successfully',
+        title: 'Éxito',
+        description: 'Nota actualizada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update note',
+        description: 'Error al actualizar la nota',
         variant: 'destructive',
       })
     },
@@ -81,14 +81,14 @@ export function useDeleteNote() {
       // Invalidate all notes queries (with and without notebook IDs)
       queryClient.invalidateQueries({ queryKey: ['notes'] })
       toast({
-        title: 'Success',
-        description: 'Note deleted successfully',
+        title: 'Éxito',
+        description: 'Nota eliminada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to delete note',
+        description: 'Error al eliminar la nota',
         variant: 'destructive',
       })
     },

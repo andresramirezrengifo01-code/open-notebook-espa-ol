@@ -282,7 +282,9 @@ export function EpisodeProfileFormDialog({
             />
           </div>
 
-          {/* <div className="space-y-4">
+
+
+          <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Generación de esquema
@@ -344,9 +346,9 @@ export function EpisodeProfileFormDialog({
                 )}
               />
             </div>
-          </div> */}
+          </div>
 
-          {/* <div className="space-y-4">
+          <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Generación de transcripción
@@ -408,7 +410,10 @@ export function EpisodeProfileFormDialog({
                 )}
               />
             </div>
-          </div> */}
+          </div>
+
+
+
 
           <div className="space-y-2">
             <Label htmlFor="default_briefing">Instrucciones predeterminadas *</Label>

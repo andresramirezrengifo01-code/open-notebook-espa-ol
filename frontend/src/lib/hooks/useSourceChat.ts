@@ -57,10 +57,10 @@ export function useSourceChat(sourceId: string) {
     onSuccess: (newSession) => {
       queryClient.invalidateQueries({ queryKey: ['sourceChatSessions', sourceId] })
       setCurrentSessionId(newSession.id)
-      toast.success('Chat session created')
+      toast.success('Sesión de chat creada')
     },
     onError: () => {
-      toast.error('Failed to create chat session')
+      toast.error('Error al crear la sesión de chat')
     }
   })
 
@@ -71,10 +71,10 @@ export function useSourceChat(sourceId: string) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['sourceChatSessions', sourceId] })
       queryClient.invalidateQueries({ queryKey: ['sourceChatSession', sourceId, currentSessionId] })
-      toast.success('Session updated')
+      toast.success('Sesión actualizada')
     },
     onError: () => {
-      toast.error('Failed to update session')
+      toast.error('Error al actualizar la sesión')
     }
   })
 
@@ -88,10 +88,10 @@ export function useSourceChat(sourceId: string) {
         setCurrentSessionId(null)
         setMessages([])
       }
-      toast.success('Session deleted')
+      toast.success('Sesión eliminada')
     },
     onError: () => {
-      toast.error('Failed to delete session')
+      toast.error('Error al eliminar la sesión')
     }
   })
 
@@ -109,7 +109,7 @@ export function useSourceChat(sourceId: string) {
         queryClient.invalidateQueries({ queryKey: ['sourceChatSessions', sourceId] })
       } catch (error) {
         console.error('Failed to create chat session:', error)
-        toast.error('Failed to create chat session')
+        toast.error('Error al crear la sesión de chat')
         return
       }
     }
@@ -131,7 +131,7 @@ export function useSourceChat(sourceId: string) {
       })
 
       if (!response) {
-        throw new Error('No response body')
+        throw new Error('Sin cuerpo de respuesta')
       }
 
       const reader = response.getReader()
@@ -172,7 +172,7 @@ export function useSourceChat(sourceId: string) {
               } else if (data.type === 'context_indicators') {
                 setContextIndicators(data.data)
               } else if (data.type === 'error') {
-                throw new Error(data.message || 'Stream error')
+                throw new Error(data.message || 'Error en el stream')
               }
             } catch (e) {
               console.error('Error parsing SSE data:', e)
@@ -182,7 +182,7 @@ export function useSourceChat(sourceId: string) {
       }
     } catch (error) {
       console.error('Error sending message:', error)
-      toast.error('Failed to send message')
+      toast.error('Error al enviar el mensaje')
       // Remove optimistic messages on error
       setMessages(prev => prev.filter(msg => !msg.id.startsWith('temp-')))
     } finally {

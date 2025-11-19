@@ -28,14 +28,14 @@ export function useCreateNotebook() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.notebooks })
       toast({
-        title: 'Success',
-        description: 'Notebook created successfully',
+        title: 'Éxito',
+        description: 'Cuaderno creado exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to create notebook',
+        description: 'Error al crear el cuaderno',
         variant: 'destructive',
       })
     },
@@ -53,14 +53,14 @@ export function useUpdateNotebook() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.notebooks })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.notebook(id) })
       toast({
-        title: 'Success',
-        description: 'Notebook updated successfully',
+        title: 'Éxito',
+        description: 'Cuaderno actualizado exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update notebook',
+        description: 'Error al actualizar el cuaderno',
         variant: 'destructive',
       })
     },
@@ -76,14 +76,14 @@ export function useDeleteNotebook() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.notebooks })
       toast({
-        title: 'Success',
-        description: 'Notebook deleted successfully',
+        title: 'Éxito',
+        description: 'Cuaderno eliminado exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to delete notebook',
+        description: 'Error al eliminar el cuaderno',
         variant: 'destructive',
       })
     },

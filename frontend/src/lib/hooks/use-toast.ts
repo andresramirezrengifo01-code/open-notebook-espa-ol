@@ -14,7 +14,7 @@ export function useToast() {
           description,
         })
       } else {
-        sonnerToast.success(title || 'Success', {
+        sonnerToast.success(title || 'Éxito', {
           description,
         })
       }

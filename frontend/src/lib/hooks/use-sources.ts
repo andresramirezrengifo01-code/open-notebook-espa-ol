@@ -60,20 +60,20 @@ export function useCreateSource() {
       // Show different messages based on processing mode
       if (variables.async_processing) {
         toast({
-          title: 'Source Queued',
-          description: 'Source submitted for background processing. You can monitor progress in the sources list.',
+          title: 'Fuente en cola',
+          description: 'Fuente enviada para procesamiento en segundo plano. Puedes monitorear el progreso en la lista de fuentes.',
         })
       } else {
         toast({
-          title: 'Success',
-          description: 'Source added successfully',
+          title: 'Éxito',
+          description: 'Fuente agregada exitosamente',
         })
       }
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to add source',
+        description: 'Error al agregar la fuente',
         variant: 'destructive',
       })
     },
@@ -92,14 +92,14 @@ export function useUpdateSource() {
       queryClient.invalidateQueries({ queryKey: ['sources'] })
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.source(id) })
       toast({
-        title: 'Success',
-        description: 'Source updated successfully',
+        title: 'Éxito',
+        description: 'Fuente actualizada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to update source',
+        description: 'Error al actualizar la fuente',
         variant: 'destructive',
       })
     },
@@ -118,14 +118,14 @@ export function useDeleteSource() {
       // Also invalidate the specific source
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.source(id) })
       toast({
-        title: 'Success',
-        description: 'Source deleted successfully',
+        title: 'Éxito',
+        description: 'Fuente eliminada exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to delete source',
+        description: 'Error al eliminar la fuente',
         variant: 'destructive',
       })
     },
@@ -140,18 +140,18 @@ export function useFileUpload() {
     mutationFn: ({ file, notebookId }: { file: File; notebookId: string }) =>
       sourcesApi.upload(file, notebookId),
     onSuccess: (_, variables) => {
-      queryClient.invalidateQueries({ 
-        queryKey: QUERY_KEYS.sources(variables.notebookId) 
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEYS.sources(variables.notebookId)
       })
       toast({
-        title: 'Success',
-        description: 'File uploaded successfully',
+        title: 'Éxito',
+        description: 'Archivo subido exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to upload file',
+        description: 'Error al subir el archivo',
         variant: 'destructive',
       })
     },
@@ -201,14 +201,14 @@ export function useRetrySource() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.source(sourceId) })
 
       toast({
-        title: 'Source Retry Queued',
-        description: 'The source has been requeued for processing.',
+        title: 'Reintento de fuente en cola',
+        description: 'La fuente ha sido reencolada para procesamiento.',
       })
     },
     onError: () => {
       toast({
-        title: 'Retry Failed',
-        description: 'Failed to retry source processing. Please try again.',
+        title: 'Reintento fallido',
+        description: 'Error al reintentar el procesamiento de la fuente. Por favor, intenta de nuevo.',
         variant: 'destructive',
       })
     },
@@ -247,19 +247,19 @@ export function useAddSourcesToNotebook() {
       // Show appropriate toast based on results
       if (result.failures === 0) {
         toast({
-          title: 'Success',
-          description: `${result.successes} source${result.successes > 1 ? 's' : ''} added to notebook`,
+          title: 'Éxito',
+          description: `${result.successes} fuente${result.successes > 1 ? 's' : ''} agregada${result.successes > 1 ? 's' : ''} al cuaderno`,
         })
       } else if (result.successes === 0) {
         toast({
           title: 'Error',
-          description: 'Failed to add sources to notebook',
+          description: 'Error al agregar fuentes al cuaderno',
           variant: 'destructive',
         })
       } else {
         toast({
-          title: 'Partial Success',
-          description: `${result.successes} source${result.successes > 1 ? 's' : ''} added, ${result.failures} failed`,
+          title: 'Éxito parcial',
+          description: `${result.successes} fuente${result.successes > 1 ? 's' : ''} agregada${result.successes > 1 ? 's' : ''}, ${result.failures} fallida${result.failures > 1 ? 's' : ''}`,
           variant: 'default',
         })
       }
@@ -267,7 +267,7 @@ export function useAddSourcesToNotebook() {
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to add sources to notebook',
+        description: 'Error al agregar fuentes al cuaderno',
         variant: 'destructive',
       })
     },
@@ -293,14 +293,14 @@ export function useRemoveSourceFromNotebook() {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.source(sourceId) })
 
       toast({
-        title: 'Success',
-        description: 'Source removed from notebook successfully',
+        title: 'Éxito',
+        description: 'Fuente removida del cuaderno exitosamente',
       })
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to remove source from notebook',
+        description: 'Error al remover la fuente del cuaderno',
         variant: 'destructive',
       })
     },

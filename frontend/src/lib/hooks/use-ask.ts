@@ -36,12 +36,12 @@ export function useAsk() {
   const sendAsk = useCallback(async (question: string, models: AskModels) => {
     // Validate inputs
     if (!question.trim()) {
-      toast.error('Please enter a question')
+      toast.error('Por favor, ingresa una pregunta')
       return
     }
 
     if (!models.strategy || !models.answer || !models.finalAnswer) {
-      toast.error('Please configure all required models')
+      toast.error('Por favor, configura todos los modelos requeridos')
       return
     }
 
@@ -63,7 +63,7 @@ export function useAsk() {
       })
 
       if (!response) {
-        throw new Error('No response body received from server')
+        throw new Error('No se recibió respuesta del servidor')
       }
 
       const reader = response.getReader()
@@ -116,7 +116,7 @@ export function useAsk() {
                   isStreaming: false
                 }))
               } else if (data.type === 'error') {
-                throw new Error(data.message || 'Stream error occurred')
+                throw new Error(data.message || 'Ocurrió un error en el stream')
               }
             } catch (e) {
               console.error('Error parsing SSE data:', e, 'Line:', line)
@@ -130,7 +130,7 @@ export function useAsk() {
       setState(prev => ({ ...prev, isStreaming: false }))
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
+      const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado'
       console.error('Ask error:', error)
 
       setState(prev => ({
@@ -139,7 +139,7 @@ export function useAsk() {
         error: errorMessage
       }))
 
-      toast.error('Ask failed', {
+      toast.error('Consulta fallida', {
         description: errorMessage
       })
     }

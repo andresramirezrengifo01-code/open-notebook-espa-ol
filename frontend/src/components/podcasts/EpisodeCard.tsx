@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { formatDistanceToNow } from 'date-fns'
 import { InfoIcon, Trash2 } from 'lucide-react'
+import { es } from 'date-fns/locale'
 
 import { resolvePodcastAssetUrl } from '@/lib/api/podcasts'
 import { EpisodeStatus, PodcastEpisode } from '@/lib/types/podcasts'
@@ -200,6 +201,7 @@ export function EpisodeCard({ episode, onDelete, deleting }: EpisodeCardProps) {
   const createdLabel = episode.created
     ? formatDistanceToNow(new Date(episode.created), {
         addSuffix: true,
+        locale: es
       })
     : null
 
@@ -258,7 +260,9 @@ export function EpisodeCard({ episode, onDelete, deleting }: EpisodeCardProps) {
                           <section className="space-y-2">
                             <h4 className="text-sm font-semibold text-foreground">Perfil de Episodio</h4>
                             <div className="grid gap-2 text-sm md:grid-cols-2">
-                              {/* <div>
+
+
+                              <div>
                                 <p className="text-muted-foreground">Modelo de Esquema</p>
                                 <p>
                                   {episode.episode_profile?.outline_provider ?? '—'} /
@@ -273,7 +277,9 @@ export function EpisodeCard({ episode, onDelete, deleting }: EpisodeCardProps) {
                                   {' '}
                                   {episode.episode_profile?.transcript_model ?? '—'}
                                 </p>
-                              </div> */}
+                              </div>
+
+
                               <div>
                                 <p className="text-muted-foreground">Segmentos</p>
                                 <p>{episode.episode_profile?.num_segments ?? '—'}</p>
