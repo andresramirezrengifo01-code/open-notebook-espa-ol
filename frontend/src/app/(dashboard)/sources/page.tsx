@@ -281,137 +281,212 @@ export default function SourcesPage() {
 
   return (
     <AppShell>
-      <div className="flex flex-col h-full w-full max-w-none px-6 py-6">
-        <div className="mb-6 flex-shrink-0">
-          <h1 className="text-3xl font-bold">Todas las Fuentes</h1>
-          <p className="mt-2 text-muted-foreground">
-            Explora todas las fuentes de tus cuadernos. Usa las flechas del teclado para navegar y Enter para abrir.
+      <div className="flex flex-col h-full w-full max-w-none px-0 md:px-6 py-4 md:py-6">
+        <div className="mb-4 md:mb-6 flex-shrink-0 px-4 md:px-0">
+          <h1 className="text-xl md:text-3xl font-bold">Todas las Fuentes</h1>
+          <p className="mt-2 text-sm md:text-base text-muted-foreground">
+            <span className="hidden md:inline">Explora todas las fuentes de tus cuadernos. Usa las flechas del teclado para navegar y Enter para abrir.</span>
+            <span className="md:hidden">Explora todas las fuentes de tus cuadernos.</span>
           </p>
         </div>
 
         <div ref={scrollContainerRef} className="flex-1 rounded-md border overflow-auto">
-          <table
-            ref={tableRef}
-            tabIndex={0}
-            className="w-full min-w-[800px] outline-none table-fixed"
-          >
-            <colgroup>
-              <col className="w-[120px]" />
-              <col className="w-auto" />
-              <col className="w-[140px]" />
-              <col className="w-[100px]" />
-              <col className="w-[100px]" />
-              <col className="w-[100px]" />
-            </colgroup>
-            <thead className="sticky top-0 bg-background z-10">
-              <tr className="border-b bg-muted/50">
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                  Tipo
-                </th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                  Título
-                </th>
-                <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground hidden sm:table-cell">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => toggleSort('created')}
-                    className="h-8 px-2 hover:bg-muted"
-                  >
-                    Creado
-                    <ArrowUpDown className={cn(
-                      "ml-2 h-3 w-3",
-                      sortBy === 'created' ? 'opacity-100' : 'opacity-30'
-                    )} />
-                    {sortBy === 'created' && (
-                      <span className="ml-1 text-xs">
-                        {sortOrder === 'asc' ? '↑' : '↓'}
-                      </span>
+          {/* DESKTOP/TABLET VIEW - Tabla (>= 768px) */}
+          <div className="hidden md:block">
+            <table
+              ref={tableRef}
+              tabIndex={0}
+              className="w-full outline-none table-fixed"
+            >
+              <colgroup>
+                <col className="w-[100px]" />
+                <col className="w-auto" />
+                <col className="w-[140px]" />
+                <col className="w-[100px]" />
+                <col className="w-[100px]" />
+                <col className="w-[100px]" />
+              </colgroup>
+              <thead className="sticky top-0 bg-background z-10">
+                <tr className="border-b bg-muted/50">
+                  <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground text-sm">
+                    Tipo
+                  </th>
+                  <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground text-sm">
+                    Título
+                  </th>
+                  <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground text-sm">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleSort('created')}
+                      className="h-8 px-2 hover:bg-muted text-sm"
+                    >
+                      Creado
+                      <ArrowUpDown className={cn(
+                        "ml-2 h-3 w-3",
+                        sortBy === 'created' ? 'opacity-100' : 'opacity-30'
+                      )} />
+                      {sortBy === 'created' && (
+                        <span className="ml-1 text-xs">
+                          {sortOrder === 'asc' ? '↑' : '↓'}
+                        </span>
+                      )}
+                    </Button>
+                  </th>
+                  <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground text-sm">
+                    Perspectiva
+                  </th>
+                  <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground text-sm">
+                    Incrustado
+                  </th>
+                  <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground text-sm">
+                    Acciones
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {sources.map((source, index) => (
+                  <tr
+                    key={source.id}
+                    onClick={() => handleRowClick(index, source.id)}
+                    onMouseEnter={() => setSelectedIndex(index)}
+                    className={cn(
+                      "border-b transition-colors cursor-pointer",
+                      selectedIndex === index
+                        ? "bg-accent"
+                        : "hover:bg-muted/50"
                     )}
-                  </Button>
-                </th>
-                <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground hidden md:table-cell">
-                  Perspectiva
-                </th>
-                <th className="h-12 px-4 text-center align-middle font-medium text-muted-foreground hidden lg:table-cell">
-                  Incrustado
-                </th>
-                <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                  Acciones
-                </th>
-              </tr>
-            </thead>
-            <tbody>
+                  >
+                    <td className="h-12 px-4">
+                      <div className="flex items-center gap-2">
+                        {getSourceIcon(source)}
+                        <Badge variant="secondary" className="text-xs">
+                          {getSourceType(source)}
+                        </Badge>
+                      </div>
+                    </td>
+                    <td className="h-12 px-4">
+                      <div className="flex flex-col overflow-hidden">
+                        <span className="font-medium truncate">
+                          {source.title || 'Fuente sin título'}
+                        </span>
+                        {source.asset?.url && (
+                          <span className="text-xs text-muted-foreground truncate">
+                            {source.asset.url}
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="h-12 px-4 text-muted-foreground text-sm">
+                      {formatDistanceToNow(new Date(source.created), { addSuffix: true, locale: es })}
+                    </td>
+                    <td className="h-12 px-4 text-center">
+                      <span className="text-sm font-medium">{source.insights_count || 0}</span>
+                    </td>
+                    <td className="h-12 px-4 text-center">
+                      <Badge variant={source.embedded ? "default" : "secondary"} className="text-xs">
+                        {source.embedded ? "Sí" : "No"}
+                      </Badge>
+                    </td>
+                    <td className="h-12 px-4 text-right">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => handleDeleteClick(e, source)}
+                        className="text-destructive hover:text-destructive"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+                {loadingMore && (
+                  <tr>
+                    <td colSpan={6} className="h-16 text-center">
+                      <div className="flex items-center justify-center">
+                        <LoadingSpinner />
+                        <span className="ml-2 text-muted-foreground">Cargando más fuentes...</span>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* MOBILE VIEW - Cards (< 768px) */}
+          <div className="md:hidden">
+            <div className="divide-y">
               {sources.map((source, index) => (
-                <tr
+                <div
                   key={source.id}
                   onClick={() => handleRowClick(index, source.id)}
-                  onMouseEnter={() => setSelectedIndex(index)}
                   className={cn(
-                    "border-b transition-colors cursor-pointer",
-                    selectedIndex === index
-                      ? "bg-accent"
-                      : "hover:bg-muted/50"
+                    "p-4 cursor-pointer transition-colors",
+                    selectedIndex === index ? "bg-accent" : "active:bg-muted/50"
                   )}
                 >
-                  <td className="h-12 px-4">
+                  {/* Header con tipo y botón eliminar */}
+                  <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-2">
                       {getSourceIcon(source)}
                       <Badge variant="secondary" className="text-xs">
                         {getSourceType(source)}
                       </Badge>
                     </div>
-                  </td>
-                  <td className="h-12 px-4">
-                    <div className="flex flex-col overflow-hidden">
-                      <span className="font-medium truncate">
-                        {source.title || 'Fuente sin título'}
-                      </span>
-                      {source.asset?.url && (
-                        <span className="text-xs text-muted-foreground truncate">
-                          {source.asset.url}
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="h-12 px-4 text-muted-foreground text-sm hidden sm:table-cell">
-                    {formatDistanceToNow(new Date(source.created), { addSuffix: true, locale: es })}
-                  </td>
-                  <td className="h-12 px-4 text-center hidden md:table-cell">
-                    <span className="text-sm font-medium">{source.insights_count || 0}</span>
-                  </td>
-                  <td className="h-12 px-4 text-center hidden lg:table-cell">
-                    <Badge variant={source.embedded ? "default" : "secondary"} className="text-xs">
-                      {source.embedded ? "Sí" : "No"}
-                    </Badge>
-                  </td>
-                  <td className="h-12 px-4 text-right">
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={(e) => handleDeleteClick(e, source)}
-                      className="text-destructive hover:text-destructive"
+                      className="text-destructive hover:text-destructive h-8 w-8 flex-shrink-0"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
-                  </td>
-                </tr>
-              ))}
-              {loadingMore && (
-                <tr>
-                  <td colSpan={6} className="h-16 text-center">
-                    <div className="flex items-center justify-center">
-                      <LoadingSpinner />
-                      <span className="ml-2 text-muted-foreground">Cargando más fuentes...</span>
+                  </div>
+
+                  {/* Título */}
+                  <div className="mb-3">
+                    <h3 className="font-medium text-base leading-tight mb-1">
+                      {source.title || 'Fuente sin título'}
+                    </h3>
+                    {source.asset?.url && (
+                      <p className="text-xs text-muted-foreground line-clamp-1">
+                        {source.asset.url}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Stats Footer */}
+                  <div className="flex items-center justify-between text-xs text-muted-foreground pt-3 border-t">
+                    <span className="flex items-center gap-1">
+                      📅 {formatDistanceToNow(new Date(source.created), { addSuffix: true, locale: es })}
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className="flex items-center gap-1">
+                        📊 {source.insights_count || 0}
+                      </span>
+                      {source.embedded && (
+                        <Badge variant="outline" className="text-[10px] h-5 px-1.5">
+                          ✓ Incrustado
+                        </Badge>
+                      )}
                     </div>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Loading más en mobile */}
+            {loadingMore && (
+              <div className="p-4 flex items-center justify-center border-t">
+                <LoadingSpinner />
+                <span className="ml-2 text-sm text-muted-foreground">Cargando más...</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-
+      
       <ConfirmDialog
         open={deleteDialog.open}
         onOpenChange={(open) => setDeleteDialog({ open, source: deleteDialog.source })}

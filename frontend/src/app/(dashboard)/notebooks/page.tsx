@@ -47,10 +47,10 @@ export default function NotebooksPage() {
 
   return (
     <AppShell>
-      <div className="p-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold">Cuadernos</h1>
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <h1 className="text-xl sm:text-2xl font-bold">Cuadernos</h1>
             <Button variant="outline" size="sm" onClick={() => refetch()}>
               <RefreshCw className="h-4 w-4" />
             </Button>
@@ -59,16 +59,17 @@ export default function NotebooksPage() {
             <Input
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Buscar cuadernos..."
-              className="w-full sm:w-64"
+              placeholder="Buscar..."
+              className="w-full sm:w-64 text-sm"
             />
-            <Button onClick={() => setCreateDialogOpen(true)}>
-              <Plus className="h-4 w-4 mr-2" />
-              Nuevo Cuaderno
+            <Button onClick={() => setCreateDialogOpen(true)} className="w-full sm:w-auto">
+              <Plus className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Nuevo Cuaderno</span>
+              <span className="sm:hidden">Nuevo</span>
             </Button>
           </div>
         </div>
-        
+
         <div className="space-y-8">
           <NotebookList
             notebooks={filteredActive}
@@ -77,7 +78,7 @@ export default function NotebooksPage() {
             emptyTitle={isSearching ? 'No hay cuadernos que coincidan con tu búsqueda' : undefined}
             emptyDescription={isSearching ? 'Intenta usar un nombre de cuaderno diferente.' : undefined}
           />
-          
+
           {hasArchived && (
             <NotebookList
               notebooks={filteredArchived}

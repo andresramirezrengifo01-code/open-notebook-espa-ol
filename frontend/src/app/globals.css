@@ -176,3 +176,43 @@
   }
 }
 
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
+
+@layer utilities {
+  /* Prevenir scroll horizontal en móvil */
+  @media (max-width: 640px) {
+    body {
+      overflow-x: hidden;
+    }
+  }
+  
+  /* Ajuste de tablas en móvil */
+  @media (max-width: 768px) {
+    table {
+      font-size: 0.875rem;
+    }
+    
+    /* Reducir padding de celdas en móvil */
+    table th,
+    table td {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+  }
+  
+  /* Asegurar que el sidebar no cause overflow */
+  .app-sidebar {
+    flex-shrink: 0;
+  }
+  
+  /* Fix para contenedores que se salen */
+  @media (max-width: 640px) {
+    [class*="px-6"] {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+
