@@ -179,7 +179,7 @@ export function EpisodeProfilesPanel({
                   <div className="grid gap-3 md:grid-cols-2">
 
 
-                    <div>
+                    {/* <div>
                       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                         Modelo de esquema
                       </p>
@@ -194,7 +194,7 @@ export function EpisodeProfilesPanel({
                       <p className="text-foreground">
                         {profile.transcript_provider} / {profile.transcript_model}
                       </p>
-                    </div>
+                    </div> */}
 
 
                     <div>
