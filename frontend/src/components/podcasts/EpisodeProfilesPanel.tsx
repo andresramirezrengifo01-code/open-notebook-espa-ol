@@ -211,11 +211,11 @@ export function EpisodeProfilesPanel({
                         <Users className="h-4 w-4" />                    
                         <span>{profile.speaker_config}</span>
 
-                        {speakerSummary ? (
+                        {/* {speakerSummary ? (
                           <Badge variant="outline" className="text-xs">
                             {speakerSummary.tts_provider} / {speakerSummary.tts_model}
                           </Badge>
-                        ) : null}
+                        ) : null} */}
                         
                       </div>
                     </div>
